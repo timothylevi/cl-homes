@@ -1,0 +1,36 @@
+<!-- users/edit -->
+
+<h1>Edit Profile</h1>
+
+<form action="<%= user_url(@user) %>" method="POST">
+
+	<%= form_auth_token %>
+
+	<input type="text" name="user[email]" placeholder="<%= @user.email %>">
+
+	<br>
+
+	<!-- add a link to change password -->
+
+	<br>
+	
+	<select name="user[region]">
+		<option>Select Region</option>
+		
+		<% User::REGIONS.each do |region|  %>
+		
+			<% if @user.region == region %>
+				<%= ("<option value=\"#{region}\" selected>" + region +  "</option>").html_safe %>
+			<% else %>
+				<%= ("<option value=\"#{region}\">" + region +  "</option>").html_safe %>
+			<% end %>
+
+		<% end %>
+				
+	</select>
+
+	<br>
+	
+	<input type="hidden" name="_method" value="PUT">
+	<input type="submit" value="Save Changes">
+</form>

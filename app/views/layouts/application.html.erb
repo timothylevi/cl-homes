@@ -7,10 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<%= current_user.email if current_user %>
 
 <%= (button_to "Sign Out", session_url, method: :delete) if signed_in? %>
 
+<hr>
+
 <%= yield %>
+
+<hr>
+
+<% if flash[:errors] %>
+	<%= flash[:errors].inspect %>
+<% end %>
 
 </body>
 </html>

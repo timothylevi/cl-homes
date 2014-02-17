@@ -11,12 +11,16 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :password
+  attr_accessible :email, :password, :region
   attr_reader :password
+  
+  REGIONS = ["manhattan", "brooklyn", "bronx", "queens", "staten island", "long island", "new jersey", "fairfield co CT", "westchester"]
+  
   
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :password_digest, presence: true
   validates :password, length: {minimum: 8, allow_nil: true}
+  validates :region, inclusion: { in: REGIONS }
   before_validation :ensure_session_token
   
   def ensure_session_token
@@ -24,7 +28,7 @@ class User < ActiveRecord::Base
       self.session_token = self.class.generate_random_token
     end
   end
-  
+    
   def self.generate_random_token
     SecureRandom::urlsafe_base64(16)
   end

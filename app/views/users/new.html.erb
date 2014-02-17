@@ -4,12 +4,24 @@
 
 <form action="<%= users_url %>" method="post">
 	
+		<%= form_auth_token %>
+	
 		<input type="text" name="user[email]" placeholder="email">
 
 		<br>
 
 		<input type="text" name="user[password]" placeholder="password">
 
+		<br>
+		
+		<select name="user[region]">
+			<option>Select Region</option>
+			
+			<% User::REGIONS.each do |region|  %>
+			<%= ("<option value=\"#{region}\">" + region +  "</option>").html_safe %>
+			<% end %>
+			
+		</select>
 	<p><input type="submit" value="Create Account"></p>
 </form>
 
