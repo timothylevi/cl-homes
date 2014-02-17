@@ -1,0 +1,19 @@
+<!-- sessions/new -->
+
+<h1>Sign In</h1>
+
+<form action="<%= session_url %>" method="post">
+	
+		<input type="text" name="user[email]" placeholder="email">
+
+		<br>
+
+		<input type="text" name="user[password]" placeholder="password">
+
+	<p><input type="submit" value="Sign In"></p>
+</form>
+
+<br>
+
+<%= link_to "Create an account", new_user_url %>
+
