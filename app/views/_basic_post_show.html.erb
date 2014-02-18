@@ -3,7 +3,7 @@
 		<%= link_to "#{@post.subcategory.name}", subcategory_url(@post.subcategory) %></h3>
 
 
-<h2><strong><%= @post.title %></strong> <%= @post.region %> (<%= @post.specific_location %>)</h2>
+<h2><%= @post.title %> - <%= @post.region %> (<%= @post.specific_location %>)</h2>
 
 <h4>contact info</h4>
 <%= @post.contact_name %> <%= @post.contact_email %> <%= @post.contact_phone %>

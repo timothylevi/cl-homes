@@ -1,0 +1,9 @@
+<h1>edit personals post</h1>
+
+<form action="<%= personals_post_url(@post) %>" method="post">
+	
+	<%= render partial: "form" %>
+	
+	<input type="hidden" name="_method" value="put">
+	<p><input type="submit" value="save changes"></p>
+</form>

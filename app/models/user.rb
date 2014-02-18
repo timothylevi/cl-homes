@@ -26,11 +26,10 @@ class User < ActiveRecord::Base
   
   
   has_many :community_posts
-  # has_many :
+  has_many :personals_posts
   
   def posts
-    community_posts
-    # add other posts as I add them
+    community_posts + personals_posts
   end
   
   

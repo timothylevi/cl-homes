@@ -10,6 +10,7 @@
 	<% if signed_in? %>
 		<%= "signed in as: " + current_user.email %>
 		<br>
+		<%= link_to "account", user_url(current_user) %>
 		<%= button_to "Sign Out", session_url, method: :delete %>
 	<% else %>
 		<%= link_to "Sign In", new_session_url %>

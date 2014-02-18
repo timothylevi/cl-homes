@@ -14,12 +14,12 @@ Craigslist::Application.routes.draw do
   get "new_posts/pick_cat"
   
   
-  resources :community_posts
-  resources :personals_posts
-  resources :events_posts
-  resources :housing_posts
-  resources :sale_posts
-  resources :services_posts
-  resources :jobs_posts
-  resources :gigs_posts
+  resources :community_posts, except: [:index]
+  resources :personals_posts, except: [:index]
+  resources :events_posts, except: [:index]
+  resources :housing_posts, except: [:index]
+  resources :sale_posts, except: [:index]
+  resources :services_posts, except: [:index]
+  resources :jobs_posts, except: [:index]
+  resources :gigs_posts, except: [:index]
 end
