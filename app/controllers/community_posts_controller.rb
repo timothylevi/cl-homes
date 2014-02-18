@@ -1,6 +1,9 @@
 class CommunityPostsController < ApplicationController
+  
+  CATEGORY = Category.find_by_name("community")
+  
   def new
-    @category = Category.find_by_name("community")
+    @category = CATEGORY
     @post = CommunityPost.new
     @post.poster = current_user
   end
@@ -21,15 +24,15 @@ class CommunityPostsController < ApplicationController
   end
   
   def edit
-    @category = Category.find_by_name("community")
+    @category = CATEGORY
     @post = CommunityPost.find(params[:id])
   end
   
   def update
+    @category = CATEGORY
     @post = CommunityPost.find(params[:id])
     
     if @post.update_attributes(params[:post])
-      fail
       redirect_to community_post_url(@post)
     else
       flash.now[:errors] = @post.errors.full_messages
