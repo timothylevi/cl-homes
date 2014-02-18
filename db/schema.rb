@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140218141802) do
+ActiveRecord::Schema.define(:version => 20140218150651) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",       :null => false
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(:version => 20140218141802) do
 
   create_table "community_posts", :force => true do |t|
     t.string   "title",             :null => false
-    t.integer  "contact_id",        :null => false
     t.string   "specific_location"
     t.string   "zip_code"
     t.text     "body",              :null => false
@@ -33,9 +32,11 @@ ActiveRecord::Schema.define(:version => 20140218141802) do
     t.string   "region",            :null => false
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "contact_email"
+    t.string   "contact_phone"
+    t.string   "contact_name"
   end
 
-  add_index "community_posts", ["contact_id"], :name => "index_community_posts_on_contact_id"
   add_index "community_posts", ["location_id"], :name => "index_community_posts_on_location_id"
   add_index "community_posts", ["region"], :name => "index_community_posts_on_region"
   add_index "community_posts", ["subcategory_id"], :name => "index_community_posts_on_subcategory_id"
@@ -43,7 +44,6 @@ ActiveRecord::Schema.define(:version => 20140218141802) do
 
   create_table "events_posts", :force => true do |t|
     t.integer  "user_id",           :null => false
-    t.integer  "contact_id",        :null => false
     t.integer  "location_id"
     t.integer  "subcategory_id",    :null => false
     t.string   "title",             :null => false
@@ -55,11 +55,13 @@ ActiveRecord::Schema.define(:version => 20140218141802) do
     t.datetime "end"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "contact_email"
+    t.string   "contact_phone"
+    t.string   "contact_name"
   end
 
   create_table "gigs_posts", :force => true do |t|
     t.integer  "user_id",           :null => false
-    t.integer  "contact_id",        :null => false
     t.integer  "location_id"
     t.integer  "subcategory_id",    :null => false
     t.string   "title",             :null => false
@@ -71,6 +73,9 @@ ActiveRecord::Schema.define(:version => 20140218141802) do
     t.string   "pay_detials"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "contact_email"
+    t.string   "contact_phone"
+    t.string   "contact_name"
   end
 
   add_index "gigs_posts", ["region"], :name => "index_gigs_posts_on_region"
@@ -79,7 +84,6 @@ ActiveRecord::Schema.define(:version => 20140218141802) do
 
   create_table "housing_posts", :force => true do |t|
     t.integer  "user_id",           :null => false
-    t.integer  "contact_id",        :null => false
     t.integer  "location_id",       :null => false
     t.integer  "subcategory_id",    :null => false
     t.string   "title",             :null => false
@@ -96,6 +100,9 @@ ActiveRecord::Schema.define(:version => 20140218141802) do
     t.integer  "sq_feet"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "contact_email"
+    t.string   "contact_phone"
+    t.string   "contact_name"
   end
 
   add_index "housing_posts", ["region"], :name => "index_housing_posts_on_region"
@@ -104,7 +111,6 @@ ActiveRecord::Schema.define(:version => 20140218141802) do
 
   create_table "jobs_posts", :force => true do |t|
     t.integer  "user_id",           :null => false
-    t.integer  "contact_id",        :null => false
     t.integer  "location_id"
     t.integer  "subcategory_id",    :null => false
     t.string   "title",             :null => false
@@ -115,6 +121,9 @@ ActiveRecord::Schema.define(:version => 20140218141802) do
     t.string   "compensation"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "contact_email"
+    t.string   "contact_phone"
+    t.string   "contact_name"
   end
 
   add_index "jobs_posts", ["region"], :name => "index_jobs_posts_on_region"
@@ -123,7 +132,6 @@ ActiveRecord::Schema.define(:version => 20140218141802) do
 
   create_table "personals_posts", :force => true do |t|
     t.integer  "user_id",           :null => false
-    t.integer  "contact_id",        :null => false
     t.integer  "location_id"
     t.integer  "subcategory_id",    :null => false
     t.string   "title",             :null => false
@@ -135,6 +143,9 @@ ActiveRecord::Schema.define(:version => 20140218141802) do
     t.string   "looking_for",       :null => false
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "contact_email"
+    t.string   "contact_phone"
+    t.string   "contact_name"
   end
 
   add_index "personals_posts", ["region"], :name => "index_personals_posts_on_region"
@@ -143,7 +154,6 @@ ActiveRecord::Schema.define(:version => 20140218141802) do
 
   create_table "sale_posts", :force => true do |t|
     t.integer  "user_id",           :null => false
-    t.integer  "contact_id",        :null => false
     t.integer  "location_id"
     t.integer  "subcategory_id",    :null => false
     t.string   "title",             :null => false
@@ -154,6 +164,9 @@ ActiveRecord::Schema.define(:version => 20140218141802) do
     t.integer  "price"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "contact_email"
+    t.string   "contact_phone"
+    t.string   "contact_name"
   end
 
   add_index "sale_posts", ["region"], :name => "index_sale_posts_on_region"
@@ -162,7 +175,6 @@ ActiveRecord::Schema.define(:version => 20140218141802) do
 
   create_table "services_posts", :force => true do |t|
     t.integer  "user_id",           :null => false
-    t.integer  "contact_id",        :null => false
     t.integer  "location_id"
     t.integer  "subcategory_id",    :null => false
     t.string   "title",             :null => false
@@ -172,6 +184,9 @@ ActiveRecord::Schema.define(:version => 20140218141802) do
     t.string   "zip_code"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "contact_email"
+    t.string   "contact_phone"
+    t.string   "contact_name"
   end
 
   add_index "services_posts", ["region"], :name => "index_services_posts_on_region"

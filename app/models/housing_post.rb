@@ -4,7 +4,6 @@
 #
 #  id                :integer          not null, primary key
 #  user_id           :integer          not null
-#  contact_id        :integer          not null
 #  location_id       :integer          not null
 #  subcategory_id    :integer          not null
 #  title             :string(255)      not null
@@ -21,6 +20,9 @@
 #  sq_feet           :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  contact_email     :string(255)
+#  contact_phone     :string(255)
+#  contact_name      :string(255)
 #
 
 class HousingPost < ActiveRecord::Base

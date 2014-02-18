@@ -24,6 +24,19 @@ class User < ActiveRecord::Base
   validates :region, inclusion: { in: REGIONS }
   before_validation :ensure_session_token
   
+  
+  has_many :community_posts
+  # has_many :
+  
+  def posts
+    community_posts
+    # add other posts as I add them
+  end
+  
+  
+  
+  
+  
   def ensure_session_token
     unless self.session_token
       self.session_token = self.class.generate_random_token

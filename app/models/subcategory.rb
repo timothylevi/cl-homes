@@ -16,4 +16,9 @@ class Subcategory < ActiveRecord::Base
   validates :category_id, presence: true
   
   belongs_to :category
+  
+  def posts
+    eval("#{category.name.capitalize}Post").where(subcategory_id: self.id)
+  end
+
 end

@@ -1,16 +1,18 @@
 <!-- subs/show -->
 
-<h1><%= @sub.category.name %> > <%= @sub.name %></h1>
+<h2><%= link_to "CL", root_url %> >
+		<%= link_to @sub.category.name, category_url(@sub.category) %> > 
+		<%= @sub.name %></h2>
 
 <ul>
 	
-	<li>Posts go here</li>
-	<li>Posts go here</li>
-	<li>Posts go here</li>
-	<li>Posts go here</li>
-	<li>Posts go here</li>
-	<li>Posts go here</li>
+	<% @sub.posts.each do |post| %>
 
+		<li>
+			<%= link_to post.title, eval("#{@sub.category.name}_post_url(post)") %>
+		</li>
+
+	<% end %>
 </ul>
 
 <%= link_to "Craigslist Home", root_url %>

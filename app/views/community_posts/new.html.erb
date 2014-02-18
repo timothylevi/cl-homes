@@ -1,0 +1,12 @@
+<!-- community_posts/new -->
+
+<h1>create a community post</h1>
+
+<form action="<%= community_posts_url %>" method="post">
+	<%= form_auth_token %>
+	
+	<%= render partial: "./basic_post_info" %>
+	
+
+	<p><input type="submit" value="publish"></p>
+</form>

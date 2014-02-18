@@ -7,15 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<%= "signed in as: " + current_user.email if current_user %>
-	
-	<br>
-
-	<%= (button_to "Sign Out", session_url, method: :delete) if signed_in? %>
-
+	<% if signed_in? %>
+		<%= "signed in as: " + current_user.email %>
+		<br>
+		<%= button_to "Sign Out", session_url, method: :delete %>
+	<% else %>
+		<%= link_to "Sign In", new_session_url %>
+	<% end %>
 	<hr>
 
+<%= link_to "CL", root_url %>
+<br>
 <%= link_to "Create a Post", new_posts_pick_cat_url%>
+<br>
 
 <%= yield %>
 

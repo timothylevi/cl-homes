@@ -16,7 +16,7 @@ Craigslist::Application.routes.draw do
   
   resources :community_posts
   resources :personals_posts
-  resources :forums_posts
+  resources :events_posts
   resources :housing_posts
   resources :sale_posts
   resources :services_posts

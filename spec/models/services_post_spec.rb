@@ -4,7 +4,6 @@
 #
 #  id                :integer          not null, primary key
 #  user_id           :integer          not null
-#  contact_id        :integer          not null
 #  location_id       :integer
 #  subcategory_id    :integer          not null
 #  title             :string(255)      not null
@@ -14,6 +13,9 @@
 #  zip_code          :string(255)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  contact_email     :string(255)
+#  contact_phone     :string(255)
+#  contact_name      :string(255)
 #
 
 require 'spec_helper'

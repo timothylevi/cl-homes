@@ -12,7 +12,13 @@
 require 'spec_helper'
 
 describe Subcategory do
-  it { should belong_to(:category) }
-  it { should validate_presence_of(:name) }
-  it { should validate_presence_of(:category_id) }
+  describe "initialize" do
+    it { should belong_to(:category) }
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:category_id) }
+  end
+  
+  describe "posts" do
+    it "returns posts for that subcategory"
+  end
 end

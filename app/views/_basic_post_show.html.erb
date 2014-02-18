@@ -1,0 +1,13 @@
+<h3><%= link_to "CL", root_url %> > 
+		<%= link_to "#{@post.category.name}", category_url(@post.category) %> >
+		<%= link_to "#{@post.subcategory.name}", subcategory_url(@post.subcategory) %></h3>
+
+
+<h2><strong><%= @post.title %></strong> <%= @post.region %> (<%= @post.specific_location %>)</h2>
+
+<h4>contact info</h4>
+<%= @post.contact_name %> <%= @post.contact_email %> <%= @post.contact_phone %>
+
+<h4>post details</h4>
+
+<%= @post.body %>
