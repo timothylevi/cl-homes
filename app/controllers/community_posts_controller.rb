@@ -2,6 +2,7 @@ class CommunityPostsController < ApplicationController
   def new
     @category = Category.find_by_name("community")
     @post = CommunityPost.new
+    @post.poster = current_user
   end
   
   def create
@@ -20,14 +21,25 @@ class CommunityPostsController < ApplicationController
   end
   
   def edit
-    
+    @category = Category.find_by_name("community")
+    @post = CommunityPost.find(params[:id])
   end
   
   def update
+    @post = CommunityPost.find(params[:id])
     
+    if @post.update_attributes(params[:post])
+      fail
+      redirect_to community_post_url(@post)
+    else
+      flash.now[:errors] = @post.errors.full_messages
+      render :edit
+    end
   end
   
   def destroy
-    
+    @post = CommunityPost.find(params[:id])
+    @post.destroy
+    redirect_to user_url(@post.poster)
   end
 end

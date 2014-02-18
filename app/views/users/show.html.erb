@@ -3,3 +3,18 @@
 <br>
 
 <%= link_to "Edit Profile", edit_user_url(@user) %>
+
+<br>
+<br>
+
+<ul>
+<% @posts.each do |post| %>
+
+<li>
+	<%= link_to post.title, eval("#{post.category.name}_post_url(post)") %>
+	<%= link_to "edit", eval("edit_#{post.category.name}_post_url(post)") %>
+	<%= button_to "delete", eval("#{post.category.name}_post_url(post)"), method: :delete %>
+</li>
+
+<% end %>
+</ul>

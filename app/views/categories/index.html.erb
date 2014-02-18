@@ -2,6 +2,10 @@
 
 <h1>Craigslist</h1>
 
+<br>
+<%= link_to "Create a Post", new_posts_pick_cat_url%>
+<br>
+
 <% @categories.each do |category| %>
 
 <h4><%= link_to category.name, category_url(category) %></h4>

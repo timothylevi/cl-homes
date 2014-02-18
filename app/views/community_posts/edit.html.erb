@@ -1,0 +1,10 @@
+<h1>edit post</h1>
+
+<form action="<%= community_post_url(@post) %>" method="post">
+	<%= form_auth_token %>
+	
+	<%= render partial: "./basic_post_form" %>
+
+	<input type="hidden" name="_method" value="PUT">
+	<p><input type="submit" value="save changes"></p>
+</form>
