@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140218150651) do
+ActiveRecord::Schema.define(:version => 20140218225443) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",       :null => false
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(:version => 20140218150651) do
     t.string   "zip_code"
     t.text     "body",              :null => false
     t.integer  "user_id",           :null => false
-    t.integer  "location_id"
     t.integer  "subcategory_id",    :null => false
     t.string   "region",            :null => false
     t.datetime "created_at",        :null => false
@@ -35,16 +34,18 @@ ActiveRecord::Schema.define(:version => 20140218150651) do
     t.string   "contact_email"
     t.string   "contact_phone"
     t.string   "contact_name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "cross_street"
   end
 
-  add_index "community_posts", ["location_id"], :name => "index_community_posts_on_location_id"
   add_index "community_posts", ["region"], :name => "index_community_posts_on_region"
   add_index "community_posts", ["subcategory_id"], :name => "index_community_posts_on_subcategory_id"
   add_index "community_posts", ["user_id"], :name => "index_community_posts_on_user_id"
 
   create_table "events_posts", :force => true do |t|
     t.integer  "user_id",           :null => false
-    t.integer  "location_id"
     t.integer  "subcategory_id",    :null => false
     t.string   "title",             :null => false
     t.string   "specific_location"
@@ -58,11 +59,14 @@ ActiveRecord::Schema.define(:version => 20140218150651) do
     t.string   "contact_email"
     t.string   "contact_phone"
     t.string   "contact_name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "cross_street"
   end
 
   create_table "gigs_posts", :force => true do |t|
     t.integer  "user_id",           :null => false
-    t.integer  "location_id"
     t.integer  "subcategory_id",    :null => false
     t.string   "title",             :null => false
     t.string   "specific_location"
@@ -76,6 +80,10 @@ ActiveRecord::Schema.define(:version => 20140218150651) do
     t.string   "contact_email"
     t.string   "contact_phone"
     t.string   "contact_name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "cross_street"
   end
 
   add_index "gigs_posts", ["region"], :name => "index_gigs_posts_on_region"
@@ -84,7 +92,6 @@ ActiveRecord::Schema.define(:version => 20140218150651) do
 
   create_table "housing_posts", :force => true do |t|
     t.integer  "user_id",           :null => false
-    t.integer  "location_id",       :null => false
     t.integer  "subcategory_id",    :null => false
     t.string   "title",             :null => false
     t.string   "specific_location", :null => false
@@ -103,6 +110,18 @@ ActiveRecord::Schema.define(:version => 20140218150651) do
     t.string   "contact_email"
     t.string   "contact_phone"
     t.string   "contact_name"
+    t.integer  "bathrooms"
+    t.string   "housing_type"
+    t.string   "laundry"
+    t.string   "parking"
+    t.string   "wheelchair"
+    t.string   "smoking"
+    t.string   "furnished"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "cross_street"
+    t.string   "ad_poster_name"
   end
 
   add_index "housing_posts", ["region"], :name => "index_housing_posts_on_region"
@@ -111,7 +130,6 @@ ActiveRecord::Schema.define(:version => 20140218150651) do
 
   create_table "jobs_posts", :force => true do |t|
     t.integer  "user_id",           :null => false
-    t.integer  "location_id"
     t.integer  "subcategory_id",    :null => false
     t.string   "title",             :null => false
     t.string   "specific_location"
@@ -124,6 +142,10 @@ ActiveRecord::Schema.define(:version => 20140218150651) do
     t.string   "contact_email"
     t.string   "contact_phone"
     t.string   "contact_name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "cross_street"
   end
 
   add_index "jobs_posts", ["region"], :name => "index_jobs_posts_on_region"
@@ -132,7 +154,6 @@ ActiveRecord::Schema.define(:version => 20140218150651) do
 
   create_table "personals_posts", :force => true do |t|
     t.integer  "user_id",           :null => false
-    t.integer  "location_id"
     t.integer  "subcategory_id",    :null => false
     t.string   "title",             :null => false
     t.string   "specific_location"
@@ -146,6 +167,10 @@ ActiveRecord::Schema.define(:version => 20140218150651) do
     t.string   "contact_email"
     t.string   "contact_phone"
     t.string   "contact_name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "cross_street"
   end
 
   add_index "personals_posts", ["region"], :name => "index_personals_posts_on_region"
@@ -154,7 +179,6 @@ ActiveRecord::Schema.define(:version => 20140218150651) do
 
   create_table "sale_posts", :force => true do |t|
     t.integer  "user_id",           :null => false
-    t.integer  "location_id"
     t.integer  "subcategory_id",    :null => false
     t.string   "title",             :null => false
     t.string   "specific_location"
@@ -167,6 +191,10 @@ ActiveRecord::Schema.define(:version => 20140218150651) do
     t.string   "contact_email"
     t.string   "contact_phone"
     t.string   "contact_name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "cross_street"
   end
 
   add_index "sale_posts", ["region"], :name => "index_sale_posts_on_region"
@@ -175,7 +203,6 @@ ActiveRecord::Schema.define(:version => 20140218150651) do
 
   create_table "services_posts", :force => true do |t|
     t.integer  "user_id",           :null => false
-    t.integer  "location_id"
     t.integer  "subcategory_id",    :null => false
     t.string   "title",             :null => false
     t.string   "specific_location"
@@ -187,6 +214,10 @@ ActiveRecord::Schema.define(:version => 20140218150651) do
     t.string   "contact_email"
     t.string   "contact_phone"
     t.string   "contact_name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "cross_street"
   end
 
   add_index "services_posts", ["region"], :name => "index_services_posts_on_region"

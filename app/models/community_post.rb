@@ -1,6 +1,7 @@
 # == Schema Information
 #
-# Table name: community_posts
+# Table name: community_postsrequire "../../db/schema"
+
 #
 #  id                :integer          not null, primary key
 #  title             :string(255)      not null
@@ -25,7 +26,7 @@ class CommunityPost < ActiveRecord::Base
   validates :title, :body, :poster, :subcategory_id, :region, presence: true
   validates :region, inclusion: {in: User::REGIONS}
   
-  SUB_IDS = Category.find_by_name("community").subcategories.map { |sub| sub.id }
+  SUB_IDS = category.subcategories.map { |sub| sub.id }
   
   validates :subcategory_id, inclusion: {in: SUB_IDS}
   

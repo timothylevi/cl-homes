@@ -1,0 +1,32 @@
+<!-- housing_posts/new -->
+
+<h2>create a new housing post</h2>
+
+<form action="<%= housing_posts_url %>" method="post">
+	
+	<label>
+		Please disclose type &amp; amount of ANY &amp; ALL fees (credit check, registration, application, broker):
+		<input type="text" name="post[fees]" value="<%= @post.fees %>">
+	</label>
+	
+	<label>
+		Full name of the company and of the person posting this ad (min 15 chars): 
+		<input type="text" name="post[contact_name]" value="<%= @post.contact_name %>">
+	</label>
+	
+	<%= render partial: "./basic_post_form" %>
+	
+	<h3>additional housing info</h3>
+	
+	<label>sqft
+		<input type="text" name="post[sq_feet]" value="<%= @post.sq_feet %>">
+	</label>
+	
+	<label>rent
+		<input type="text" name="post[rent]" value="<%= @post.rent %>">
+	</label>
+	
+	select
+	
+	<p><input type="submit" value="publish"></p>
+</form>
