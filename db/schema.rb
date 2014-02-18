@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140217195752) do
+ActiveRecord::Schema.define(:version => 20140218141802) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",       :null => false
@@ -20,6 +20,163 @@ ActiveRecord::Schema.define(:version => 20140217195752) do
   end
 
   add_index "categories", ["name"], :name => "index_categories_on_name", :unique => true
+
+  create_table "community_posts", :force => true do |t|
+    t.string   "title",             :null => false
+    t.integer  "contact_id",        :null => false
+    t.string   "specific_location"
+    t.string   "zip_code"
+    t.text     "body",              :null => false
+    t.integer  "user_id",           :null => false
+    t.integer  "location_id"
+    t.integer  "subcategory_id",    :null => false
+    t.string   "region",            :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "community_posts", ["contact_id"], :name => "index_community_posts_on_contact_id"
+  add_index "community_posts", ["location_id"], :name => "index_community_posts_on_location_id"
+  add_index "community_posts", ["region"], :name => "index_community_posts_on_region"
+  add_index "community_posts", ["subcategory_id"], :name => "index_community_posts_on_subcategory_id"
+  add_index "community_posts", ["user_id"], :name => "index_community_posts_on_user_id"
+
+  create_table "events_posts", :force => true do |t|
+    t.integer  "user_id",           :null => false
+    t.integer  "contact_id",        :null => false
+    t.integer  "location_id"
+    t.integer  "subcategory_id",    :null => false
+    t.string   "title",             :null => false
+    t.string   "specific_location"
+    t.text     "body"
+    t.string   "region",            :null => false
+    t.string   "zip_code"
+    t.datetime "start"
+    t.datetime "end"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "gigs_posts", :force => true do |t|
+    t.integer  "user_id",           :null => false
+    t.integer  "contact_id",        :null => false
+    t.integer  "location_id"
+    t.integer  "subcategory_id",    :null => false
+    t.string   "title",             :null => false
+    t.string   "specific_location"
+    t.text     "body"
+    t.string   "region",            :null => false
+    t.string   "zip_code"
+    t.string   "pay"
+    t.string   "pay_detials"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "gigs_posts", ["region"], :name => "index_gigs_posts_on_region"
+  add_index "gigs_posts", ["subcategory_id"], :name => "index_gigs_posts_on_subcategory_id"
+  add_index "gigs_posts", ["user_id"], :name => "index_gigs_posts_on_user_id"
+
+  create_table "housing_posts", :force => true do |t|
+    t.integer  "user_id",           :null => false
+    t.integer  "contact_id",        :null => false
+    t.integer  "location_id",       :null => false
+    t.integer  "subcategory_id",    :null => false
+    t.string   "title",             :null => false
+    t.string   "specific_location", :null => false
+    t.text     "body"
+    t.string   "region",            :null => false
+    t.string   "zip_code",          :null => false
+    t.integer  "rent",              :null => false
+    t.string   "cats"
+    t.string   "dogs"
+    t.string   "lister_type",       :null => false
+    t.string   "fees"
+    t.integer  "beds",              :null => false
+    t.integer  "sq_feet"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "housing_posts", ["region"], :name => "index_housing_posts_on_region"
+  add_index "housing_posts", ["subcategory_id"], :name => "index_housing_posts_on_subcategory_id"
+  add_index "housing_posts", ["user_id"], :name => "index_housing_posts_on_user_id"
+
+  create_table "jobs_posts", :force => true do |t|
+    t.integer  "user_id",           :null => false
+    t.integer  "contact_id",        :null => false
+    t.integer  "location_id"
+    t.integer  "subcategory_id",    :null => false
+    t.string   "title",             :null => false
+    t.string   "specific_location"
+    t.text     "body"
+    t.string   "region",            :null => false
+    t.string   "zip_code"
+    t.string   "compensation"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "jobs_posts", ["region"], :name => "index_jobs_posts_on_region"
+  add_index "jobs_posts", ["subcategory_id"], :name => "index_jobs_posts_on_subcategory_id"
+  add_index "jobs_posts", ["user_id"], :name => "index_jobs_posts_on_user_id"
+
+  create_table "personals_posts", :force => true do |t|
+    t.integer  "user_id",           :null => false
+    t.integer  "contact_id",        :null => false
+    t.integer  "location_id"
+    t.integer  "subcategory_id",    :null => false
+    t.string   "title",             :null => false
+    t.string   "specific_location"
+    t.text     "body"
+    t.string   "region",            :null => false
+    t.string   "zip_code"
+    t.string   "im_a",              :null => false
+    t.string   "looking_for",       :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "personals_posts", ["region"], :name => "index_personals_posts_on_region"
+  add_index "personals_posts", ["subcategory_id"], :name => "index_personals_posts_on_subcategory_id"
+  add_index "personals_posts", ["user_id"], :name => "index_personals_posts_on_user_id"
+
+  create_table "sale_posts", :force => true do |t|
+    t.integer  "user_id",           :null => false
+    t.integer  "contact_id",        :null => false
+    t.integer  "location_id"
+    t.integer  "subcategory_id",    :null => false
+    t.string   "title",             :null => false
+    t.string   "specific_location"
+    t.text     "body"
+    t.string   "region",            :null => false
+    t.string   "zip_code"
+    t.integer  "price"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "sale_posts", ["region"], :name => "index_sale_posts_on_region"
+  add_index "sale_posts", ["subcategory_id"], :name => "index_sale_posts_on_subcategory_id"
+  add_index "sale_posts", ["user_id"], :name => "index_sale_posts_on_user_id"
+
+  create_table "services_posts", :force => true do |t|
+    t.integer  "user_id",           :null => false
+    t.integer  "contact_id",        :null => false
+    t.integer  "location_id"
+    t.integer  "subcategory_id",    :null => false
+    t.string   "title",             :null => false
+    t.string   "specific_location"
+    t.text     "body"
+    t.string   "region",            :null => false
+    t.string   "zip_code"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "services_posts", ["region"], :name => "index_services_posts_on_region"
+  add_index "services_posts", ["subcategory_id"], :name => "index_services_posts_on_subcategory_id"
+  add_index "services_posts", ["user_id"], :name => "index_services_posts_on_user_id"
 
   create_table "subcategories", :force => true do |t|
     t.string   "name",        :null => false

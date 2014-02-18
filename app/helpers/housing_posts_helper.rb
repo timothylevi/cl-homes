@@ -1,0 +1,2 @@
+module HousingPostsHelper
+end

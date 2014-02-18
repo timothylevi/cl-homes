@@ -1,0 +1,2 @@
+class HousingPostsController < ApplicationController
+end

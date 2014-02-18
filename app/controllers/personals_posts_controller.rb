@@ -1,0 +1,2 @@
+class PersonalsPostsController < ApplicationController
+end

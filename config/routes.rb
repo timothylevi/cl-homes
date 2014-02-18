@@ -9,6 +9,17 @@ Craigslist::Application.routes.draw do
       resources :subcategories, only: [:new]
     end
   end
-  
   resources :subcategories, only: [:show, :create]
+  
+  get "new_posts/pick_cat"
+  
+  
+  resources :community_posts
+  resources :personals_posts
+  resources :forums_posts
+  resources :housing_posts
+  resources :sale_posts
+  resources :services_posts
+  resources :jobs_posts
+  resources :gigs_posts
 end

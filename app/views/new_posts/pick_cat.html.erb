@@ -1,0 +1,14 @@
+<h1>Choose a category</h1>
+
+<ul>
+	<% @categories.each do |category| %>
+		
+		<% form_url = "new_" + category.name + "_post_url" %>
+		<li>
+			<% if eval(form_url) %>
+				<%= link_to category.name, (eval(form_url)) %>
+			<% end %>
+		</li>
+		
+	<% end %>
+</ul>

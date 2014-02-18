@@ -1,0 +1,2 @@
+class GigsPostsController < ApplicationController
+end

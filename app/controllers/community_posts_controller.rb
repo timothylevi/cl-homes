@@ -1,0 +1,2 @@
+class CommunityPostsController < ApplicationController
+end

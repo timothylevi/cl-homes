@@ -8,10 +8,14 @@
 </head>
 <body>
 	<%= "signed in as: " + current_user.email if current_user %>
+	
+	<br>
 
-<%= (button_to "Sign Out", session_url, method: :delete) if signed_in? %>
+	<%= (button_to "Sign Out", session_url, method: :delete) if signed_in? %>
 
-<hr>
+	<hr>
+
+<%= link_to "Create a Post", new_posts_pick_cat_url%>
 
 <%= yield %>
 

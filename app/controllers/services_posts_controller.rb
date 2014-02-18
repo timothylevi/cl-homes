@@ -1,0 +1,2 @@
+class ServicesPostsController < ApplicationController
+end
