@@ -1,6 +1,5 @@
 class FixLocationSituation < ActiveRecord::Migration
   def change
-    drop_table :locations
     
     add_column :community_posts, :street, :string
     add_column :community_posts, :cross_stree, :string
