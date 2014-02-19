@@ -44,7 +44,6 @@ class HousingPost < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :housing_posts
   )
-
   belongs_to :subcategory
   
   
@@ -78,9 +77,9 @@ class HousingPost < ActiveRecord::Base
   
   def apply_options(options)
     self.dogs = options.include?("dogs") ? "dogs" : nil
-    options.include?("cats") ? self.cats = "cats" : self.cats = nil
-    options.include?("smoking") ? self.smoking = "smoking" : self.smoking = nil
-    options.include?("wheelchair") ? self.wheelchair = "wheelchair" : self.wheelchair = nil
-    options.include?("smoking") ? self.smoking = "smoking" : self.smoking = nil
+    self.cats = options.include?("cats") ? "cats" : nil
+    self.wheelchair = options.include?("wheelchair") ? "wheelchair" : nil
+    self.smoking = options.include?("smoking") ? "smoking" : nil
+    self.furnished = options.include?("furnished") ? "furnished" : nil
   end
 end

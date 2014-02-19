@@ -22,11 +22,7 @@ class SalePost < ActiveRecord::Base
   attr_accessible :title, :body, :specific_location, :zip_code, :region, :contact_email, :state,
                   :contact_name, :contact_phone, :subcategory_id, :price, :street, :city, :cross_street
     
-  SUB_IDS = lambda { Category.find_by_name("sale").subcategories.map { |sub| sub.id } }
-                
-  validates :title, :body, :poster, :subcategory_id, :region, :price, presence: true
-  validates :subcategory_id, inclusion: {in: SUB_IDS}
-  
+    
   belongs_to(
     :poster,
     class_name: "User",
@@ -34,10 +30,19 @@ class SalePost < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :sale_posts
   )
-  
   belongs_to :subcategory
+
+                
+  validates :title, :body, :poster, :subcategory_id, :region, :price, presence: true
+  validate :has_proper_sub_id
+  
+  
+  def has_proper_sub_id
+    ids = Category.find_by_name('sale').subcategories.map { |sub| sub.id }
+    errors.add(:subcategory, "must choose category") unless ids.include?(self.subcategory_id)
+  end
   
   def category
-    subcategory.category
+    Category.find_by_name('sale')
   end
 end
