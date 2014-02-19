@@ -3,7 +3,7 @@ class CommunityPostsController < ApplicationController
   CATEGORY = Category.find_by_name("community")
   
   def new
-    @category = CATEGORY
+    # @category = CATEGORY
     @post = CommunityPost.new
     @post.poster = current_user
   end

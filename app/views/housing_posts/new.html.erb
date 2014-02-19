@@ -5,12 +5,16 @@
 <form action="<%= housing_posts_url %>" method="post">
 	
 	<label>
-		Please disclose type &amp; amount of ANY &amp; ALL fees (credit check, registration, application, broker):
+		Please disclose type and amount of ANY and ALL fees (credit check, registration, application, broker):
+		<br>
 		<input type="text" name="post[fees]" value="<%= @post.fees %>">
 	</label>
 	
+	<br>
+	
 	<label>
 		Full name of the company and of the person posting this ad (min 15 chars): 
+		<br>
 		<input type="text" name="post[contact_name]" value="<%= @post.contact_name %>">
 	</label>
 	
@@ -26,7 +30,35 @@
 		<input type="text" name="post[rent]" value="<%= @post.rent %>">
 	</label>
 	
-	select
+	<label>
+		bedrooms
+		<select name="post[bedrooms]">
+			<% 9.times do |i| %>
+			
+			<%= ("<option value=\"#{i.to_s}\">" + i.to_s + "</option>").html_safe %>
+			
+			<% end %>
+			
+		</select>
+	</label>
+	
+	<label>
+		bathrooms
+		<select name="post[bathrooms]">
+			<option value="shared">shared</option>
+			<option value="split">split</option>
+			
+			<% (1..8).each do |i| %>
+			
+			<%= ("<option value=\"#{i.to_s}\">" + i.to_s + "</option>").html_safe %>
+			<%= ("<option value=\"#{i.to_s}.5\">" + "#{i.to_s}.5" + "</option>").html_safe %>
+			
+			<% end %>
+			
+			<option value="9+">9&#43;</option>
+			
+		</select>
+	</label>
 	
 	<p><input type="submit" value="publish"></p>
 </form>

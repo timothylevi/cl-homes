@@ -41,7 +41,7 @@ class HousingPost < ActiveRecord::Base
             :housing_type, :contact_phone, :contact_email, :contact_name, :bedrooms, :fees,
             :rent, :street, :cross_street, :city, :state, :ad_poster_name, presence: true
             
-  SUB_IDS = category.subcategories.map { |sub| sub.id }
+  SUB_IDS = Category.find_by_name("housing").subcategories.map { |sub| sub.id }
   HOUSING_TYPES = ["apartment", "condo", "cottage/cabin", "duplex", "house", "flat", "townhouse", "loft", "land"]
   YES_NO = ["yes", "no"]
   LAUNDRY = ["w/d in unit", "laundry in bldg", "laundry on site", "w/d hookups"]
