@@ -9,7 +9,9 @@ class HousingPostsController < ApplicationController
   end
   
   def create
+    @category = CATEGORY
     @post = current_user.housing_posts.build(params[:post])
+    @post.apply_options(params[:other_options]) if params[:other_options]
     
     if current_user.save
       redirect_to housing_post_url(@post)

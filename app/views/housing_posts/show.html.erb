@@ -1,0 +1,22 @@
+<h3><%= @post.housing_type %> by <%= @post.lister_type %></h3> <br>
+<%= @post.ad_poster_name %>
+
+<br>
+<br>
+
+<%= render partial: "./basic_post_show" %>
+
+
+<ul>
+	<li>bedrooms - <%= @post.beds %></li>
+	<li>bathrooms - <%= @post.bathrooms %></li>
+	<li>squere ft - <%= @post.sq_feet %></li>
+	<li>fees - <%= @post.fees %></li>
+	<%= ("<li>laundry - #{@post.laundry}</li>").html_safe unless @post.laundry == "-" %>
+	<%= ("<li>parking - #{@post.parking}</li>").html_safe unless @post.parking == "-" %>
+	<%= ("<li>cats OK</li>").html_safe if @post.cats %>
+	<%= ("<li>dogs OK</li>").html_safe if @post.dogs %>
+	<%= ("<li>wheelchair accessable</li>").html_safe if @post.wheelchair %>
+	<%= ("<li>furnished</li>").html_safe if @post.furnished %>
+	<%= ("<li>smoking OK</li>").html_safe if @post.smoking %>
+</ul>

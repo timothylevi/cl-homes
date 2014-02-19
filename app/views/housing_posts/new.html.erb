@@ -15,8 +15,22 @@
 	<label>
 		Full name of the company and of the person posting this ad (min 15 chars): 
 		<br>
-		<input type="text" name="post[contact_name]" value="<%= @post.contact_name %>">
+		<input type="text" name="post[ad_poster_name]" value="<%= @post.contact_name %>">
 	</label>
+	
+	<br>
+	
+	<label>
+		lister type
+		<select name="post[lister_type]">
+			<% HousingPost::LISTER_TYPES.each do |type| %>
+			
+			<%= ("<option value=\"#{type}\">" + type + "</option>").html_safe %>
+			
+			<% end %>
+		</select>
+	</label>
+	
 	
 	<%= render partial: "./basic_post_form" %>
 	
@@ -32,7 +46,7 @@
 	
 	<label>
 		bedrooms
-		<select name="post[bedrooms]">
+		<select name="post[beds]">
 			<% 9.times do |i| %>
 			
 			<%= ("<option value=\"#{i.to_s}\">" + i.to_s + "</option>").html_safe %>
@@ -59,6 +73,72 @@
 			
 		</select>
 	</label>
+	
+	<br>
+	
+	<label>
+		housing type
+		<select name="post[housing_type]">
+			<% HousingPost::HOUSING_TYPES.each do |type| %>
+			
+			<%= ("<option value=\"#{type}\">" + type + "</option>").html_safe %>
+			
+			<% end %>
+		</select>
+	</label>
+	
+</label>
+
+	<label>
+		laundry
+		<select name="post[laundry]">
+			<% HousingPost::LAUNDRY.each do |type| %>
+		
+			<%= ("<option value=\"#{type}\">" + type + "</option>").html_safe %>
+		
+			<% end %>
+		</select>
+	</label>
+
+	<label>
+		parking
+		<select name="post[parking]">
+			<% HousingPost::PARKING.each do |type| %>
+		
+			<%= ("<option value=\"#{type}\">" + type + "</option>").html_safe %>
+		
+			<% end %>
+		</select>
+	</label>
+	
+	<br>
+	
+		<label>
+			smoking
+			<input type="checkbox" name="other_options[]" value="smoking">
+		</label>
+	  
+		<label>
+			wheelchair accessable
+			<input type="checkbox" name="other_options[]" value="wheelchair">
+		</label>
+
+		<label>
+			cats ok
+			<input type="checkbox" name="other_options[]" value="cats">
+		</label>
+	
+		<label>
+			dogs ok
+			<input type="checkbox" name="other_options[]" value="dogs">
+		</label>
+		
+		<label>
+			furnished
+			<input type="checkbox" name="other_options[]" value="furnished">
+		</label>
+		
+		<%= render partial: "./map_info_form" %>
 	
 	<p><input type="submit" value="publish"></p>
 </form>
