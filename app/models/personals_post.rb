@@ -24,16 +24,6 @@ class PersonalsPost < ActiveRecord::Base
   attr_accessible :title, :body, :specific_location, :zip_code, :region, :contact_email, 
                   :contact_name, :contact_phone, :subcategory_id, :im_a, :looking_for
                   
-  validates :title, :body, :poster, :subcategory_id, :region, :im_a, :looking_for, presence: true
-  validates :region, inclusion: {in: User::REGIONS}
-  
-  SUB_IDS = Category.find_by_name("personals").subcategories.map { |sub| sub.id }
-  TYPES = ["man", "woman", "TG/TS/TV", "man and woman", "group of men", "group of women"]
-  
-  
-  validates :subcategory_id, inclusion: {in: SUB_IDS}
-  validates :im_a, :looking_for, inclusion: {in: TYPES}
-  
   belongs_to(
     :poster,
     class_name: "User",
@@ -41,10 +31,25 @@ class PersonalsPost < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :personals_posts
   )
-  
+
   belongs_to :subcategory
+
+
+  TYPES = ["man", "woman", "TG/TS/TV", "man and woman", "group of men", "group of women"]
+
+  
+  validates :title, :body, :poster, :subcategory_id, :region, :im_a, :looking_for, presence: true
+  validates :region, inclusion: {in: User::REGIONS}  
+  validates :im_a, :looking_for, inclusion: {in: TYPES}
+  validate :has_proper_sub_id
+  
+  
+  def has_proper_sub_id
+    ids = Category.find_by_name('personals').subcategories.map { |sub| sub.id }
+    errors.add(:subcategory, "must choose category") unless ids.include?(self.subcategory_id)
+  end
   
   def category
-    subcategory.category
+    Category.find_by_name('personals')
   end
 end

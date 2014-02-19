@@ -37,23 +37,6 @@ class HousingPost < ActiveRecord::Base
                   :housing_type, :laundry, :parking, :furnished, :lister_type, :cats, :dogs,
                   :fees, :rent, :wheelchair, :street, :cross_street, :city, :state, :ad_poster_name
                   
-  validates :title, :body, :poster, :subcategory_id, :region, :zip_code, :specific_location,
-            :housing_type, :contact_phone, :contact_email, :contact_name, :beds, :fees,
-            :rent, :street, :cross_street, :city, :state, :ad_poster_name, :lister_type, presence: true
-            
-  SUB_IDS = Category.find_by_name("housing").subcategories.map { |sub| sub.id }
-  LISTER_TYPES = ["broker", "owner"]
-  HOUSING_TYPES = ["apartment", "condo", "cottage/cabin", "duplex", "house", "flat", "townhouse", "loft", "land"]
-  LAUNDRY = ["-", "w/d in unit", "laundry in bldg", "laundry on site", "w/d hookups"]
-  PARKING = ["-", "carport", "attached garage", "detached garage", "off-street parking", "street parking", "valet parking"]
-            
-  validates :region, inclusion: {in: User::REGIONS}
-  validates :subcategory_id, inclusion: {in: SUB_IDS}
-  validates :housing_type, inclusion: {in: HOUSING_TYPES}
-  validates :laundry, inclusion: {in: LAUNDRY}
-  validates :parking, inclusion: {in: PARKING}
-  validates :lister_type, inclusion: {in: LISTER_TYPES}
-  
   belongs_to(
     :poster,
     class_name: "User",
@@ -61,21 +44,43 @@ class HousingPost < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :housing_posts
   )
-  
-  
+
   belongs_to :subcategory
   
+  
+  LISTER_TYPES = ["broker", "owner"]
+  HOUSING_TYPES = ["apartment", "condo", "cottage/cabin", "duplex", "house", "flat", "townhouse", "loft", "land"]
+  LAUNDRY = ["-", "w/d in unit", "laundry in bldg", "laundry on site", "w/d hookups"]
+  PARKING = ["-", "carport", "attached garage", "detached garage", "off-street parking", "street parking", "valet parking"]
+                  
+                  
+  validates :title, :body, :poster, :subcategory_id, :region, :zip_code, :specific_location,
+            :housing_type, :contact_phone, :contact_email, :contact_name, :beds, :fees,
+            :rent, :street, :cross_street, :city, :state, :ad_poster_name, :lister_type, presence: true
+            
+  validates :region, inclusion: {in: User::REGIONS}
+  validates :housing_type, inclusion: {in: HOUSING_TYPES}
+  validates :laundry, inclusion: {in: LAUNDRY}
+  validates :parking, inclusion: {in: PARKING}
+  validates :lister_type, inclusion: {in: LISTER_TYPES}
+  validates :rent, :sq_feet, numericality: true
+  validate :has_proper_sub_id
+  
+  
+  def has_proper_sub_id
+    ids = Category.find_by_name('housing').subcategories.map { |sub| sub.id }
+    errors.add(:subcategory, "must choose category") unless ids.include?(self.subcategory_id)
+  end
+  
   def category
-    subcategory.category
+    Category.find_by_name('housing')
   end
   
   def apply_options(options)
-    options.each do |option| 
-      eval("obj.#{option}", get_binding(self))
-    end
-  end
-  
-  def get_binding(obj)
-    return binding
+    self.dogs = options.include?("dogs") ? "dogs" : nil
+    options.include?("cats") ? self.cats = "cats" : self.cats = nil
+    options.include?("smoking") ? self.smoking = "smoking" : self.smoking = nil
+    options.include?("wheelchair") ? self.wheelchair = "wheelchair" : self.wheelchair = nil
+    options.include?("smoking") ? self.smoking = "smoking" : self.smoking = nil
   end
 end

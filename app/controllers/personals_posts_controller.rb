@@ -9,6 +9,7 @@ class PersonalsPostsController < ApplicationController
   end
   
   def create
+    @category = CATEGORY
     @post = current_user.personals_posts.build(params[:post])
     
     if current_user.save

@@ -1,3 +1,5 @@
+<!-- housing_posts/show -->
+
 <h3><%= @post.housing_type %> by <%= @post.lister_type %></h3> <br>
 <%= @post.ad_poster_name %>
 
@@ -8,9 +10,10 @@
 
 
 <ul>
+	<li>rent - <%= @post.rent %></li>
 	<li>bedrooms - <%= @post.beds %></li>
 	<li>bathrooms - <%= @post.bathrooms %></li>
-	<li>squere ft - <%= @post.sq_feet %></li>
+	<li>square ft - <%= @post.sq_feet %></li>
 	<li>fees - <%= @post.fees %></li>
 	<%= ("<li>laundry - #{@post.laundry}</li>").html_safe unless @post.laundry == "-" %>
 	<%= ("<li>parking - #{@post.parking}</li>").html_safe unless @post.parking == "-" %>

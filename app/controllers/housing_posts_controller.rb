@@ -33,6 +33,7 @@ class HousingPostsController < ApplicationController
   def update
     @category = CATEGORY
     @post = HousingPost.find(params[:id])
+    @post.apply_options(params[:other_options]) if params[:other_options]
     
     if @post.update_attributes(params[:post])
       redirect_to housing_post_url(@post)

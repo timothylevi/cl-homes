@@ -22,14 +22,7 @@
 class CommunityPost < ActiveRecord::Base
   attr_accessible :title, :body, :specific_location, :zip_code, :region, :contact_email, 
                   :contact_name, :contact_phone, :subcategory_id
-                  
-  validates :title, :body, :poster, :subcategory_id, :region, presence: true
-  validates :region, inclusion: {in: User::REGIONS}
-  
-  SUB_IDS = lambda { Category.find_by_name("community").subcategories.map { |sub| sub.id } }
-  
-  validates :subcategory_id, inclusion: {in: SUB_IDS}
-  
+                      
   belongs_to(
     :poster,
     class_name: "User",
@@ -37,11 +30,21 @@ class CommunityPost < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :community_posts
   )
-  
+
   belongs_to :subcategory
   
-  def category
-    subcategory.category
+                
+  validates :title, :body, :poster, :subcategory_id, :region, presence: true
+  validates :region, inclusion: {in: User::REGIONS}
+  validate :has_proper_sub_id
+  
+  
+  def has_proper_sub_id
+    ids = Category.find_by_name('community').subcategories.map { |sub| sub.id }
+    errors.add(:subcategory, "must choose category") unless ids.include?(self.subcategory_id)
   end
   
+  def category
+    Category.find_by_name('community')
+  end
 end

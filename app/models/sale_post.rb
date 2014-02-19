@@ -1,24 +1,43 @@
 # == Schema Information
-#
-# Table name: sale_posts
-#
-#  id                :integer          not null, primary key
-#  user_id           :integer          not null
-#  location_id       :integer
-#  subcategory_id    :integer          not null
-#  title             :string(255)      not null
-#  specific_location :string(255)
-#  body              :text
-#  region            :string(255)      not null
-#  zip_code          :string(255)
-#  price             :integer
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  contact_email     :string(255)
-#  contact_phone     :string(255)
-#  contact_name      :string(255)
-#
+
+# t.integer  "user_id",           :null => false
+# t.integer  "subcategory_id",    :null => false
+# t.string   "title",             :null => false
+# t.string   "specific_location"
+# t.text     "body"
+# t.string   "region",            :null => false
+# t.string   "zip_code"
+# t.integer  "price"
+# t.datetime "created_at",        :null => false
+# t.datetime "updated_at",        :null => false
+# t.string   "contact_email"
+# t.string   "contact_phone"
+# t.string   "contact_name"
+# t.string   "street"
+# t.string   "city"
+# t.string   "state"
+# t.string   "cross_street"
 
 class SalePost < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :title, :body, :specific_location, :zip_code, :region, :contact_email, :state,
+                  :contact_name, :contact_phone, :subcategory_id, :price, :street, :city, :cross_street
+    
+  SUB_IDS = lambda { Category.find_by_name("sale").subcategories.map { |sub| sub.id } }
+                
+  validates :title, :body, :poster, :subcategory_id, :region, :price, presence: true
+  validates :subcategory_id, inclusion: {in: SUB_IDS}
+  
+  belongs_to(
+    :poster,
+    class_name: "User",
+    foreign_key: :user_id,
+    primary_key: :id,
+    inverse_of: :sale_posts
+  )
+  
+  belongs_to :subcategory
+  
+  def category
+    subcategory.category
+  end
 end
