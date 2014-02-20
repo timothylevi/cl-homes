@@ -15,3 +15,6 @@
 /tmp
 /.DS_Store
 /TODO.txt
+
+# Ignore application configuration
+/config/application.yml

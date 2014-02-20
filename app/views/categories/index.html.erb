@@ -6,17 +6,20 @@
 <%= link_to "Create a Post", new_posts_pick_cat_url%>
 <br>
 
-<% @categories.each do |category| %>
+<div class="home-list">
+		<% @categories.each do |category| %>
+			
+			<ul>
+				<h4><%= link_to category.name, category_url(category) %></h4>
+				
+				<% category.subcategories.each do |sub| %>
+					<li>
+						<%= link_to sub.name, subcategory_url(sub) %>
+					</li>
+				<% end %>
+			</ul>
 
-<h4><%= link_to category.name, category_url(category) %></h4>
-
-<ul>
-	<% category.subcategories.each do |sub| %>
-		<li>
-			<%= link_to sub.name, subcategory_url(sub) %>
-		</li>
-	<% end %>
-</ul>
-
-
-<% end %>
+		<% end %>
+		
+	<div class="clear-fix"></div>
+</div>

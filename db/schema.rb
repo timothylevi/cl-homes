@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140219152521) do
+ActiveRecord::Schema.define(:version => 20140219225117) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",       :null => false
@@ -128,6 +128,13 @@ ActiveRecord::Schema.define(:version => 20140219152521) do
   add_index "housing_posts", ["subcategory_id"], :name => "index_housing_posts_on_subcategory_id"
   add_index "housing_posts", ["user_id"], :name => "index_housing_posts_on_user_id"
 
+  create_table "image_sets", :force => true do |t|
+    t.integer  "sale_post_id"
+    t.integer  "housing_post_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "jobs_posts", :force => true do |t|
     t.integer  "user_id",           :null => false
     t.integer  "subcategory_id",    :null => false
@@ -176,6 +183,17 @@ ActiveRecord::Schema.define(:version => 20140219152521) do
   add_index "personals_posts", ["region"], :name => "index_personals_posts_on_region"
   add_index "personals_posts", ["subcategory_id"], :name => "index_personals_posts_on_subcategory_id"
   add_index "personals_posts", ["user_id"], :name => "index_personals_posts_on_user_id"
+
+  create_table "pictures", :force => true do |t|
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "image_id"
+    t.string   "image_type"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "sale_posts", :force => true do |t|
     t.integer  "user_id",           :null => false

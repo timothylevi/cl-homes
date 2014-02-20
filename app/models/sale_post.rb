@@ -31,6 +31,7 @@ class SalePost < ActiveRecord::Base
     inverse_of: :sale_posts
   )
   belongs_to :subcategory
+  has_many :pictures, as: :image
 
                 
   validates :title, :body, :poster, :subcategory_id, :region, :price, presence: true

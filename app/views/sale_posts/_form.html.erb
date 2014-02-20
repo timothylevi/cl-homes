@@ -7,4 +7,8 @@
  <input type="text" name="post[price]" value="<%= @post.price %>" placeholder="$">
 </label>
 
+<h3>images</h3>
+
+<input type="file" name="pictures[]" multiple>
+
 <%= render partial: "./map_info_form" %>

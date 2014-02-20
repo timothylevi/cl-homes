@@ -1,0 +1,21 @@
+<div class="contact-info-form">
+	<h3>contact info</h3>
+
+	<div class="input">
+		<label for="email">email</label>
+		<input type="text" name="post[contact_email]" 
+					 value="<%= @post.poster.email %>" id="email">
+	</div>
+
+	<div class="input">
+		<label for="phone">phone number</label>
+		<input type="text" name="post[contact_phone]" 
+					 value="<%= @post.contact_phone %>" id="phone">
+	</div>
+
+	<div class="input">
+		<label for="contact-name">contact name</label>
+		<input type="text" name="post[contact_name]" 
+					 value="<%= @post.contact_name %>" id="cantact-name">
+	</div>
+</div>

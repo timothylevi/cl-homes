@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.16'
 gem 'pg'
+gem 'paperclip'
+gem 'aws-sdk'
+gem 'figaro'
+
 
 group :development do
   gem 'annotate'

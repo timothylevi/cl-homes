@@ -12,7 +12,13 @@ class SalePostsController < ApplicationController
     @category = CATEGORY
     @post = current_user.sale_posts.build(params[:post])
     
-    if current_user.save
+    if params[:pictures]
+      params[:pictures].each do |pic_data|
+        @post.pictures.build(photo: pic_data)
+      end
+    end
+    
+    if @post.save
       redirect_to sale_post_url(@post)
     else
       flash.now[:errors] = @post.errors.full_messages

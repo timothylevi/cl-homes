@@ -1,26 +1,24 @@
-<h3>map info (required for housing posts)</h3>
+<div class="map-info-form">
+	<h3>map info (required for housing posts)</h3>
 
-<label>
-	street
-	<input type="text" name="post[street]" value="<%= @post.street %>">
-</label>
+	<div class="input">
+		<label for="street">street</label>
+		<input type="text" name="post[street]" value="<%= @post.street %>" id="street">
+	</div>
 
-<br>
+	<div class="input">
+		<label for="cross-street">cross street</label>
+		<input type="text" name="post[cross_street]" value="<%= @post.cross_street %>" id="cross-street">
+	</div>
 
-<label>
-	cross street
-	<input type="text" name="post[cross_street]" value="<%= @post.cross_street %>">
-</label>
+	<div class="input-city">
+		<label for="city">city</label>
+		<input type="text" name="post[city]" value="<%= @post.city %>" id="city">
+	</div>
+	,
 
-<br>
-
-<label>
-	city
-	<input type="text" name="post[city]" value="<%= @post.city %>">
-</label>
-,
-
-<label>
-	state
-	<input type="text" name="post[state]" value="<%= @post.state %>">
-</label>
+	<div class="input-state">
+		<label for="state">state</label>
+		<input type="text" name="post[state]" value="<%= @post.state %>" id="state">
+	</div>
+</div>

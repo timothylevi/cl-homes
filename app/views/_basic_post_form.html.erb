@@ -1,20 +1,27 @@
 <%= form_auth_token %>
 
 
-<h3>contact info</h3>
+<!-- <h3>contact info</h3>
 
-<label>email
+<div class="input">
+	<label>email
 	<input type="text" name="post[contact_email]" value="<%= @post.poster.email %>">
 </label>
+</div>
 
+<div class="input">
 <label>phone number
 	<input type="text" name="post[contact_phone]" value="<%= @post.contact_phone %>">
 </label>
+</div>
 
+<div class="input">
 <label>contact name
 	<input type="text" name="post[contact_name]" value="<%= @post.contact_name %>">
 </label>
+</div> -->
 
+<%= render partial: "./contact_info_form" %>
 
 <h3>post info</h3>
 
@@ -44,20 +51,7 @@
 	<% end %>
 </select>
 
-
-<h3>post details</h3>
-
-<label>title
-	<input type="text" name="post[title]" value="<%= @post.title %>">
-</label>
-
-<label>specific location
-	<input type="text" name="post[specific_location]" value="<%= @post.specific_location %>">
-</label>
-
-<label>zip code
-	<input type="text" name="post[zip_code]" value="<%= @post.zip_code %>">
-</label>
+<%= render partial: "./general_details_form" %>
 
 <br>
 <br>

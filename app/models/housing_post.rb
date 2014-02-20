@@ -45,6 +45,7 @@ class HousingPost < ActiveRecord::Base
     inverse_of: :housing_posts
   )
   belongs_to :subcategory
+  has_many :pictures, as: :image
   
   
   LISTER_TYPES = ["broker", "owner"]

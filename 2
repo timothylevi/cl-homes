@@ -1,0 +1,9 @@
+==  CreateImageLinks: reverting ===============================================
+-- remove_index("image_links", {:column=>:housing_post_id})
+   -> 0.1110s
+-- remove_index("image_links", {:column=>:sale_post_id})
+   -> 0.0036s
+-- drop_table("image_links")
+   -> 0.0422s
+==  CreateImageLinks: reverted (0.1570s) ======================================
+
