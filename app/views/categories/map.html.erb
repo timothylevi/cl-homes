@@ -1,10 +1,11 @@
 
 <script type="application/json" id="bootstrapped-post-data">
-	{"posts": <%= @posts.to_json.html_safe %>}
+	{"posts": <%= @posts.to_json.html_safe %>, "urls": @urls.to_json.html_safe}
 </script>
 
 <script>
-var postData = JSON.parse($('#bootstrapped-post-data').html())["posts"]
+var postData = JSON.parse($('#bootstrapped-post-data').html())["posts"];
+var urls = JSON.parse($('#bootstrapped-post-data').html())["urls"];
 var geojson = [];
 
 for (var i = 0; i < postData.length; i++) {
@@ -23,7 +24,8 @@ for (var i = 0; i < postData.length; i++) {
 	      "title": titleString,
 				"description": post["title"],
 	      "marker-color": "#fc4353",
-	      "marker-size": "small"
+	      "marker-size": "small",
+				url: post["url"]
 	   	}
 	 });
 	}
@@ -40,6 +42,11 @@ $(function () {
 	});
 	map.featureLayer.on('mouseout', function(e) {
 	    e.layer.closePopup();
+	});
+	
+	map.featureLayer.on('click', function(e) {
+	    e.layer.unbindPopup();
+	    window.open(e.layer.feature.properties.url);
 	});
 	
 });

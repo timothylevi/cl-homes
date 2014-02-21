@@ -52,7 +52,8 @@ body {
 }
 
 .home-list > ul {
-	width: 70px;
+	display: block;
+	width: 110px;
 	float: left;
 }
 
