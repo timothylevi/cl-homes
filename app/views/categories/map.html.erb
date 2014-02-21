@@ -1,6 +1,6 @@
 
 <script type="application/json" id="bootstrapped-post-data">
-	{"posts": <%= @posts.to_json.html_safe %>, "urls": @urls.to_json.html_safe}
+	{"posts": <%= @posts.to_json.html_safe %>, "urls": <%= @urls.to_json.html_safe %>}
 </script>
 
 <script>
@@ -8,8 +8,11 @@ var postData = JSON.parse($('#bootstrapped-post-data').html())["posts"];
 var urls = JSON.parse($('#bootstrapped-post-data').html())["urls"];
 var geojson = [];
 
+
 for (var i = 0; i < postData.length; i++) {
 	var post = postData[i];
+	var url = urls[i];
+	
 	if (post["latitude"] && post["longitude"]) {
 		var coords = [post["longitude"], post["latitude"]];
 		var titleString = "$" + post["rent"] + "/" + post["beds"] + " br in " + post["specific_location"];
@@ -25,7 +28,7 @@ for (var i = 0; i < postData.length; i++) {
 				"description": post["title"],
 	      "marker-color": "#fc4353",
 	      "marker-size": "small",
-				url: post["url"]
+				url: url
 	   	}
 	 });
 	}
