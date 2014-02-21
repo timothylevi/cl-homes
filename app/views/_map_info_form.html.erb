@@ -1,23 +1,23 @@
-<div class="map-info-form">
+<div class="post-form-section map-info-form">
 	<h3>map info (required for housing posts)</h3>
 
-	<div class="input">
+	<div class="input input-street">
 		<label for="street">street</label>
 		<input type="text" name="post[street]" value="<%= @post.street %>" id="street">
 	</div>
 
-	<div class="input">
+	<div class="input input-cross-street">
 		<label for="cross-street">cross street</label>
 		<input type="text" name="post[cross_street]" value="<%= @post.cross_street %>" id="cross-street">
 	</div>
 
-	<div class="input-city">
+	<div class="input input-city">
 		<label for="city">city</label>
 		<input type="text" name="post[city]" value="<%= @post.city %>" id="city">
 	</div>
 	,
 
-	<div class="input-state">
+	<div class="input input-state">
 		<label for="state">state</label>
 		<input type="text" name="post[state]" value="<%= @post.state %>" id="state">
 	</div>

@@ -36,7 +36,12 @@ class SalePost < ActiveRecord::Base
                 
   validates :title, :body, :poster, :subcategory_id, :region, :price, presence: true
   validate :has_proper_sub_id
+  before_save :set_geo_coords
   
+  
+  def set_geo_coords
+    Geocoder.set_coords(self)
+  end
   
   def has_proper_sub_id
     ids = Category.find_by_name('sale').subcategories.map { |sub| sub.id }

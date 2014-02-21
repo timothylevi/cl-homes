@@ -5,6 +5,8 @@ gem 'pg'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'figaro'
+gem 'rest-client'
+gem 'addressable'
 
 
 group :development do

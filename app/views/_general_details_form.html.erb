@@ -1,19 +1,19 @@
-<div class="general-details-form">
+<div class="post-form-section general-details-form">
 	
 	<h3>post details</h3>
 
-	<div class="input">
+	<div class="input input-title">
 		<label for="title">title</label>
 		<input type="text" name="post[title]" value="<%= @post.title %>" id="title">
 	
 	</div>
 
-	<div class="input">
+	<div class="input input-specific-location">
 		<label for="specific-location">specific location</label>
 		<input type="text" name="post[specific_location]" value="<%= @post.specific_location %>" id="specific-location">
 	</div>
 
-	<div class="input">
+	<div class="input input-zip">
 		<label for="zip-code">zip code</label>
 		<input type="text" name="post[zip_code]" value="<%= @post.zip_code %>" id="zip-code">
 	</div>

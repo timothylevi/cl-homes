@@ -60,9 +60,7 @@ body {
 	font-size: 12px;
 }
 
-.general-details-form,
-.contact-info-form,
-.map-info-form {
+.post-form-section {
 	width: 700px;
 	margin: 20px auto;
 	background: #fff;

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140220152957) do
+ActiveRecord::Schema.define(:version => 20140221000957) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",       :null => false
@@ -206,6 +206,8 @@ ActiveRecord::Schema.define(:version => 20140220152957) do
     t.string   "city"
     t.string   "state"
     t.string   "cross_street"
+    t.string   "latitude"
+    t.string   "longitude"
   end
 
   add_index "sale_posts", ["region"], :name => "index_sale_posts_on_region"
