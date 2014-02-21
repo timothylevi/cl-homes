@@ -102,6 +102,68 @@ body {
 	border-radius: 5px;
 }
 
+
+.title-category > .input-title > label {
+	display: inline;
+}
+
+.title-category > .input-title {
+	width: 70%;
+	float: left;
+	margin-bottom: 0;
+}
+
+.title-category > #select-sub {
+	margin: 40px auto;
+}
+
+.title-category > .input > #title {
+	width: 90%;
+}
+
+.location > .input {
+	float: left;
+	margin-right: 20px;
+}
+
+.location > .select-region {
+	float: left;
+	margin: 40px auto 20px auto;
+}
+
+.location > .input > label {
+	display: inline;
+}
+
+.body > label {
+	display: block;
+	margin: 30px auto 5px auto;
+}
+
+.body > textarea {
+	width: 90%;
+	height: 125px;
+	border: 2px solid #000;
+	font-size: 12px;
+	border-radius: 5px;
+	padding: 5px 10px;
+	margin: 20px;
+}
+
+.region-subcategory {
+	margin: 0 auto;
+	padding-top: 20px;
+	padding: 20px;
+}
+
+.region-subcategory > select {
+	margin: 0 auto;
+}
+
+#fees-input, #ad-poster-input {
+	width: 90%;
+}
+
 .clear-fix {
 	clear: both;
 }

@@ -8,7 +8,7 @@ class Geocoder
         :host => "maps.googleapis.com",
         :path => "maps/api/geocode/json",
         :query_values => {
-          address: "#{obj.street} and #{obj.cross_street}, #{obj.city}, #{obj.state} #{obj.zip_code}", 
+          address: "#{obj.street}, #{obj.city}, #{obj.state} #{obj.zip_code}", 
           sensor: "false", key: ENV["GOECODE_KEY"]
         }
       ).to_s
@@ -22,7 +22,7 @@ class Geocoder
         obj.latitude = coords_hash["lat"] 
         obj.longitude = coords_hash["lng"]
       else
-        flash[:errors] = ["Post was saved but we could not find map data for the provided address. Consider editing post address to reflect a more specific address."]
+        return "Post was saved but we could not find map data for the provided address. Consider editing post address to reflect a more specific address."
       end
     end
   end

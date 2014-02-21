@@ -2,19 +2,68 @@
 	
 	<h3>post details</h3>
 
-	<div class="input input-title">
-		<label for="title">title</label>
-		<input type="text" name="post[title]" value="<%= @post.title %>" id="title">
+	<div class="basic-info">
+		
+		<div class="title-category">
+			<div class="input input-title">
+					<label for="title">title</label><br>
+					<input type="text" name="post[title]" value="<%= @post.title %>" id="title">
+			
+				</div>
+				
+				<select name="post[subcategory_id]" id="select-sub">
+					<option>select category</option>
+					<% @category.subcategories.each do |sub| %>
+			
+						<% if @post.subcategory_id == sub.id %>
+							<%= ("<option value=\"#{sub.id}\" selected>" + sub.name + "</option>").html_safe %>
+						<% else %>
+							<%= ("<option value=\"#{sub.id}\">" + sub.name + "</option>").html_safe %>
+						<% end %>
+					<% end %>
+				</select>
+			</div>
+
+		<div class="location">
+			<div class="input input-specific-location">
+					<label for="specific-location">specific location</label> <br>
+					<input type="text" name="post[specific_location]" value="<%= @post.specific_location %>" id="specific-location">
+				</div>
+		
+				<div class="input input-zip">
+					<label for="zip-code">zip code</label> <br>
+					<input type="text" name="post[zip_code]" value="<%= @post.zip_code %>" id="zip-code">
+				</div>
+			</div>
+			
+			
+			<div class="select-region">
+				<select name="post[region]">
+					<option>select region</option>
+			
+					<% User::REGIONS.each do |region|  %>
+						<% if @post.poster.region == region %>
+							<%= ("<option value=\"#{region}\" selected>" + region +  "</option>").html_safe %>
+						<% else %>
+							<%= ("<option value=\"#{region}\">" + region +  "</option>").html_safe %>
+						<% end %>
+				
+					<% end %>
+			
+				</select>
+		
+			</div>
+		</div>
+		
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="body">
+		<label for="post_body">description</label>
+		<textarea name="post[body]" id="post_body"><%= @post.body %></textarea>
+	</div>
 	
-	</div>
-
-	<div class="input input-specific-location">
-		<label for="specific-location">specific location</label>
-		<input type="text" name="post[specific_location]" value="<%= @post.specific_location %>" id="specific-location">
-	</div>
-
-	<div class="input input-zip">
-		<label for="zip-code">zip code</label>
-		<input type="text" name="post[zip_code]" value="<%= @post.zip_code %>" id="zip-code">
-	</div>
+	<div class="clear-fix"></div>
+	
 </div>

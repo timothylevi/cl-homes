@@ -35,7 +35,7 @@ class HousingPost < ActiveRecord::Base
   attr_accessible :title, :body, :specific_location, :zip_code, :region, :contact_email, :lister_type,
                   :contact_name, :contact_phone, :subcategory_id, :bathrooms, :beds, :sq_feet, :smoking,
                   :housing_type, :laundry, :parking, :furnished, :lister_type, :cats, :dogs,
-                  :fees, :rent, :wheelchair, :street, :cross_street, :city, :state, :ad_poster_name
+                  :fees, :rent, :wheelchair, :street, :city, :state, :ad_poster_name, :user_id
                   
   belongs_to(
     :poster,
@@ -56,7 +56,7 @@ class HousingPost < ActiveRecord::Base
                   
   validates :title, :body, :poster, :subcategory_id, :region, :zip_code, :specific_location,
             :housing_type, :contact_phone, :contact_email, :contact_name, :beds, :fees,
-            :rent, :street, :cross_street, :city, :state, :ad_poster_name, :lister_type, presence: true
+            :rent, :street, :city, :state, :ad_poster_name, :lister_type, presence: true
             
   validates :region, inclusion: {in: User::REGIONS}
   validates :housing_type, inclusion: {in: HOUSING_TYPES}
@@ -65,6 +65,12 @@ class HousingPost < ActiveRecord::Base
   validates :lister_type, inclusion: {in: LISTER_TYPES}
   validates :rent, :sq_feet, numericality: true
   validate :has_proper_sub_id
+  before_save :set_geo_coords
+  
+  
+  def set_geo_coords
+    Geocoder.set_coords(self)
+  end
   
   
   def has_proper_sub_id

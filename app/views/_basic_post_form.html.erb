@@ -1,65 +1,9 @@
 <%= form_auth_token %>
 
 
-<!-- <h3>contact info</h3>
-
-<div class="input">
-	<label>email
-	<input type="text" name="post[contact_email]" value="<%= @post.poster.email %>">
-</label>
-</div>
-
-<div class="input">
-<label>phone number
-	<input type="text" name="post[contact_phone]" value="<%= @post.contact_phone %>">
-</label>
-</div>
-
-<div class="input">
-<label>contact name
-	<input type="text" name="post[contact_name]" value="<%= @post.contact_name %>">
-</label>
-</div> -->
-
 <%= render partial: "./contact_info_form" %>
 
-<h3>post info</h3>
 
-<select name="post[region]">
-	<option>select region</option>
-	
-	<% User::REGIONS.each do |region|  %>
-		<% if @post.poster.region == region %>
-			<%= ("<option value=\"#{region}\" selected>" + region +  "</option>").html_safe %>
-		<% else %>
-			<%= ("<option value=\"#{region}\">" + region +  "</option>").html_safe %>
-		<% end %>
-		
-	<% end %>
-	
-</select>
-
-<select name="post[subcategory_id]">
-	<option>select category</option>
-	<% @category.subcategories.each do |sub| %>
-	
-		<% if @post.subcategory_id == sub.id %>
-			<%= ("<option value=\"#{sub.id}\" selected>" + sub.name + "</option>").html_safe %>
-		<% else %>
-			<%= ("<option value=\"#{sub.id}\">" + sub.name + "</option>").html_safe %>
-		<% end %>
-	<% end %>
-</select>
 
 <%= render partial: "./general_details_form" %>
 
-<br>
-<br>
-
-<label for="post_body">description</label> <br>
-
-<textarea name="post[body]" id="post_body"><%= @post.body %></textarea>
-
-
-
-<!-- ADD FIELDS FOR	LOCATION INFO -->

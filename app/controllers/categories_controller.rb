@@ -8,4 +8,10 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
   end
   
+  def map
+    @category = Category.find(params[:id])
+    @posts = @category.posts
+    render layout: "map_layout"
+  end
+  
 end

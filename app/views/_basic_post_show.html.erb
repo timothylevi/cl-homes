@@ -3,11 +3,19 @@
 		<%= link_to "#{@post.subcategory.name}", subcategory_url(@post.subcategory) %></h3>
 
 
-<h2><%= @post.title %> - <%= @post.region %> (<%= @post.specific_location %>)</h2>
+<p><strong><%= @post.title %></strong> <%= "&#36; #{@post.price}".html_safe if @post.class == SalePost %><%= "/&#36; #{@post.rent}".html_safe if @post.class == HousingPost %> - <%= @post.region %> (<%= @post.specific_location %>)</p>
 
 <h4>contact info</h4>
-<%= @post.contact_name %> <%= @post.contact_email %> <%= @post.contact_phone %>
+<p>
+	<%= @post.contact_name %> <br>
+	email - <%= @post.contact_email %> <br>
+	phone - <%= @post.contact_phone %>
+</p>
 
 <h4>post details</h4>
 
-<%= @post.body %>
+<p><%= @post.body %></p>
+
+<% if @post.class == SalePost || @post.class == HousingPost %>
+<%= render partial: "./photos_show" %>
+<% end %>

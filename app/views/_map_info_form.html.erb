@@ -5,11 +5,13 @@
 		<label for="street">street</label>
 		<input type="text" name="post[street]" value="<%= @post.street %>" id="street">
 	</div>
-
-	<div class="input input-cross-street">
-		<label for="cross-street">cross street</label>
-		<input type="text" name="post[cross_street]" value="<%= @post.cross_street %>" id="cross-street">
-	</div>
+	
+	<% if @post.class != HousingPost %>
+		<div class="input input-cross-street">
+			<label for="cross-street">cross street</label>
+			<input type="text" name="post[cross_street]" value="<%= @post.cross_street %>" id="cross-street">
+		</div>
+	<% end %>
 
 	<div class="input input-city">
 		<label for="city">city</label>

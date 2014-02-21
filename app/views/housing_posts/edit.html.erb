@@ -7,5 +7,7 @@
 	<%= render partial: "form" %>
 	
 	<input type="hidden" name="_method" value="put">
-	<p><input type="submit" value="save changes"></p>
+	<div class="form-buttons">
+		<%= link_to "cancel", root_url %> | <input type="submit" value="publish">
+	</div>
 </form>

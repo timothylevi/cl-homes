@@ -1,9 +1,4 @@
 <!-- sale/show -->
-&#36;<%= @post.price %><br>
+
 <%= render partial: "./basic_post_show" %>
 
-<% @post.pictures.each do |picture| %>
-
-	<%= image_tag picture.photo.url(:big) %>
-
-<% end %>

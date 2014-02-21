@@ -4,6 +4,15 @@
 		<%= link_to @sub.category.name, category_url(@sub.category) %> > 
 		<%= @sub.name %></h2>
 
+<br>
+
+<% if @sub.category.name == "housing" || @sub.category.name == "sale" %>
+	<h4><%= link_to "map view", category_map_url(@sub.category) %></h4>
+<% end %>
+
+<br>
+<br>
+
 <ul>
 	
 	<% @sub.posts.each do |post| %>

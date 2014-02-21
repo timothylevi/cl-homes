@@ -1,18 +1,19 @@
 <!-- housing_posts/_form -->
 
-	<label>
-		Please disclose type and amount of ANY and ALL fees (credit check, registration, application, broker):
-		<br>
-		<input type="text" name="post[fees]" value="<%= @post.fees %>">
-	</label>
-	
-	<br>
-	
-	<label>
-		Full name of the company and of the person posting this ad (min 15 chars): 
-		<br>
-		<input type="text" name="post[ad_poster_name]" value="<%= @post.contact_name %>">
-	</label>
+<div class="post-form-section housing-poster-info">	<label>
+	<div class="input">
+		<label for="fees-input">
+				Please disclose type and amount of ANY and ALL fees (credit check, registration, application, broker):
+		</label>
+		<input type="text" name="post[fees]" value="<%= @post.fees %>" id="fees-input">
+	</div>
+
+	<div class="input">
+		<label for="ad-poster-input">
+			Full name of the company and of the person posting this ad (min 15 chars): 
+		</label>
+		<input type="text" name="post[ad_poster_name]" value="<%= @post.contact_name %>" id="ad-poster-input">
+	</div>
 	
 	<br>
 	
@@ -25,137 +26,139 @@
 			
 			<% end %>
 		</select>
-	</label>
+	</label></div>
 	
 	
 	<%= render partial: "./basic_post_form" %>
 	
-	<h3>additional housing info</h3>
-	
-	<label>sqft
-		<input type="text" name="post[sq_feet]" value="<%= @post.sq_feet unless @post.sq_feet == 0 %>">
-	</label>
-	
-	<label>rent
-		<input type="text" name="post[rent]" value="<%= @post.rent unless @post.rent == 0%>">
-	</label>
-	
-	<label>
-		bedrooms
-		<select name="post[beds]">
-			<% 9.times do |i| %>
-			
-				<% if @post.beds == i %>
-					<%= ("<option value=\"#{i.to_s}\" selected>" + i.to_s + "</option>").html_safe %>
-				<% else %>
-					<%= ("<option value=\"#{i.to_s}\">" + i.to_s + "</option>").html_safe %>
-				<% end %>
-			
-			<% end %>
-			
-		</select>
-	</label>
-	
-	<label>
-		bathrooms
-		<select name="post[bathrooms]">
-			<option value="shared">shared</option>
-			<option value="split">split</option>
-			
-			<% (1..8).each do |i| %>
-			
-				<% if @post.bathrooms == i.to_s  %>
-					<%= ("<option value=\"#{i.to_s}\" selected>" + i.to_s + "</option>").html_safe %>
-					<%= ("<option value=\"#{i.to_s}.5\">" + "#{i.to_s}.5" + "</option>").html_safe %>
-				<% elsif @post.bathrooms == i.to_s + ".5" %>
-					<%= ("<option value=\"#{i.to_s}\">" + i.to_s + "</option>").html_safe %>
-					<%= ("<option value=\"#{i.to_s}.5\" selected>" + "#{i.to_s}.5" + "</option>").html_safe %>
-				<% else %>
-					<%= ("<option value=\"#{i.to_s}\">" + i.to_s + "</option>").html_safe %>
-					<%= ("<option value=\"#{i.to_s}.5\">" + "#{i.to_s}.5" + "</option>").html_safe %>
-				<% end %>
-			
-			<% end %>
-			
-			<option value="9+">9&#43;</option>
-			
-		</select>
-	</label>
-	
-	<br>
-	
-	<label>
-		housing type
-		<select name="post[housing_type]">
-			<% HousingPost::HOUSING_TYPES.each do |type| %>
-			
-				<% if @post.housing_type == type %>
-					<%= ("<option value=\"#{type}\" selected>" + type + "</option>").html_safe %>
-				<% else %>
-					<%= ("<option value=\"#{type}\">" + type + "</option>").html_safe %>
-				<% end %>
-			
-			<% end %>
-		</select>
-	</label>
-	
-</label>
-
-	<label>
-		laundry
-		<select name="post[laundry]">
-			<% HousingPost::LAUNDRY.each do |type| %>
+	<div class="housing-info">
+		<h3>additional housing info</h3>
 		
-				<% if @post.laundry == type %>
-					<%= ("<option value=\"#{type}\" selected>" + type + "</option>").html_safe %>
-				<% else %>
-					<%= ("<option value=\"#{type}\">" + type + "</option>").html_safe %>
-				<% end %>
-		
-			<% end %>
-		</select>
-	</label>
-
-	<label>
-		parking
-		<select name="post[parking]">
-			<% HousingPost::PARKING.each do |type| %>
-		
-				<% if @post.parking == type %>
-					<%= ("<option value=\"#{type}\" selected>" + type + "</option>").html_safe %>
-				<% else %>
-					<%= ("<option value=\"#{type}\">" + type + "</option>").html_safe %>
-				<% end %>
-		
-			<% end %>
-		</select>
-	</label>
-	
-	<br>
-	
-		<label>
-			smoking
-			<input type="checkbox" name="other_options[]" value="smoking" <%= "checked" if @post.smoking %>>
+		<label>sqft
+			<input type="text" name="post[sq_feet]" value="<%= @post.sq_feet unless @post.sq_feet == 0 %>">
 		</label>
-	  
-		<label>
-			wheelchair accessable
-			<input type="checkbox" name="other_options[]" value="wheelchair" <%= "checked" if @post.wheelchair %>>
-		</label>
-
-		<label>
-			cats ok
-			<input type="checkbox" name="other_options[]" value="cats" <%= "checked" if @post.cats %>>
-		</label>
-	
-		<label>
-			dogs ok
-			<input type="checkbox" name="other_options[]" value="dogs" <%= "checked" if @post.dogs %>>
+		
+		<label>rent
+			<input type="text" name="post[rent]" value="<%= @post.rent unless @post.rent == 0%>">
 		</label>
 		
 		<label>
-			furnished
-			<input type="checkbox" name="other_options[]" value="furnished" <%= "checked" if @post.furnished %>>
+			bedrooms
+			<select name="post[beds]">
+				<% 9.times do |i| %>
+				
+					<% if @post.beds == i %>
+						<%= ("<option value=\"#{i.to_s}\" selected>" + i.to_s + "</option>").html_safe %>
+					<% else %>
+						<%= ("<option value=\"#{i.to_s}\">" + i.to_s + "</option>").html_safe %>
+					<% end %>
+				
+				<% end %>
+				
+			</select>
 		</label>
+		
+		<label>
+			bathrooms
+			<select name="post[bathrooms]">
+				<option value="shared">shared</option>
+				<option value="split">split</option>
+				
+				<% (1..8).each do |i| %>
+				
+					<% if @post.bathrooms == i.to_s  %>
+						<%= ("<option value=\"#{i.to_s}\" selected>" + i.to_s + "</option>").html_safe %>
+						<%= ("<option value=\"#{i.to_s}.5\">" + "#{i.to_s}.5" + "</option>").html_safe %>
+					<% elsif @post.bathrooms == i.to_s + ".5" %>
+						<%= ("<option value=\"#{i.to_s}\">" + i.to_s + "</option>").html_safe %>
+						<%= ("<option value=\"#{i.to_s}.5\" selected>" + "#{i.to_s}.5" + "</option>").html_safe %>
+					<% else %>
+						<%= ("<option value=\"#{i.to_s}\">" + i.to_s + "</option>").html_safe %>
+						<%= ("<option value=\"#{i.to_s}.5\">" + "#{i.to_s}.5" + "</option>").html_safe %>
+					<% end %>
+				
+				<% end %>
+				
+				<option value="9+">9&#43;</option>
+				
+			</select>
+		</label>
+		
+		<br>
+		
+		<label>
+			housing type
+			<select name="post[housing_type]">
+				<% HousingPost::HOUSING_TYPES.each do |type| %>
+				
+					<% if @post.housing_type == type %>
+						<%= ("<option value=\"#{type}\" selected>" + type + "</option>").html_safe %>
+					<% else %>
+						<%= ("<option value=\"#{type}\">" + type + "</option>").html_safe %>
+					<% end %>
+				
+				<% end %>
+			</select>
+		</label>
+		
+	</label>
+	
+		<label>
+			laundry
+			<select name="post[laundry]">
+				<% HousingPost::LAUNDRY.each do |type| %>
+			
+					<% if @post.laundry == type %>
+						<%= ("<option value=\"#{type}\" selected>" + type + "</option>").html_safe %>
+					<% else %>
+						<%= ("<option value=\"#{type}\">" + type + "</option>").html_safe %>
+					<% end %>
+			
+				<% end %>
+			</select>
+		</label>
+	
+		<label>
+			parking
+			<select name="post[parking]">
+				<% HousingPost::PARKING.each do |type| %>
+			
+					<% if @post.parking == type %>
+						<%= ("<option value=\"#{type}\" selected>" + type + "</option>").html_safe %>
+					<% else %>
+						<%= ("<option value=\"#{type}\">" + type + "</option>").html_safe %>
+					<% end %>
+			
+				<% end %>
+			</select>
+		</label>
+		
+		<br>
+		
+			<label>
+				smoking
+				<input type="checkbox" name="other_options[]" value="smoking" <%= "checked" if @post.smoking %>>
+			</label>
+		  
+			<label>
+				wheelchair accessable
+				<input type="checkbox" name="other_options[]" value="wheelchair" <%= "checked" if @post.wheelchair %>>
+			</label>
+	
+			<label>
+				cats ok
+				<input type="checkbox" name="other_options[]" value="cats" <%= "checked" if @post.cats %>>
+			</label>
+		
+			<label>
+				dogs ok
+				<input type="checkbox" name="other_options[]" value="dogs" <%= "checked" if @post.dogs %>>
+			</label>
+			
+			<label>
+				furnished
+				<input type="checkbox" name="other_options[]" value="furnished" <%= "checked" if @post.furnished %>>
+			</label>
+		</div>
 		
 		<%= render partial: "./map_info_form" %>

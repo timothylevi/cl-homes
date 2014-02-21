@@ -1,0 +1,5 @@
+<% @post.pictures.each do |picture| %>
+
+	<%= image_tag picture.photo.url(:big) %>
+
+<% end %>

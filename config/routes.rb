@@ -4,15 +4,8 @@ Craigslist::Application.routes.draw do
   resources :users, except: [:index]
   resource :session, only: [:new, :create, :destroy]
 
-  resources :categories, only: [:index, :show] do 
-    member do
-      resources :subcategories, only: [:new]
-    end
-  end
+  resources :categories, only: [:index, :show]
   resources :subcategories, only: [:show, :create]
-  
-  get "new_posts/pick_cat"
-  
   
   resources :community_posts, except: [:index]
   resources :personals_posts, except: [:index]
@@ -22,4 +15,8 @@ Craigslist::Application.routes.draw do
   resources :services_posts, except: [:index]
   resources :jobs_posts, except: [:index]
   resources :gigs_posts, except: [:index]
+  
+  get "/newpost", to: "new_posts#pick_cat", as: "post_categories"
+  
+  get "categories/:id/map", to: "categories#map", as: "category_map"
 end
