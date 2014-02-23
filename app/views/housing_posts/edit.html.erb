@@ -2,12 +2,12 @@
 
 <h2>create a new housing post</h2>
 
-<form action="<%= housing_post_url(@post) %>" method="post">
+<form action="<%= housing_post_url(@post) %>" method="post" enctype="multipart/form-data">
 	
 	<%= render partial: "form" %>
 	
 	<input type="hidden" name="_method" value="put">
 	<div class="form-buttons">
-		<%= link_to "cancel", root_url %> | <input type="submit" value="publish">
+		<%= link_to "cancel", root_url %> | <input type="submit" value="save changes">
 	</div>
 </form>

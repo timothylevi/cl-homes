@@ -1,25 +1,85 @@
 <!-- housing_posts/show -->
 
-<h3><%= @post.housing_type %> by <%= @post.lister_type %></h3> <br>
-<p>posted by: <%= @post.ad_poster_name %></p>
+<div class="current-path post-heading">
+	<div class="category-details">
+		<h3><%= @post.subcategory.name %>s - <%= @post.region %></h3>
+		<h2><%= @post.housing_type %> in <%= @post.specific_location %></h2>
+	</div>
+	
+	<div class="post-show-buttons">
+		<!-- make this a real button -->
+		<div class="watch-button">
+			<%= button_to "add to watch list" %>
+		</div>
+		
+		<div class="alt-view-buttons">
+			<%= link_to "list" %> |
+			<%= link_to "map" %>
+		</div>
 
-<br>
-<br>
+	</div>
+	
+	<div class="clear-fix"></div>
+</div>
 
-<%= render partial: "./basic_post_show" %>
+<h1 class="post-title"><%= @post.title %></h1>
 
+<div class="container">
+	<div class="contact-info-show">
+		<h1>Posted By</h1>
+		<p class="ad-poster-name"><%= @post.ad_poster_name %></p>
+		<p><%= @post.contact_email %> | <%= @post.contact_phone %></p>
+		
+		<h1>Description</h1>
+		
+		<p><%= @post.body %></p>
+	</div>
 
-<ul>
-	<li>rent - <%= @post.rent %></li>
-	<li>bedrooms - <%= @post.beds %></li>
-	<li>bathrooms - <%= @post.bathrooms %></li>
-	<li>square ft - <%= @post.sq_feet %></li>
-	<li>fees - <%= @post.fees %></li>
-	<%= ("<li>laundry - #{@post.laundry}</li>").html_safe unless @post.laundry == "-" %>
-	<%= ("<li>parking - #{@post.parking}</li>").html_safe unless @post.parking == "-" %>
-	<%= ("<li>cats OK</li>").html_safe if @post.cats %>
-	<%= ("<li>dogs OK</li>").html_safe if @post.dogs %>
-	<%= ("<li>wheelchair accessable</li>").html_safe if @post.wheelchair %>
-	<%= ("<li>furnished</li>").html_safe if @post.furnished %>
-	<%= ("<li>smoking OK</li>").html_safe if @post.smoking %>
-</ul>
+	<div class="photos-show">
+		<!-- want a main photo and then the thumbnails of the others at the bottom -->
+	
+		<div class="main-photo-container">
+			<%= image_tag @post.pictures.first.photo.url(:big) %>
+		</div>
+	
+		<div class="thumbnail-container">
+			<% @post.pictures.each do |pic| %>
+				<div class="thumbnail">
+					<%= image_tag pic.photo.url(:thumb) %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="details-show">
+		<h1>Post info</h1>
+	
+		<table>
+			<thead>
+				<th>Rent</th>
+				<th>Beds</th>
+				<th>Baths</th>
+				<%= "<th>Sqft</th>".html_safe if @post.sq_feet %>
+			</thead>
+			<tr>
+				<td><%= @post.rent %></td>
+				<td><%= @post.beds %></td>
+				<td><%= @post.bathrooms %></td>
+				<%= "<td>#{@post.sq_feet}</td>".html_safe if @post.sq_feet %>
+			</tr>
+		</table>
+	
+		<p class="fees"><strong>Fees:</strong> <%= @post.fees %></p>
+	
+		<ul>
+			<%= "<li>Cats ok</li>".html_safe if @post.cats %>
+			<%= "<li>Dogs ok</li>".html_safe if @post.dogs %>
+			<%= "<li>Laundry - #{@post.laundry}</li>".html_safe if @post.laundry %>
+			<%= "<li>Parking - #{@post.parking}</li>".html_safe if @post.parking %>
+			<%= "<li>Wheelchair accessable</li>".html_safe if @post.wheelchair %>
+			<%= "<li>Smoking OK</li>".html_safe if @post.smoking %>
+		</ul>
+	</div>
+	
+	<div class="clear-fix"></div>
+</div>

@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Craigslist</title>
+  <title>CL Homes</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<% if signed_in? %>
-		<%= "signed in as: " + current_user.email %>
-		<br>
-		<%= link_to "account", user_url(current_user) %>
-		<%= button_to "Sign Out", session_url, method: :delete %>
-	<% else %>
-		<%= link_to "Sign In", new_session_url %>
-	<% end %>
-	<hr>
+
+<%= render partial: "./header" %>
 
 
 <%= yield %>
 
-<hr>
+<%= render partial: "./footer" %>
 
 <% if flash[:errors] %>
 	<%= flash[:errors].inspect %>

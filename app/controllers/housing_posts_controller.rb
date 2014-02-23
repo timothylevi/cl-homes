@@ -13,7 +13,13 @@ class HousingPostsController < ApplicationController
     @post = current_user.housing_posts.build(params[:post])
     @post.apply_options(params[:other_options]) if params[:other_options]
     
-    if current_user.save
+    if params[:pictures]
+      params[:pictures].each do |pic_data|
+        @post.pictures.build(photo: pic_data)
+      end
+    end
+    
+    if @post.save
       redirect_to housing_post_url(@post)
     else
       flash.now[:errors] = @post.errors.full_messages
@@ -34,6 +40,12 @@ class HousingPostsController < ApplicationController
     @category = CATEGORY
     @post = HousingPost.find(params[:id])
     @post.apply_options(params[:other_options]) if params[:other_options]
+    
+    if params[:pictures]
+      params[:pictures].each do |pic_data|
+        @post.pictures.build(photo: pic_data)
+      end
+    end
     
     if @post.update_attributes(params[:post])
       redirect_to housing_post_url(@post)

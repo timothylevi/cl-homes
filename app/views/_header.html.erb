@@ -1,0 +1,16 @@
+<header>
+	<div class="home-button">
+		<%= link_to "CLhomes", root_url %>
+	</div>
+	
+	<ul>
+		<% if signed_in? %>
+			<li><%= link_to "Account", user_url(current_user) %></li>
+			<li><%= button_to "Sign Out", session_url, method: :delete %></li>
+		<% else %>
+			<li><%= link_to "Sign In", new_session_url %></li>
+		<% end %>
+	</ul>
+	
+	<div class="clear-fix"></div>
+</header>
