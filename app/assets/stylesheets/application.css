@@ -593,3 +593,16 @@ img {
 	float: left;
 	padding-right: 10px;
 }
+
+.non-user-password-input {
+	float: left;
+}
+
+.non-user-password-input p {
+	font-weight: bold;
+	padding: 10px 0 20px 0;
+}
+
+.non-user-password-input label {
+	padding-bottom: 5px;
+}
