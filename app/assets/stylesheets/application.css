@@ -346,9 +346,10 @@ img {
 
 /* HOUSING POST NEW/EDIT */
 
-.contact-info-form label,
-.title-category label {
-	display: block;
+.form-header {
+	font-size: 24px;
+	font-weight: bold;
+	padding-bottom: 30px;
 }
 
 .contact-info-form .input,
@@ -370,32 +371,39 @@ img {
 
 .title-category input[type="text"] {
 	width: 500px;
-	border: 1px solid #000;
-	border-radius: 2px;
-	padding: 5px 10px;
 }
 
 .select-category {
-	padding: 30px 30px 0 0;
+	padding-top: 5px;
 	float: left;
 }
+
+.select-category select {
+	display: block;
+}
+
+.select-category label {
+	padding-bottom: 5px;
+}
+
 
 .location {
 	padding-top: 20px;
 }
 
-.input-specific-location input[type="text"] {
-	border: 1px solid #000;
-	border-radius: 2px;
+#input-specific-location {
 	padding: 5px 10px;
 	width: 250px;
 }
 
-.input-zip input[type="text"] {
-	border: 1px solid #000;
-	border-radius: 2px;
+#zip-code-input {
 	padding: 5px 10px;
 	width: 50px;
+}
+
+.select-region label{
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .location .input {
@@ -403,10 +411,6 @@ img {
 	padding: 5px 15px 0 0;
 }
 
-.location .select-region {
-	float: left;
-	padding: 30px 30px 0 0;
-}
 
 .housing-poster-info {
 	padding-top: 20px;
