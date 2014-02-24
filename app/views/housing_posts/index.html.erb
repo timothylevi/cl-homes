@@ -1,0 +1,11 @@
+<div class="search-bar"></div>
+
+<div class="container">
+	<ul>
+		<% @posts.each do |post| %>
+			<li>
+				<%= link_to post.title, housing_post_url(post) %> - <%= post.created_at %>
+			</li>
+		<% end %>
+	</ul>
+</div>

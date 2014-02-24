@@ -93,7 +93,100 @@ input[type="submit"] {
 	cursor: pointer;
 }
 
+/* START INTROS STYLING */
 
+.intro-select-user-type {
+	width: 500px;
+	margin: 150px auto 80px auto;
+	text-align: center;
+}
+
+.intro-select-user-type p {
+	font-size: 20px;
+}
+
+.skip-button {
+	position: relative;
+	float: right;
+	margin-right: 100px;
+	width: 75px;
+	font-size: 20px;
+}
+
+.skip-button a {
+	padding: 5px 20px;
+}
+
+.skip-button a:hover {
+	background: #FFA8EF;
+}
+.sign-in {
+	font-size: 20px;
+	width: 100px;
+	margin: 0 auto;
+}
+.sign-in a {
+	padding: 20px;
+	width: 100px;
+}
+
+.sign-in a:hover {
+	background: #99FFB4;
+}
+
+.user-type-searcher,
+.user-type-poster {
+	width: 250px;
+	float: left;
+	padding: 30px 0 30px 0;
+	text-align: center;
+	font-weight: bold;
+	font-size: 25px;
+	margin: 20px 0 20px 0;
+}
+
+.user-type-searcher a,
+.user-type-poster a {
+	padding: 30px;
+}
+
+.user-type-searcher a:hover,
+.user-type-poster a:hover {
+	background: #7AF8FF;
+}
+
+/* START INTROS SEARCH FORM */
+
+.intros-search-form {
+	width: 700px;
+	margin: 100px auto;
+	text-align: center;
+}
+
+.intros-search-form p {
+	font-size: 20px;
+	margin: 20px;
+}
+
+.intros-search-form label {
+	font-weight: 600;
+}
+
+.go-button {
+	width: 75px;
+	font-size: 25px;
+	margin: 30px auto;
+}
+
+.go-button input[type="submit"] {
+	padding: 5px 20px;
+}
+
+.go-button input[type="submit"]:hover {
+	background: #99FFB4;
+}
+
+/* STRAT POST SHOW STYLING */
 img {
 	display: block;
 	margin: auto;
@@ -195,17 +288,19 @@ img {
 }
 
 .main-photo-container {
+	position: relative;
 }
 
 .thumbnail-container {
+	position: absolute;
+	top: 550px;
 	margin: 10px auto;
 	width: 400px;
 }
 
 .thumbnail {
-	position: relative;
 	float: left;
-	margin: 5px auto;
+	margin: 10px;
 }
 
 .thumbnail:hover {

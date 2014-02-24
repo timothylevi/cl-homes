@@ -33,9 +33,10 @@
 
 class HousingPost < ActiveRecord::Base
   attr_accessible :title, :body, :specific_location, :zip_code, :region, :contact_email, :lister_type,
-                  :contact_name, :contact_phone, :subcategory_id, :bathrooms, :beds, :sq_feet, :smoking,
+                  :contact_name, :contact_phone, :bathrooms, :beds, :sq_feet, :smoking, :category,
                   :housing_type, :laundry, :parking, :furnished, :lister_type, :cats, :dogs,
-                  :fees, :rent, :wheelchair, :street, :city, :state, :ad_poster_name, :user_id
+                  :fees, :rent, :wheelchair, :street, :city, :state, :ad_poster_name, :user_id,
+                  :latitude, :longitude
                   
   belongs_to(
     :poster,
@@ -44,19 +45,22 @@ class HousingPost < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :housing_posts
   )
-  belongs_to :subcategory
+
   has_many :pictures, as: :image
   
-  
+  CATEGORIES = ["rent", "share", "sublet", "buy"]
   LISTER_TYPES = ["broker", "owner"]
   HOUSING_TYPES = ["apartment", "condo", "cottage/cabin", "duplex", "house", "flat", "townhouse", "loft", "land"]
   LAUNDRY = ["-", "w/d in unit", "laundry in bldg", "laundry on site", "w/d hookups"]
   PARKING = ["-", "carport", "attached garage", "detached garage", "off-street parking", "street parking", "valet parking"]
                   
                   
-  validates :title, :body, :poster, :subcategory_id, :region, :zip_code, :specific_location,
+  # removed validations for address parameters to seed db. make sure to put back
+  # also, take lat and lng out of attr accessable
+                  
+  validates :title, :body, :poster, :region, :specific_location,
             :housing_type, :contact_phone, :contact_email, :contact_name, :beds, :fees,
-            :rent, :street, :city, :state, :ad_poster_name, :lister_type, presence: true
+            :rent, :ad_poster_name, :lister_type, presence: true
             
   validates :region, inclusion: {in: User::REGIONS}
   validates :housing_type, inclusion: {in: HOUSING_TYPES}
@@ -64,23 +68,14 @@ class HousingPost < ActiveRecord::Base
   validates :parking, inclusion: {in: PARKING}
   validates :lister_type, inclusion: {in: LISTER_TYPES}
   validates :rent, :sq_feet, numericality: true
-  validate :has_proper_sub_id
-  before_save :set_geo_coords
+  validates :category, inclusion: {in: CATEGORIES}
+  # before_save :set_geo_coords
   
   
   def set_geo_coords
     Geocoder.set_coords(self)
   end
   
-  
-  def has_proper_sub_id
-    ids = Category.find_by_name('housing').subcategories.map { |sub| sub.id }
-    errors.add(:subcategory, "must choose category") unless ids.include?(self.subcategory_id)
-  end
-  
-  def category
-    Category.find_by_name('housing')
-  end
   
   def apply_options(options)
     self.dogs = options.include?("dogs") ? "dogs" : nil

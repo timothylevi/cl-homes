@@ -1,2 +1,0 @@
-class GigsPostsController < ApplicationController
-end

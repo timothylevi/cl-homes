@@ -1,20 +1,18 @@
 Craigslist::Application.routes.draw do
-  root to: "categories#index"
+  root to: "intros#user_type"
   
   resources :users, except: [:index]
   resource :session, only: [:new, :create, :destroy]
 
   resources :categories, only: [:index, :show]
   resources :subcategories, only: [:show, :create]
+
+  resources :housing_posts
   
-  resources :community_posts, except: [:index]
-  resources :personals_posts, except: [:index]
-  resources :events_posts, except: [:index]
-  resources :housing_posts, except: [:index]
-  resources :sale_posts, except: [:index]
-  resources :services_posts, except: [:index]
-  resources :jobs_posts, except: [:index]
-  resources :gigs_posts, except: [:index]
+  get "/usertype", to: "intros#user_type", as: "intros_user_type"
+  get "/searching/start", to: "intros#searcher_start", as: "intros_searcher_start"
+  get "/posting/start", to: "intros#poster_start", as: "intros_poster_start"
+
   
   get "/newpost", to: "new_posts#pick_cat", as: "post_categories"
   

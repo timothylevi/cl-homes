@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140221144922) do
+ActiveRecord::Schema.define(:version => 20140224002313) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",       :null => false
@@ -92,7 +92,6 @@ ActiveRecord::Schema.define(:version => 20140221144922) do
 
   create_table "housing_posts", :force => true do |t|
     t.integer  "user_id",           :null => false
-    t.integer  "subcategory_id",    :null => false
     t.string   "title",             :null => false
     t.string   "specific_location", :null => false
     t.text     "body"
@@ -123,10 +122,11 @@ ActiveRecord::Schema.define(:version => 20140221144922) do
     t.string   "ad_poster_name"
     t.string   "latitude"
     t.string   "longitude"
+    t.string   "category"
   end
 
+  add_index "housing_posts", ["category"], :name => "index_housing_posts_on_category"
   add_index "housing_posts", ["region"], :name => "index_housing_posts_on_region"
-  add_index "housing_posts", ["subcategory_id"], :name => "index_housing_posts_on_subcategory_id"
   add_index "housing_posts", ["user_id"], :name => "index_housing_posts_on_user_id"
 
   create_table "jobs_posts", :force => true do |t|

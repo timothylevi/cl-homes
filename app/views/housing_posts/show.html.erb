@@ -2,8 +2,8 @@
 
 <div class="current-path post-heading">
 	<div class="category-details">
-		<h3><%= @post.subcategory.name %>s - <%= @post.region %></h3>
-		<h2><%= @post.housing_type %> in <%= @post.specific_location %></h2>
+		<h2><%= @post.housing_type %>s for <%= @post.category %></h2>
+		<h2><%= @post.specific_location %>, <%= @post.region %></h2>
 	</div>
 	
 	<div class="post-show-buttons">
@@ -28,7 +28,7 @@
 	<div class="contact-info-show">
 		<h1>Posted By</h1>
 		<p class="ad-poster-name"><%= @post.ad_poster_name %></p>
-		<p><%= @post.contact_email %> | <%= @post.contact_phone %></p>
+		<p><%= @post.contact_email %> <br> <%= @post.contact_phone %></p>
 		
 		<h1>Description</h1>
 		
@@ -74,8 +74,9 @@
 		<ul>
 			<%= "<li>Cats ok</li>".html_safe if @post.cats %>
 			<%= "<li>Dogs ok</li>".html_safe if @post.dogs %>
-			<%= "<li>Laundry - #{@post.laundry}</li>".html_safe if @post.laundry %>
-			<%= "<li>Parking - #{@post.parking}</li>".html_safe if @post.parking %>
+			<%= "<li>Laundry - #{@post.laundry}</li>".html_safe if @post.laundry != "-" %>
+			<%= "<li>Parking - #{@post.parking}</li>".html_safe if @post.parking != "-" %>
+			<%= "<li>Furnished</li>".html_safe if @post.furnished %>
 			<%= "<li>Wheelchair accessable</li>".html_safe if @post.wheelchair %>
 			<%= "<li>Smoking OK</li>".html_safe if @post.smoking %>
 		</ul>

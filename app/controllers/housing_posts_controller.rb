@@ -2,6 +2,19 @@ class HousingPostsController < ApplicationController
 
   CATEGORY = Category.find_by_name("housing")
   
+  def index
+    # refactor into general helper method - @posts = HousingPost.find_by_search(params[:filters])
+    if params[:filters]
+      @posts = HousingPost.where(
+        region: params[:filters][:regions], 
+        housing_type: params[:filters][:housing_types],
+        category: params[:filters][:category]
+      )
+    else
+      @posts = HousingPost.all
+    end
+  end
+  
   def new
     @category = CATEGORY
     @post = HousingPost.new
