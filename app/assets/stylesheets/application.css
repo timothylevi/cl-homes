@@ -31,6 +31,25 @@ ul {
 	list-style: none;
 }
 
+input[type="text"],
+button,
+textarea {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	display: inline-block;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	background: transparent;
+	color: inherit;
+}
+
+.clear-fix {
+	clear: both;
+}
+
 header {
 	width: 1000px;
 	margin: 0 auto;
@@ -68,16 +87,17 @@ footer {
 .copy {
 	float: left;
 	margin-top: 5px;
-	padding-left: 10px;
+	padding-left: 30px;
 }
 
 footer ul {
+	padding-right: 50px;
 	margin-top: 5px;
 	float: right;
 }
 
 footer li {
-	padding-right: 10px;
+	padding-left: 20px;
 	float: left;
 }
 
@@ -222,6 +242,22 @@ img {
 	margin: 30px auto;
 }
 
+.form-container {
+	width: 1000px;
+	margin: 30px auto;
+}
+
+.form-container label {
+	display: block;
+}
+
+.form-container input[type="text"] {
+	display: block;
+	border: 1px solid #000;
+	border-radius: 2px;
+	padding: 5px 10px;
+}
+
 .contact-info-show {
 	float: left;
 	width: 220px;
@@ -308,8 +344,187 @@ img {
 	top: -4px;
 }
 
+/* HOUSING POST NEW/EDIT */
 
-.clear-fix {
-	clear: both;
+.contact-info-form label,
+.title-category label {
+	display: block;
 }
 
+.contact-info-form .input,
+.title-category .input {
+	float: left;
+	padding: 5px 15px 0 0;
+}
+
+.contact-info-form input[type="text"] {
+	width: 200px;
+	border: 1px solid #000;
+	border-radius: 2px;
+	padding: 5px 10px;
+}
+
+.title-category {
+	padding-top: 20px;
+}
+
+.title-category input[type="text"] {
+	width: 500px;
+	border: 1px solid #000;
+	border-radius: 2px;
+	padding: 5px 10px;
+}
+
+.select-category {
+	padding: 30px 30px 0 0;
+	float: left;
+}
+
+.location {
+	padding-top: 20px;
+}
+
+.input-specific-location input[type="text"] {
+	border: 1px solid #000;
+	border-radius: 2px;
+	padding: 5px 10px;
+	width: 250px;
+}
+
+.input-zip input[type="text"] {
+	border: 1px solid #000;
+	border-radius: 2px;
+	padding: 5px 10px;
+	width: 50px;
+}
+
+.location .input {
+	float: left;
+	padding: 5px 15px 0 0;
+}
+
+.location .select-region {
+	float: left;
+	padding: 30px 30px 0 0;
+}
+
+.housing-poster-info {
+	padding-top: 20px;
+}
+
+.housing-poster-info .input {
+	float: left;
+	padding: 20px 0 0 0;
+}
+
+.housing-poster-info label {
+	display: block;
+}
+
+.housing-poster-info input[type="text"] {
+	border: 1px solid #000;
+	border-radius: 2px;
+	padding: 5px 10px;
+	width: 700px;
+}
+
+.select-lister-type {
+	float: left;
+	padding: 20px;
+}
+.select-lister-type > label {
+	display: block;
+	padding-bottom: 5px;
+}
+
+.form-body {
+	float: left;
+	padding-right: 30px;
+}
+
+.form-body > label {
+	display: block;
+	padding: 15px 0 5px 0;
+}
+
+.form-body > textarea {
+	display: block;
+	float: left;
+	padding: 5px 10px;
+	border: 1px solid #000;
+	border-radius: 2px;
+	width: 500px;
+	height: 170px;
+}
+
+.space-details {
+	width: 260px;
+	float: left;
+	padding-top: 20px;
+}
+
+.space-details .input {
+	float: left;
+	padding: 0 15px 10px 0;
+}
+
+.space-details input[type="text"] {
+	width: 60px;
+}
+
+.other-options {
+	float: left;
+	padding-right: 500px;
+}
+.other-options .input {
+	float: left;
+	padding: 15px 25px 0 0;
+}
+
+.map-info-form {
+	float: left;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.map-info-form .input{
+	float: left;
+	padding-right: 15px;
+}
+
+.image-upload-section {
+	padding-top: 30px;
+}
+
+.image-upload-section label {
+	padding-bottom: 5px;
+}
+
+.input-state input[type="text"] {
+	width: 40px;
+}
+
+.input-street input[type="text"] {
+	width: 300px;
+}
+
+.form-buttons {
+	float: right;
+	padding: 40px 60px 30px 0;
+}
+
+.form-buttons li {
+	float: left;
+}
+
+.form-buttons input[type="submit"] {
+	display: block;
+	background: rgba(255, 151, 44, 0.8);
+	padding: 10px 15px;
+	border-radius: 3px;
+}
+
+.form-buttons a {
+	padding: 10px 15px;
+	display: block;
+}

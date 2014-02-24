@@ -1,6 +1,4 @@
 class HousingPostsController < ApplicationController
-
-  CATEGORY = Category.find_by_name("housing")
   
   def index
     # refactor into general helper method - @posts = HousingPost.find_by_search(params[:filters])
@@ -16,13 +14,11 @@ class HousingPostsController < ApplicationController
   end
   
   def new
-    @category = CATEGORY
     @post = HousingPost.new
     @post.poster = current_user
   end
   
   def create
-    @category = CATEGORY
     @post = current_user.housing_posts.build(params[:post])
     @post.apply_options(params[:other_options]) if params[:other_options]
     
@@ -45,12 +41,10 @@ class HousingPostsController < ApplicationController
   end
   
   def edit
-    @category = CATEGORY
     @post = HousingPost.find(params[:id])
   end
   
   def update
-    @category = CATEGORY
     @post = HousingPost.find(params[:id])
     @post.apply_options(params[:other_options]) if params[:other_options]
     

@@ -1,5 +1,5 @@
 <!-- housing_posts/new -->
-
+<div class="form-container">
 <h2>create a new housing post</h2>
 
 <form action="<%= housing_posts_url %>" method="post" enctype="multipart/form-data">
@@ -7,6 +7,11 @@
 	<%= render partial: "form" %>
 	
 	<div class="form-buttons">
-		<%= link_to "cancel", root_url %> | <input type="submit" value="publish">
+		<ul>
+			<li><%= link_to "cancel", root_url %></li>
+			<li><input type="submit" value="publish"></li>
+		</ul>
 	</div>
+	<div class="clear-fix"></div>
 </form>
+</div>
