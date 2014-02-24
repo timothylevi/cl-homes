@@ -1,13 +1,18 @@
 <!-- housing_posts/edit -->
 
-<h2>create a new housing post</h2>
-
-<form action="<%= housing_post_url(@post) %>" method="post" enctype="multipart/form-data">
+<div class="form-container">
+	<h1 class="form-header">Edit Housing Post</h1>
+	<form action="<%= housing_post_url(@post) %>" method="post" enctype="multipart/form-data">
 	
-	<%= render partial: "form" %>
+		<%= render partial: "form" %>
 	
-	<input type="hidden" name="_method" value="put">
-	<div class="form-buttons">
-		<%= link_to "cancel", root_url %> | <input type="submit" value="save changes">
-	</div>
-</form>
+		<input type="hidden" name="_method" value="put">
+		<div class="form-buttons">
+			<ul>
+				<li><%= link_to "cancel", root_url %></li>
+				<li><input type="submit" value="save changes"></li>
+			</ul>
+		</div>
+		<div class="clear-fix"></div>
+	</form>
+</div>

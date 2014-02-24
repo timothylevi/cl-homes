@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CL Homes</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<div class="errors">
+		<% if flash[:errors] %>
+			<p><%= flash[:errors].inspect %></p>
+		<% end %>
+	</div>
+
+	<div class="ask-to-sign-in">
+		<p>Have and account?</p> 
+		<p><%= link_to "Sign in", new_session_url %> and we'll fill some of this out for you!</p>
+	</div>
+
+<%= yield %>
+
+<%= render partial: "./footer" %>
+
+<% if flash[:errors] %>
+	<%= flash[:errors].inspect %>
+<% end %>
+
+</body>
+</html>

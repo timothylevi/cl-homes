@@ -37,7 +37,7 @@
 
 	<div class="photos-show">
 		<!-- want a main photo and then the thumbnails of the others at the bottom -->
-	
+	<% if @post.pictures.length > 0 %>
 		<div class="main-photo-container">
 			<%= image_tag @post.pictures.first.photo.url(:big) %>
 		</div>
@@ -49,6 +49,7 @@
 				</div>
 			<% end %>
 		</div>
+	<% end %>
 	</div>
 
 	<div class="details-show">
@@ -59,13 +60,13 @@
 				<th>Rent</th>
 				<th>Beds</th>
 				<th>Baths</th>
-				<%= "<th>Sqft</th>".html_safe if @post.sq_feet %>
+				<%= "<th>Sqft</th>".html_safe if @post.sq_feet && @post.sq_feet != 0%>
 			</thead>
 			<tr>
-				<td><%= @post.rent %></td>
+				<td>$<%= @post.rent %></td>
 				<td><%= @post.beds %></td>
 				<td><%= @post.bathrooms %></td>
-				<%= "<td>#{@post.sq_feet}</td>".html_safe if @post.sq_feet %>
+				<%= "<td>#{@post.sq_feet}</td>".html_safe if @post.sq_feet && @post.sq_feet != 0 %>
 			</tr>
 		</table>
 	

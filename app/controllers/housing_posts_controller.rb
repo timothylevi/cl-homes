@@ -15,11 +15,16 @@ class HousingPostsController < ApplicationController
   
   def new
     @post = HousingPost.new
-    @post.poster = current_user
+    
+    if !signed_in?
+      render layout: "non_user_post_form"
+    else
+      @post.poster = current_user
+    end
   end
   
   def create
-    @post = current_user.housing_posts.build(params[:post])
+    @post = HousingPost.new(params[:post])
     @post.apply_options(params[:other_options]) if params[:other_options]
     
     if params[:pictures]
@@ -28,11 +33,32 @@ class HousingPostsController < ApplicationController
       end
     end
     
-    if @post.save
-      redirect_to housing_post_url(@post)
+    if signed_in?
+      @post.poster = current_user
     else
-      flash.now[:errors] = @post.errors.full_messages
-      render :new
+      user_attrs = {
+        email: @post.contact_email,
+        username: @post.contact_name, 
+        phone: @post.contact_phone,
+        password: params[:password]
+      }
+      
+      user = User.new(user_attrs)
+      @post.poster = user
+    end
+
+    if user.save
+      sign_in!(user)
+      if @post.save
+        redirect_to housing_post_url(@post)
+      else
+        flash.now[:errors] = @post.errors.full_messages
+        render :new
+      end
+    else
+      flash.now[:errors] =  @post.valid? ? user.errors.full_messages : 
+                                         user.errors.full_messages + @post.errors.full_messages
+      render "./intros/poster_start", layout: "non_user_post_form"
     end
   end
   

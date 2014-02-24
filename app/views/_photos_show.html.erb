@@ -1,5 +1,7 @@
-<% @post.pictures.each do |picture| %>
+<% if @post.pictures %>
+	<% @post.pictures.each do |picture| %>
 
-	<%= image_tag picture.photo.url(:big) %>
+		<%= image_tag picture.photo.url(:big) %>
 
+	<% end %>
 <% end %>

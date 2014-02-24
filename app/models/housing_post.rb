@@ -53,6 +53,8 @@ class HousingPost < ActiveRecord::Base
   HOUSING_TYPES = ["apartment", "condo", "cottage/cabin", "duplex", "house", "flat", "townhouse", "loft", "land"]
   LAUNDRY = ["-", "w/d in unit", "laundry in bldg", "laundry on site", "w/d hookups"]
   PARKING = ["-", "carport", "attached garage", "detached garage", "off-street parking", "street parking", "valet parking"]
+  REGIONS = ["manhattan", "brooklyn", "bronx", "queens", "staten island", "long island", "new jersey", "fairfield co CT", "westchester"]
+  
                   
                   
   # removed validations for address parameters to seed db. make sure to put back
@@ -62,7 +64,7 @@ class HousingPost < ActiveRecord::Base
             :housing_type, :contact_phone, :contact_email, :contact_name, :beds, :fees,
             :rent, :ad_poster_name, :lister_type, presence: true
             
-  validates :region, inclusion: {in: User::REGIONS}
+  validates :region, inclusion: {in: REGIONS}
   validates :housing_type, inclusion: {in: HOUSING_TYPES}
   validates :laundry, inclusion: {in: LAUNDRY}
   validates :parking, inclusion: {in: PARKING}
@@ -83,5 +85,11 @@ class HousingPost < ActiveRecord::Base
     self.wheelchair = options.include?("wheelchair") ? "wheelchair" : nil
     self.smoking = options.include?("smoking") ? "smoking" : nil
     self.furnished = options.include?("furnished") ? "furnished" : nil
+  end
+  
+  def post_date
+    self.created_at.month.to_s + "/" +
+    self.created_at.day.to_s + "/" +
+    self.created_at.year.to_s
   end
 end

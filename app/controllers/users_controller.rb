@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def new
+  
   end
   
   def create
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.housing_posts
   end
   
   def edit

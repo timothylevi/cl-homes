@@ -1,0 +1,21 @@
+<div class="form-container">
+<h1 class="form-header">New Housing Post</h1>
+
+<form action="<%= housing_posts_url %>" method="post" enctype="multipart/form-data">
+	
+	<%= render partial: "./housing_posts/form" %>
+	
+	<div class="input">
+		<label for="passowrd-input">password</label>
+		<input type="text" name="password" value="" id="password-input">
+	</div>
+	
+	<div class="form-buttons">
+		<ul>
+			<li><%= link_to "cancel", root_url %></li>
+			<li><input type="submit" value="publish"></li>
+		</ul>
+	</div>
+	<div class="clear-fix"></div>
+</form>
+</div>

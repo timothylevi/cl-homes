@@ -5,7 +5,7 @@
 	<div class="input input-email">
 		<label for="email">email</label>
 		<input type="text" name="post[contact_email]" 
-					 value="<%= @post.poster.email %>" id="email">
+					 value="<%= @post.poster.email if @post.poster%>" id="email">
 	</div>
 
 	<div class="input input-phone">
@@ -65,8 +65,8 @@
 			<div class="select-region">
 				<label for="select-region">region</label>
 				<select name="post[region]" id="select-region">
-					<% User::REGIONS.each do |region|  %>
-						<% if @post.poster.region == region %>
+					<% HousingPost::REGIONS.each do |region|  %>
+						<% if @post.region == region %>
 							<%= ("<option value=\"#{region}\" selected>" + region +  "</option>").html_safe %>
 						<% else %>
 							<%= ("<option value=\"#{region}\">" + region +  "</option>").html_safe %>

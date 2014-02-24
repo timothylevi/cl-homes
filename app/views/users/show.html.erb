@@ -1,24 +1,37 @@
-<strong><%= link_to "CL", root_url %> > <%= @user.email %></strong>
-
-<br>
-
-<%= link_to "Create a Post", post_categories_url%>
-
-<br>
-
-<%= link_to "Edit Profile", edit_user_url(@user) %>
-
-<br>
-<br>
-
-<ul>
-<% @posts.each do |post| %>
-
-<li>
-	<%= link_to post.title, eval("#{post.category.name}_post_url(post)") %>
-	<%= link_to "edit", eval("edit_#{post.category.name}_post_url(post)") %>
-	<%= button_to "delete", eval("#{post.category.name}_post_url(post)"), method: :delete %>
-</li>
-
-<% end %>
-</ul>
+<div class="users-container">
+	
+	<h1>Hello <%= current_user.email %>!</h1>
+	
+	<table clas="user-listings-table">
+		<thead>
+			<!-- <th>Status</th> -->
+			<th>Manage</th>
+			<th>Status</th>
+			<th>Watchers</th>
+			<th>Title</th>
+			<th>Location</th>
+			<th>Notes</th>
+			<th>Posted On</th>
+		</thead>
+		
+		<% @user.housing_posts.each do |post| %>
+			<tr>
+				<td>
+					<div class="manage-buttons">
+						<ul>
+							<li><%= link_to "Edit", edit_housing_post_url(post) %></li>
+							<li><%= button_to "Delete", housing_post_url(post), method: :delete %></li>
+						</ul>
+					</div>
+				</td>
+				<td>STATUS</td>
+				<td>WATCHERS</td>
+				<td><%= link_to post.title, housing_post_url(post) %></td>
+				<td><%= post.street + ", " + post.specific_location %></td>
+				<td>NOTES</td>
+				<td><%= post.post_date %></td>
+			</tr>
+		<% end %>
+	</table>
+	
+</div>

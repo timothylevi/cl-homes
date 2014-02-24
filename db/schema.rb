@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140224002313) do
+ActiveRecord::Schema.define(:version => 20140224211344) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",       :null => false
@@ -254,7 +254,8 @@ ActiveRecord::Schema.define(:version => 20140224002313) do
     t.string   "session_token",   :null => false
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-    t.string   "region"
+    t.string   "phone"
+    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

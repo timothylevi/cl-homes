@@ -12,30 +12,16 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :region
+  attr_accessible :email, :password, :username, :phone
   attr_reader :password
-  
-  REGIONS = ["manhattan", "brooklyn", "bronx", "queens", "staten island", "long island", "new jersey", "fairfield co CT", "westchester"]
   
   
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :password_digest, presence: true
   validates :password, length: {minimum: 8, allow_nil: true}
-  validates :region, inclusion: { in: REGIONS }
   before_validation :ensure_session_token
   
-  
-  has_many :community_posts
-  has_many :personals_posts
   has_many :housing_posts
-  has_many :sale_posts
-  
-  def posts
-    community_posts + personals_posts + housing_posts + sale_posts
-  end
-  
-  
-  
   
   
   def ensure_session_token
