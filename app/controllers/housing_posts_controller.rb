@@ -2,13 +2,8 @@ class HousingPostsController < ApplicationController
   before_filter :require_signed_in, only: [:new, :edit, :destroy, :update]
   
   def index
-    # refactor into general helper method - @posts = HousingPost.find_by_search(params[:filters])
     if params[:filters]
-      @posts = HousingPost.where(
-        region: params[:filters][:regions], 
-        housing_type: params[:filters][:housing_types],
-        category: params[:filters][:category]
-      )
+      @posts = HousingPost.search_by_filters(params[:filters])
     else
       @posts = HousingPost.all
     end

@@ -8,6 +8,7 @@ gem 'figaro'
 gem 'rest-client'
 gem 'addressable'
 gem 'faker'
+gem 'pg_search'
 
 
 group :development do
@@ -15,7 +16,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'better_errors'
   gem 'pry-rails'
-  
 end
 
 group :development, :test do

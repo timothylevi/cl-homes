@@ -1,0 +1,74 @@
+
+<form action="<%= housing_posts_url %>" method="get">	
+	<div class="search-bar">
+			
+		<div class="input">
+			<input type="submit" value="go">
+		</div>
+			
+	<div class="search-fields">	
+			
+		<div class="input">
+				<input type="text" name="filters[search_string]" value="" placeholder="search" id="search-input">
+			</div>
+			
+			<div class="input">
+				<select name="filters[housing_type]">
+					<option></option>
+					<% HousingPost::HOUSING_TYPES.each do |type| %>
+						<%= "<option value=\"#{type}\">#{type}</option>".html_safe %> 
+					<% end %>
+				</select>
+			</div>
+			
+			<div class="input">
+				<select name="filters[category]">
+					<option></option>
+					<% HousingPost::CATEGORIES.each do |type| %>
+						<%= "<option value=\"#{type}\">#{type}</option>".html_safe %> 
+					<% end %>
+				</select>
+				<div class="clear-fix"></div>
+			</div>
+			
+			<div class="input">
+				<input type="text" name="filters[min_price]" value="" placeholder="$" id="min-input">
+			</div>
+			
+			<div class="input">
+				<input type="text" name="filters[max_price]" value="" placeholder="$$$$" id="max-input">
+			</div>
+		</div>
+			
+			<div class="search-checkboxes">
+				<div class="input">
+							<label for="cats-input">cats</label>
+							<input type="checkbox" id="cats-input" name="filters[cats]" value="cats">
+						</div>
+					
+						<div class="input">
+							<label for="dogs-input">dogs</label>
+							<input type="checkbox" id="dogs-input" name="filters[dogs]" value="dogs">
+						</div>
+					  
+						<div class="input">
+							<label for="wheelchair-input">wheelchair</label>
+							<input type="checkbox" id="wheelchair-input" name="filters[wheelchair]" value="wheelchair">
+						</div>
+						
+						<div class="input">
+							<label for="furnished-input">furnished</label>
+							<input type="checkbox" id="furished-input" name="filters[furnished]" value="furnished">
+						</div>
+						
+						<div class="input">
+							<label for="smoking-input">smoking</label>
+							<input type="checkbox" id="smoking-input" name="filters[smoking]" value="smoking">
+						</div>
+						
+						<div class="clear-fix"></div>
+					</div>
+			
+			<div class="clear-fix"></div>
+		</div>
+	</form>

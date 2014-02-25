@@ -84,7 +84,8 @@ header > ul > li {
 
 footer {
 	width: 1000px;
-	margin: 20px auto 0 auto;
+	margin: 0 auto;
+	padding: 20px 0 40px 0;
 	border-top: 1px solid #000;
 }
 
@@ -682,4 +683,66 @@ img {
 
 .post-list .list-region {
 	padding-right: 10px;
+}
+
+/* SEARCH BAR */
+
+.search-bar {
+	width: 1000px;
+	margin: auto;
+	padding-top: 10px;
+}
+
+.search-bar .input {
+	float: left;
+	padding-left: 10px;
+}
+
+.search-bar input[type="text"] {
+	padding: 5px 10px;
+	border: 1px solid #000;
+	border-radius: 2px;
+}
+
+.search-bar label {
+	display: block;
+}
+
+.search-bar input[type="checkbox"] {
+	display: block;
+	margin: auto;
+}
+
+#search-input {
+	width: 200px;
+}
+
+#min-input,
+#max-input {
+	width: 40px;
+}
+
+.search-bar input[type="submit"] {
+	padding: 5px 15px 10px 15px;
+	border-radius: 3px;
+	background: #99FFB4;
+	position: relative;
+	top: 8px;
+}
+
+.search-bar .search-checkboxes {
+	padding-left: 10px;
+}
+
+.search-bar .search-fields {
+	padding-top: 10px;
+	float: left;
+}
+
+.search-checkboxes .input {
+	padding-left: 15px;
+}
+
+.search-bar label {
+	padding-bottom: 5px;
 }

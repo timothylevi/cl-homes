@@ -73,6 +73,45 @@ class HousingPost < ActiveRecord::Base
   validates :category, inclusion: {in: CATEGORIES}
   # before_save :set_geo_coords
   
+  include PgSearch
+  pg_search_scope :search_by_search_string, against: [:title, :body, :specific_location]
+  
+  
+  def self.search_by_filters(options)
+    return HousingPost.all if options.values.all? { |v| v == ""}
+    
+    search_string = options["search_string"]
+    
+    sql_conditions = []
+    sql_args = {}
+    
+    if options["min_price"] != "" 
+      sql_conditions << "rent >= :min_price"
+      sql_args[:min_price] = options["min_price"]
+      options.delete("min_price")
+    end
+    if options["max_price"] != ""
+      sql_conditions << "rent <= :max_price"
+      sql_args[:max_price] = options["max_price"]
+      options.delete("max_price")
+    end
+    
+    options.each do |k, v|
+      next if v == "" || k == "search_string"
+      sql_conditions << ("#{k} = :#{k}")
+      sql_args[(k.to_sym)] = v
+    end
+    
+    sql_string = sql_conditions.join(" AND ")
+    
+    posts_from_search = search_string != "" ? search_by_search_string(search_string) : nil
+    posts_from_sql = sql_string != "" ? HousingPost.where(sql_string, sql_args) : nil
+    
+    results = posts_from_search && posts_from_sql ? posts_from_search & posts_from_sql :
+                                                    posts_from_search || posts_from_sql
+    
+    results.sort { |post1, post2| post2.created_at <=> post1.created_at }
+  end
   
   def set_geo_coords
     Geocoder.set_coords(self)
@@ -102,7 +141,10 @@ class HousingPost < ActiveRecord::Base
     min = time.min > 9 ? time.min : "0" + time.min.to_s
     mrdn = time.hour > 11 ? "PM" : "AM"
     
-    
     hour.to_s + ":" + min.to_s + " " + mrdn
+  end
+  
+  def post_date_time
+    post_date + " at " + post_time
   end
 end
