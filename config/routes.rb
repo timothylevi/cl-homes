@@ -14,7 +14,5 @@ Craigslist::Application.routes.draw do
   get "/posting/start", to: "intros#poster_start", as: "intros_poster_start"
 
   
-  get "/newpost", to: "new_posts#pick_cat", as: "post_categories"
-  
-  get "categories/:id/map", to: "categories#map", as: "category_map"
+  get "posts/map", to: "housing_posts#index_map", as: "index_map"
 end

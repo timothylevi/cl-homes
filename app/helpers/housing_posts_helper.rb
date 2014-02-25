@@ -1,2 +1,2 @@
-module HousingPostsHelper
+module HousingPostsHelper  
 end

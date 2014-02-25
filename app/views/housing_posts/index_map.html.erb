@@ -1,0 +1,17 @@
+<script type="application/json" id="bootstrapped-post-geojson">
+	{ "posts": <%= @posts.to_json.html_safe %> }
+</script>
+
+
+<script>
+
+$(document).ready(function () {
+	var geojson = JSON.parse($("#bootstrapped-post-geojson").html())["posts"];
+
+	console.log(geojson)
+
+	L.mapbox.map('map', 'examples.map-9ijuk24y')
+	  .setView([40.7056308, -73.9780035], 12)
+	  .featureLayer.setGeoJSON(geojson);
+});
+</script>

@@ -2,11 +2,13 @@ class HousingPostsController < ApplicationController
   before_filter :require_signed_in, only: [:new, :edit, :destroy, :update]
   
   def index
-    if params[:filters]
-      @posts = HousingPost.search_by_filters(params[:filters])
-    else
-      @posts = HousingPost.all
-    end
+    @posts = fetch_posts
+    render layout: "index_layout"
+  end
+  
+  def index_map
+    @posts = geo_jsonify(fetch_posts)
+    render layout: "map_layout"
   end
   
   def new

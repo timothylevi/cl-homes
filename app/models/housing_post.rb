@@ -1,36 +1,3 @@
-# == Schema Information
-#
-# t.integer  "user_id",           :null => false
-# t.integer  "subcategory_id",    :null => false
-# t.string   "title",             :null => false
-# t.string   "specific_location", :null => false
-# t.text     "body"
-# t.string   "region",            :null => false
-# t.string   "zip_code",          :null => false
-# t.integer  "rent",              :null => false
-# t.string   "cats"
-# t.string   "dogs"
-# t.string   "lister_type",       :null => false
-# t.string   "fees"
-# t.integer  "beds",              :null => false
-# t.integer  "sq_feet"
-# t.datetime "created_at",        :null => false
-# t.datetime "updated_at",        :null => false
-# t.string   "contact_email"
-# t.string   "contact_phone"
-# t.string   "contact_name"
-# t.integer  "bathrooms"
-# t.string   "housing_type"
-# t.string   "laundry"
-# t.string   "parking"
-# t.string   "wheelchair"
-# t.string   "smoking"
-# t.string   "furnished"
-# t.string   "street"
-# t.string   "cross_street"
-# t.string   "city"
-# t.string   "state"
-
 class HousingPost < ActiveRecord::Base
   attr_accessible :title, :body, :specific_location, :zip_code, :region, :contact_email, :lister_type,
                   :contact_name, :contact_phone, :bathrooms, :beds, :sq_feet, :smoking, :category,

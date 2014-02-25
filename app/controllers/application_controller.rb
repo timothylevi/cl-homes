@@ -8,6 +8,14 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_session_token(session[:token])
   end
   
+  def fetch_posts
+    if params[:filters]
+      HousingPost.search_by_filters(params[:filters])
+    else
+      HousingPost.all
+    end
+  end
+  
   def sign_in!(user)
     session[:token] = user.reset_session_token!
   end
@@ -25,5 +33,28 @@ class ApplicationController < ActionController::Base
   def require_signed_in
     flash[:notices] = ["Sorry, you have to be logged in for that!"]
     redirect_to new_session_url unless signed_in?
+  end
+  
+  def geo_jsonify(posts)
+    json_objs = []
+    
+    posts.each do |post|
+      description = "$#{post.rent} / #{post.beds} BR - #{post.specific_location}"
+      json_objs << {
+        type: "Feature",
+        geometry: {
+          type: "Point",
+          coordinates: [post.longitude, post.latitude]
+        },
+        properties: {
+          title: post.title,
+          description: description,
+          "marker-color" => "#fc4353",
+          "marker-size" => "small"
+        }
+      }
+    end
+    
+    json_objs
   end
 end
