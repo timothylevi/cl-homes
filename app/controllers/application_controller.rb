@@ -31,8 +31,10 @@ class ApplicationController < ActionController::Base
   end
   
   def require_signed_in
-    flash[:notices] = ["Sorry, you have to be logged in for that!"]
-    redirect_to new_session_url unless signed_in?
+    unless signed_in?
+      flash[:notices] = ["Sorry, you have to be logged in for that!"]
+      redirect_to new_session_url 
+    end
   end
   
   def geo_jsonify(posts)

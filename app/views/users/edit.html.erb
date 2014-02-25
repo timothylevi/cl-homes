@@ -1,36 +1,41 @@
-<!-- users/edit -->
+<!-- users/edit	 -->
+<div class="form-container edit-user-form">
+<h1>Edit User Profile</h1>
 
-<h1>Edit Profile</h1>
+<form action="<%= user_url(@user) %>" method="post">
 
-<form action="<%= user_url(@user) %>" method="POST">
-
-	<%= form_auth_token %>
-
-	<input type="text" name="user[email]" placeholder="<%= @user.email %>">
-
-	<br>
-
-	<!-- add a link to change password -->
-
-	<br>
+		<%= form_auth_token %>
 	
-	<select name="user[region]">
-		<option>Select Region</option>
-		
-		<% User::REGIONS.each do |region|  %>
-		
-			<% if @user.region == region %>
-				<%= ("<option value=\"#{region}\" selected>" + region +  "</option>").html_safe %>
-			<% else %>
-				<%= ("<option value=\"#{region}\">" + region +  "</option>").html_safe %>
-			<% end %>
+		<div class="input">
+			<label for="sign-in-email">email</label>
+			<input type="text" name="user[email]" id="sign-in-email" value="<%= @user.email %>">
+		</div>
 
-		<% end %>
-				
-	</select>
+		<div class="input">
+			<label for="sign-in-username">username</label>
+			<input type="text" name="user[username]" id="sign-in-username" value="<%= @user.username %>">
+		</div>
 
-	<br>
-	
-	<input type="hidden" name="_method" value="PUT">
-	<input type="submit" value="Save Changes">
+		<div class="input">
+			<label for="sign-in-password">change password</label>
+			<input type="text" name="user[password]" id="sign-in-password">
+		</div>
+		
+		<div class="input">
+			<label for="sign-in-password-confirm">confirm password</label>
+			<input type="text" name="user[password_confirm]" id="sign-in-password-confirm">
+		</div>
+		
+		<input type="hidden" name="_method" value="PUT">
+		
+		<div class="sign-in-buttons">
+			<ul>
+				<li><input type="submit" value="Save Changes"></li>
+				<li><%= link_to "cancel", new_session_url %></li>
+			</ul>
+		</div>
+		
+		<div class="clear-fix"></div>
 </form>
+</div>
+</div>
