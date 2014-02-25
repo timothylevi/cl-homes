@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def new
-  
+    render layout: "intros_layout"
   end
   
   def create

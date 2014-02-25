@@ -1,4 +1,5 @@
 class HousingPostsController < ApplicationController
+  before_filter :require_signed_in, only: [:new, :edit, :destroy, :update]
   
   def index
     # refactor into general helper method - @posts = HousingPost.find_by_search(params[:filters])

@@ -1,0 +1,9 @@
+<div class="errors">
+	<% if flash[:errors] %>
+		<p><%= flash[:errors].inspect %></p>
+	<% end %>
+	
+	<% if flash[:notices] %>
+		<p><%= flash[:notices].inspect %></p>
+	<% end %>
+</div>

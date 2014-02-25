@@ -1,30 +1,29 @@
 <!-- users/new -->
 
-<h1>Create Account</h1>
+<div class="sign-in-form">
+<h1>New User!</h1>
 
-<form action="<%= users_url %>" method="post">
-	
+<form action="<%= session_url %>" method="post">
+
 		<%= form_auth_token %>
 	
-		<input type="text" name="user[email]" placeholder="email">
+		<div class="input">
+			<label for="sign-in-email">email</label>
+			<input type="text" name="user[email]" id="sign-in-email">
+		</div>
 
-		<br>
 
-		<input type="text" name="user[password]" placeholder="password">
-
-		<br>
+		<div class="input">
+			<label for="sign-in-password">password</label>
+			<input type="text" name="user[password]">
+		</div>
 		
-		<select name="user[region]">
-			<option>Select Region</option>
-			
-			<% User::REGIONS.each do |region|  %>
-			<%= ("<option value=\"#{region}\">" + region +  "</option>").html_safe %>
-			<% end %>
-			
-		</select>
-	<p><input type="submit" value="Create Account"></p>
+		<div class="sign-in-buttons">
+			<ul>
+				<li><input type="submit" value="Sign In"></li>
+				<li><%= link_to "or Sign In", new_session_url %></li>
+			</ul>
+		</div>
+		
 </form>
-
-<br>
-
-<%= link_to "Sign In", new_session_url %>
+</div>

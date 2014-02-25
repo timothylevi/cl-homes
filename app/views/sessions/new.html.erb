@@ -1,21 +1,29 @@
 <!-- sessions/new -->
 
+<div class="sign-in-form">
 <h1>Sign In</h1>
 
 <form action="<%= session_url %>" method="post">
 
 		<%= form_auth_token %>
 	
-		<input type="text" name="user[email]" placeholder="email">
+		<div class="input">
+			<label for="sign-in-email">email</label>
+			<input type="text" name="user[email]" id="sign-in-email">
+		</div>
 
-		<br>
 
-		<input type="text" name="user[password]" placeholder="password">
-
-	<p><input type="submit" value="Sign In"></p>
+		<div class="input">
+			<label for="sign-in-password">password</label>
+			<input type="text" name="user[password]">
+		</div>
+		
+		<div class="sign-in-buttons">
+			<ul>
+				<li><input type="submit" value="Sign In"></li>
+				<li><%= link_to "or Create account", new_user_url %></li>
+			</ul>
+		</div>
+		
 </form>
-
-<br>
-
-<%= link_to "Create an account", new_user_url %>
-
+</div>

@@ -88,8 +88,21 @@ class HousingPost < ActiveRecord::Base
   end
   
   def post_date
-    self.created_at.month.to_s + "/" +
-    self.created_at.day.to_s + "/" +
-    self.created_at.year.to_s
+    time = self.created_at
+    time.month.to_s + "/" +
+    time.day.to_s + "/" +
+    time.year.to_s
+  end
+  
+  def post_time
+    time = self.created_at
+    
+    hour = time.hour > 12 ? time.hour - 12 : time.hour
+    hour = 12 if hour == 0
+    min = time.min > 9 ? time.min : "0" + time.min.to_s
+    mrdn = time.hour > 11 ? "PM" : "AM"
+    
+    
+    hour.to_s + ":" + min.to_s + " " + mrdn
   end
 end

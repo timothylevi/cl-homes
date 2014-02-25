@@ -8,11 +8,7 @@
 </head>
 <body>
 
-	<div class="errors">
-		<% if flash[:errors] %>
-			<p><%= flash[:errors].inspect %></p>
-		<% end %>
-	</div>
+	<%= render partial: "./errors_and_notices" %>
 
 	<div class="ask-to-sign-in">
 		<p>Have and account?</p> 

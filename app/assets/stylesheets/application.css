@@ -31,6 +31,10 @@ ul {
 	list-style: none;
 }
 
+strong {
+	font-weight: bold;
+}
+
 input[type="text"],
 button,
 textarea {
@@ -605,4 +609,77 @@ img {
 
 .non-user-password-input label {
 	padding-bottom: 5px;
+}
+
+/* SIGN IN AND NEW USER */
+
+.sign-in-form {
+	width: 210px;
+	height: 300px;
+	margin: 200px auto;
+}
+
+.sign-in-form label {
+	padding: 10px 0 5px 0;
+	display: block;
+}
+
+.sign-in-form input[type="text"] {
+	width: 200px;
+	border: 1px solid #000;
+	border-radius: 2px;
+	padding: 5px 10px;
+}
+
+.sign-in-form h1 {
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+
+.sign-in-buttons {
+	padding-top: 15px;
+}
+.sign-in-buttons >ul > li {
+	float: left;
+}
+
+.sign-in-buttons input[type="submit"] {
+	display: block;
+	padding: 10px 15px;
+	border-radius: 5px;
+	background: #99FFB4;
+}
+
+.sign-in-buttons a {
+	display: block;
+	padding: 15px 0 0 10px;
+}
+
+/* POST INDEX LIST */
+
+.index-container {
+	width: 1000px;
+	margin: 30px auto;
+}
+
+.post-list {
+	font-size: 18px;
+	padding: 50px;
+}
+
+.post-list li {
+	padding-bottom: 15px;
+}
+
+.post-list .rent-beds {
+	display: inline-block;
+	padding: 0 5px 0 5px;
+	background: lightpink;
+	margin-right: 10px;
+}
+
+.post-list .list-region {
+	padding-right: 10px;
 }

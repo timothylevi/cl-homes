@@ -1,11 +1,20 @@
 <div class="search-bar"></div>
 
-<div class="container">
-	<ul>
-		<% @posts.each do |post| %>
-			<li>
-				<%= link_to post.title, housing_post_url(post) %> - <%= post.created_at %>
-			</li>
-		<% end %>
-	</ul>
+<div class="index-container">
+	
+	
+	<div class="post-list">
+		<ul>
+			<% @posts.each do |post| %>
+				<li>
+					<p>
+						<span class="rent-beds"><%= "$" + post.rent.to_s + " / " + post.beds.to_s + "BR" %></span> 
+						<span class="list-region"><%= " (" + post.specific_location + ")" %></span> 
+						<strong><%= link_to post.title, housing_post_url(post) %></strong> 
+						- <%= post.housing_type + "s for " + post.category + " in " + post.region %>
+					</p>
+				</li>
+			<% end %>
+		</ul>
+	</div>
 </div>
