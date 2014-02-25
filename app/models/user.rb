@@ -22,7 +22,8 @@ class User < ActiveRecord::Base
   before_validation :ensure_session_token
   
   has_many :housing_posts
-  
+  has_many :watches
+  has_many :watched_posts, through: :watches, source: :housing_post
   
   def ensure_session_token
     unless self.session_token

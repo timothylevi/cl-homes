@@ -9,7 +9,11 @@
 	<div class="post-show-buttons">
 		<!-- make this a real button -->
 		<div class="watch-button">
-			<%= button_to "add to watch list" %>
+			<% if current_user.watched_post_ids.include?(@post.id) %>
+				<%= button_to "remove from watch list", watch_url(current_user.watches.where(housing_post_id: @post.id).first), method: :delete %>
+			<% else %>
+				<%= button_to "add to watch list",  watches_url(@post) %>
+			<% end %>
 		</div>
 		
 		<div class="post-alt-view-buttons">

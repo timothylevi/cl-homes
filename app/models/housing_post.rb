@@ -14,6 +14,8 @@ class HousingPost < ActiveRecord::Base
   )
 
   has_many :pictures, as: :image
+  has_many :watches
+  has_many :watchers, through: :watches, source: :user
   
   CATEGORIES = ["rent", "share", "sublet", "buy"]
   LISTER_TYPES = ["broker", "owner"]
