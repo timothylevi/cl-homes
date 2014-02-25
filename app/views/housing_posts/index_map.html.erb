@@ -6,12 +6,71 @@
 <script>
 
 $(document).ready(function () {
+	console.log($("#bootstrapped-post-geojson").html())
 	var geojson = JSON.parse($("#bootstrapped-post-geojson").html())["posts"];
 
 	console.log(geojson)
 
-	L.mapbox.map('map', 'examples.map-9ijuk24y')
-	  .setView([40.7056308, -73.9780035], 12)
-	  .featureLayer.setGeoJSON(geojson);
+	var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
+	
+	map.featureLayer.on('layeradd', function(e) {
+		if (e.layer.feature.properties.images) {
+				var marker = e.layer;
+		    var feature = marker.feature;
+		    var images = feature.properties.images
+		    var slideshowContent = '';
+
+		    for(var i = 0; i < images.length; i++) {
+		        var img = images[i];
+
+		        slideshowContent += '<div class="image' + (i === 0 ? ' active' : '') + '">' +
+		                              '<img src="' + img + '" />' +
+		                            '</div>';
+		    }
+
+		    var popupContent =  '<div id="' + feature.properties.id + '" class="popup">' +
+		                            '<h2>' + feature.properties.title + '</h2>' +
+		                            '<div class="slideshow">' +
+		                                slideshowContent +
+		                            '</div>' +
+		                            '<div class="cycle">' +
+		                                '<a href="#" class="prev">&laquo; Previous</a>' +
+		                                '<a href="#" class="next">Next &raquo;</a>' +
+		                            '</div>'
+		                        '</div>';
+
+
+		    marker.bindPopup(popupContent,{
+		        closeButton: false,
+		        minWidth: 300
+		    });
+			}
+	});
+	
+	map.featureLayer.setGeoJSON(geojson);
+	
+	$('#map').on('click', '.popup .cycle a', function() {
+	    var $slideshow = $('.slideshow'),
+	        $newSlide;
+
+	    if ($(this).hasClass('prev')) {
+	        $newSlide = $slideshow.find('.active').prev();
+	        if ($newSlide.index() < 0) {
+	            $newSlide = $('.image').last();
+	        }
+	    } else {
+	        $newSlide = $slideshow.find('.active').next();
+	        if ($newSlide.index() < 0) {
+	            $newSlide = $('.image').first();
+	        }
+	    }
+
+	    $slideshow.find('.active').removeClass('active').hide();
+	    $newSlide.addClass('active').show();
+	    return false;
+	});
+	
+	map.setView([40.7056308, -73.9780035], 13)
+	  
 });
 </script>

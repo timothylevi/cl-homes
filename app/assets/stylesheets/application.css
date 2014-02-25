@@ -662,7 +662,7 @@ img {
 
 .index-container {
 	width: 1000px;
-	margin: 30px auto;
+	margin: 0 auto;
 }
 
 .post-list {
@@ -745,4 +745,57 @@ img {
 
 .search-bar label {
 	padding-bottom: 5px;
+}
+
+.search-bar .search-alt-view-buttons {
+	padding-top: 20px;
+	padding-left: 10px;
+}
+
+.search-bar .search-alt-view-buttons > ul {
+	display: block;
+	border-left: 1px solid #000;
+}
+
+.search-bar .search-alt-view-buttons > ul > li {
+	float: left;
+	border-right: 1px solid #000;
+}
+
+.search-bar .search-alt-view-buttons > ul a {
+	font-size: 18px;
+	padding: 5px 15px 5px 15px;
+}
+
+/* MAPS INDEX */
+
+.popup {
+    text-align: center;
+}
+.popup .slideshow {
+    width: 100%;
+}
+.popup .slideshow .image {
+    display: none;
+}
+.popup .slideshow .active {
+    display: block;
+}
+.popup .slideshow img {
+    width: 100%;
+}
+.popup .slideshow .caption {
+    background: #eee;
+    padding: 8px;
+}
+.popup .cycle {
+    height: 30px;
+    margin-top: 5px;
+    padding-top: 5px;
+}
+.popup .cycle a.prev {
+    float: left;
+}
+.popup .cycle a.next {
+    float: right;
 }
