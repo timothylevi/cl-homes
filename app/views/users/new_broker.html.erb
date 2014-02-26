@@ -4,6 +4,8 @@
 
 <p>With our Platnum Level Broker Account, you'll be able to post and manage your listings.</p>
 
+<p>Already have an account? <%= link_to "Sign In!", new_session_url %></p>
+
 <% action = signed_in? ? user_url(current_user) : users_url  %>
 
 <form action="<%= action %>" method="post">
@@ -39,7 +41,7 @@
 
 		<div class="input">
 			<label for="sign-in-password">password</label>
-			<input type="text" name="user[password]" placeholder="***********">
+			<input type="text" name="user[password]">
 		</div>
 		
 		<div class="input">

@@ -44,6 +44,14 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def go_to_user_page(user)
+    if user.broker
+      redirect_to user_listings_url
+    else
+      redirect_to user_watchlist_url
+    end
+  end
+  
   def geo_jsonify(posts)
     json_objs = []
     

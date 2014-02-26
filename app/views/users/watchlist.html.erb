@@ -1,49 +1,20 @@
 <div class="user-nav-tabs">
 	<ul>
-		<li class="listings-tab"><%= link_to "Listings by You", user_listings_url %></li>
+		<% if current_user.broker %>
+			<li class="listings-tab"><%= link_to "Listings by You", user_listings_url %></li>
+		<% end %>
 		<li class="watchlist-tab"><%= link_to "Watch List", user_watchlist_url %></li>
 		<div class="clear-fix"></div>
 	</ul>
 </div>
 
-<table>
-	<thead>
-		<!-- <th>Status</th> -->
-		<td></td>
-		<th>Region</th>
-		<th>Neighborhood</th>
-		<th>Rent</th>
-		<th>Beds</th>
-		<th>Title</th>
-		<th>Posted On</th>
-		<th>Status</th>
-		<th></th>
-	</thead>
-	
-	<% @watches.each do |watch| %>
-		<% post = watch.housing_post %>
-		<tr>
-			<td>
-				<% if post.pictures.count != 0 %>
-					<a href="<%= housing_post_url(post) %>">
-						<div class="list-thumbnail">
-							<%= image_tag post.pictures.first.photo.url(:thumb) %>
-						</div>
-					</a>
-				<% end %>
-			</td>
-			<td><%= post.region %></td>
-			<td><%= post.specific_location %></td>
-			<td>$<%= post.rent %></td>
-			<td><%= post.beds %></td>
-			<td><%= link_to post.title, housing_post_url(post) %></td>
-			<td><%= post.post_date %></td>
-			<td>STATUS</td>
-			<td>
-				<div class="remove-button">
-					<%= button_to "Remove", watches_url(watch), method: :delete %></li>
-				</div>
-			</td>
-		</tr>
-	<% end %>
-</table>
+<% if @watches.count > 0 %>
+	<%= render partial: "watchlist_table" %>
+<% else %>
+	<div class="user-table-empty">
+		<h1>You're not watching anything yet.</h1>
+		<div class="find-link">
+			<%= link_to "Search Listings!", housing_posts_url %>
+		</div>
+	</div>
+<% end  %>

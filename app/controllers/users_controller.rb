@@ -50,11 +50,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     
     if @user.update_attributes(params[:user])
-      if @user.broker
-        redirect_to user_listings_url(@user)
-      else
-        redirect_to user_watchlist_url(@user)
-      end
+      got_to_user_page(@user)
     else
       flash.now[:errors] = @user.errors.full_messages
       if @user.broker
@@ -80,5 +76,4 @@ class UsersController < ApplicationController
     @posts = current_user.housing_posts
     render layout: "user_show_layout"
   end
-
 end

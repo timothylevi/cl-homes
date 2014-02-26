@@ -1,0 +1,41 @@
+<table>
+	<thead>
+		<!-- <th>Status</th> -->
+		<td></td>
+		<th>Region</th>
+		<th>Neighborhood</th>
+		<th>Rent</th>
+		<th>Beds</th>
+		<th>Title</th>
+		<th>Posted On</th>
+		<th>Status</th>
+		<th></th>
+	</thead>
+	
+	<% @watches.each do |watch| %>
+		<% post = watch.housing_post %>
+		<tr>
+			<td>
+				<% if post.pictures.count != 0 %>
+					<a href="<%= housing_post_url(post) %>">
+						<div class="list-thumbnail">
+							<%= image_tag post.pictures.first.photo.url(:thumb) %>
+						</div>
+					</a>
+				<% end %>
+			</td>
+			<td><%= post.region %></td>
+			<td><%= post.specific_location %></td>
+			<td>$<%= post.rent %></td>
+			<td><%= post.beds %></td>
+			<td><%= link_to post.title, housing_post_url(post) %></td>
+			<td><%= post.post_date %></td>
+			<td>STATUS</td>
+			<td>
+				<div class="remove-button">
+					<%= button_to "Remove", watches_url(watch), method: :delete %></li>
+				</div>
+			</td>
+		</tr>
+	<% end %>
+</table>

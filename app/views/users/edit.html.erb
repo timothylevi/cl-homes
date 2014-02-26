@@ -17,13 +17,8 @@
 		</div>
 
 		<div class="input">
-			<label for="sign-in-password">change password</label>
-			<input type="text" name="user[password]" id="sign-in-password">
-		</div>
-		
-		<div class="input">
-			<label for="sign-in-password-confirm">confirm password</label>
-			<input type="text" name="user[password_confirm]" id="sign-in-password-confirm">
+			<label for="sign-in-password">password</label>
+			<input type="text" name="user[password]" id="sign-in-password" placeholder="**********">
 		</div>
 		
 		<input type="hidden" name="_method" value="PUT">
@@ -31,7 +26,7 @@
 		<div class="sign-in-buttons">
 			<ul>
 				<li><input type="submit" value="Save Changes"></li>
-				<li><%= link_to "cancel", user_url(current_user) %></li>
+				<li><%= link_to "cancel", user_watchlist_url %></li>
 			</ul>
 		</div>
 		

@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     
     if user
       sign_in!(user)
-      redirect_to user_url(user)
+      go_to_user_page(user)
     else
       flash.now[:errors] = ["Wrong credentials. Try again."]
       render :new
@@ -20,6 +20,6 @@ class SessionsController < ApplicationController
   
   def destroy
     sign_out!
-    redirect_to new_session_url
+    redirect_to housing_posts_url
   end
 end

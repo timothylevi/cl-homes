@@ -637,6 +637,33 @@ img {
 	margin-bottom: 1px;
 }
 
+.user-table-empty {
+	width: 300px;
+	margin: 80px auto;
+}
+
+.user-table-empty h1 {
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;
+}
+
+.find-link {
+	width: 150px;
+	position: relative;
+	margin: auto;
+}
+
+.find-link a {
+	display: inline-block;
+	margin: auto;
+	text-align: center;
+	padding: 10px;
+	background: rgba(29, 205, 250, 0.8);
+	border-radius: 3px;
+	
+}
+
 /* SIGN IN AND NEW USER */
 
 .sign-in-form {

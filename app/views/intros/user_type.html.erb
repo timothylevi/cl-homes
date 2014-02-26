@@ -12,9 +12,11 @@
 	
 	<div class="clear-fix"></div>
 	
-	<div class="sign-in">
-		<%= link_to "sign in", new_session_url %>
-	</div>
+	<% if !signed_in? %>
+		<div class="sign-in">
+			<%= link_to "sign in", new_session_url %>
+		</div>
+	<% end %>
 </div>
 
 
