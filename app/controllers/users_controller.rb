@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_filter :require_signed_in, only: [:show, :edit, :destroy, :watchlist, :listings]
+  layout "user_show_layout", only: [:show]
+  
   def new
     render layout: "intros_layout"
   end
@@ -43,12 +45,12 @@ class UsersController < ApplicationController
 
   def watchlist
     @posts = current_user.watched_posts
-    render :show
+    render layout: "user_show_layout"
   end
   
   def listings
     @posts = current_user.housing_posts
-    render :show
+    render layout: "user_show_layout"
   end
 
 end

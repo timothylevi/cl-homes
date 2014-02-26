@@ -4,34 +4,8 @@
 	
 	<%= render partial: "user_nav_tabs" %>
 	
-	<table clas="user-listings-table">
-		<thead>
-			<!-- <th>Status</th> -->
-			<th>Manage</th>
-			<th>Status</th>
-			<th>Watchers</th>
-			<th>Title</th>
-			<th>Location</th>
-			<th>Posted On</th>
-		</thead>
-		
-		<% @posts.each do |post| %>
-			<tr>
-				<td>
-					<div class="manage-buttons">
-						<ul>
-							<li><%= link_to "Edit", edit_housing_post_url(post) %></li>
-							<li><%= button_to "Delete", housing_post_url(post), method: :delete %></li>
-						</ul>
-					</div>
-				</td>
-				<td>STATUS</td>
-				<td><%= post.watches.count %></td>
-				<td><%= link_to post.title, housing_post_url(post) %></td>
-				<td><%= post.street + ", " + post.specific_location %></td>
-				<td><%= post.post_date %></td>
-			</tr>
-		<% end %>
-	</table>
+	<div clas="user-listings-table">
+		<%= render partial: "listings_table" %>
+	</div>
 	
 </div>

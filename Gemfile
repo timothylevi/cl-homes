@@ -9,6 +9,7 @@ gem 'rest-client'
 gem 'addressable'
 gem 'faker'
 gem 'pg_search'
+gem 'backbone-on-rails'
 
 
 group :development do

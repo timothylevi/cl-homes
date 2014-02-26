@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CL Homes</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render partial: "./header" %>
+
+<%= render partial: "./errors_and_notices" %>
+
+<div class="users-container">
+	<h1>Hello <%= link_to current_user.username || current_user.email, edit_user_url(current_user) %>!</h1>
+	<%= yield %>
+</div>
+
+<%= render partial: "./footer" %>
+
+</body>
+</html>

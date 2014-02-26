@@ -12,9 +12,10 @@ Craigslist::Application.routes.draw do
   
   resources :watches, only: [:destroy]
   
-  get "/usertype", to: "intros#user_type", as: "intros_user_type"
-  get "/searching/start", to: "intros#searcher_start", as: "intros_searcher_start"
-  get "/posting/start", to: "intros#poster_start", as: "intros_poster_start"
+  get "welcome/usertype", to: "intros#user_type", as: "intros_user_type"
+  get "welcome/searching/start", to: "intros#searcher_start", as: "intros_searcher_start"
+  get "welcome/posting/start", to: "intros#poster_start", as: "intros_poster_start"
+  get "welcome/search/posts", to: "housing_posts#welcome_search", as: "welcome_search"
 
   get "/posts/map", to: "housing_posts#index_map", as: "index_map"
   

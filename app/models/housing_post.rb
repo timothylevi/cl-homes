@@ -47,7 +47,7 @@ class HousingPost < ActiveRecord::Base
   
   
   def self.search_by_filters(options)
-    return HousingPost.all if options.values.all? { |v| v == ""}
+    return HousingPost.order('created_at desc').all if options.values.all? { |v| v == ""}
     
     search_string = options["search_string"]
     
@@ -67,8 +67,8 @@ class HousingPost < ActiveRecord::Base
     
     options.each do |k, v|
       next if v == "" || k == "search_string"
-      sql_conditions << ("#{k} = :#{k}")
-      sql_args[(k.to_sym)] = v
+      sql_conditions << "#{k} = :#{k}"
+      sql_args[k.to_sym] = v
     end
     
     sql_string = sql_conditions.join(" AND ")
@@ -115,5 +115,25 @@ class HousingPost < ActiveRecord::Base
   
   def post_date_time
     post_date + " at " + post_time
+  end
+  
+  
+  
+  def self.welcome_search(options)
+    return HousingPost.order('created_at desc').all unless options
+    
+    all_posts = []
+    
+    options.each do |k, v|
+      all_posts << HousingPost.where(k.to_sym => v)
+    end
+    
+    results = all_posts.shift
+    
+    all_posts.each do |group|
+      results = results & group
+    end
+
+    results.sort { |post1, post2| post2.created_at <=> post1.created_at }
   end
 end

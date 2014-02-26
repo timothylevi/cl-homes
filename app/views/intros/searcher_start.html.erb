@@ -1,5 +1,5 @@
 <div class="intros-search-form">
-	<form action="<%= housing_posts_url %>" method="get">
+	<form action="<%= welcome_search_url %>" method="get">
 	
 		<%= form_auth_token %>
 
@@ -11,17 +11,11 @@
 				<label for="intro-rent">rent</label>
 				<input type="checkbox" name="filters[category][]" value="rent" id="intro-rent">
 
-			
-
 				<label for="intro-share">share</label>
 				<input type="checkbox" name="filters[category][]" value="share" id="intro-share">
 
-			
-
 				<label for="intro-sublet">sublet</label>
 				<input type="checkbox" name="filters[category][]" value="sublet" id="intro-sublet">
-
-			
 
 				<label for="intro-buy">buy</label>
 				<input type="checkbox" name="filters[category][]" value="buy" id="intro-buy">
@@ -33,28 +27,28 @@
 		<div class="intros-search-housing-types">
 		
 			<label for="intro-apartment">apartment</label>
-			<input type="checkbox" name="filters[housing_types][]" value="apartment" id="intro-apartment">
+			<input type="checkbox" name="filters[housing_type][]" value="apartment" id="intro-apartment">
 		
 			<label for="intro-condo">condo</label>
-			<input type="checkbox" name="filters[housing_types][]" value="condo" id="intro-condo">
+			<input type="checkbox" name="filters[housing_type][]" value="condo" id="intro-condo">
 		
 			<label for="intro-cottage/cabin">cottage/cabin</label>
-			<input type="checkbox" name="filters[housing_types][]" value="cottage/cabin" id="intro-cottage/cabin">
+			<input type="checkbox" name="filters[housing_type][]" value="cottage/cabin" id="intro-cottage/cabin">
 	
 			<label for="intro-duplex">duplex</label>
-			<input type="checkbox" name="filters[housing_types][]" value="duplex" id="intro-duplex">
+			<input type="checkbox" name="filters[housing_type][]" value="duplex" id="intro-duplex">
 
 			<label for="intro-loft">loft</label>
-			<input type="checkbox" name="filters[housing_types][]" value="loft" id="intro-loft">
+			<input type="checkbox" name="filters[housing_type][]" value="loft" id="intro-loft">
 		
 			<label for="intro-flat">flat</label>
-			<input type="checkbox" name="filters[housing_types][]" value="flat" id="intro-flat">
+			<input type="checkbox" name="filters[housing_type][]" value="flat" id="intro-flat">
 		
 			<label for="intro-house">house</label>
-			<input type="checkbox" name="filters[housing_types][]" value="house" id="intro-house">
+			<input type="checkbox" name="filters[housing_type][]" value="house" id="intro-house">
 		
 			<label for="intro-townhouse">townhouse</label>
-			<input type="checkbox" name="filters[housing_types][]" value="townhouse" id="intro-townhouse">
+			<input type="checkbox" name="filters[housing_type][]" value="townhouse" id="intro-townhouse">
 	
 		</div>
 
@@ -63,31 +57,31 @@
 		<div class="intros-search-regions">
 		
 			<label for="intro-manhattan">manhattan</label>
-			<input type="checkbox" name="filters[regions][]" value="manhattan" id="intro-manhattan">
+			<input type="checkbox" name="filters[region][]" value="manhattan" id="intro-manhattan">
 		
 			<label for="intro-brooklyn">brooklyn</label>
-			<input type="checkbox" name="filters[regions][]" value="brooklyn" id="intro-brooklyn">
+			<input type="checkbox" name="filters[region][]" value="brooklyn" id="intro-brooklyn">
 		
 			<label for="intro-queens">queens</label>
-			<input type="checkbox" name="filters[regions][]" value="queens" id="intro-queens">
+			<input type="checkbox" name="filters[region][]" value="queens" id="intro-queens">
 		
 			<label for="intro-bronx">bronx</label>
-			<input type="checkbox" name="filters[regions][]" value="bronx" id="intro-bronx">
+			<input type="checkbox" name="filters[region][]" value="bronx" id="intro-bronx">
 		
 			<label for="intro-staten-island">staten island</label>
-			<input type="checkbox" name="filters[regions][]" value="staten island" id="intro-staten-island">
+			<input type="checkbox" name="filters[region][]" value="staten island" id="intro-staten-island">
 		
 			<label for="intro-long-island">long island</label>
-			<input type="checkbox" name="filters[regions][]" value="long island" id="intro-long-island">
+			<input type="checkbox" name="filters[region][]" value="long island" id="intro-long-island">
 		
 			<label for="intro-new-jersey">new jersey</label>
 			<input type="checkbox" name="filters[regions][]" value="new-jersey" id="intro-new-jersey">
 		
 			<label for="intro-westchester-co">westchester co</label>
-			<input type="checkbox" name="filters[regions][]" value="westchester co" id="intro-westchester-co">
+			<input type="checkbox" name="filters[region][]" value="westchester co" id="intro-westchester-co">
 		
 			<label for="intro-fairfield-co">fairfield co, CT</label>
-			<input type="checkbox" name="filters[regions][]" value="fairfield co, CT" id="intro-fairfield-co">
+			<input type="checkbox" name="filters[region][]" value="fairfield co, CT" id="intro-fairfield-co">
 		
 		</div>
 

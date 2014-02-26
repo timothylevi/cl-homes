@@ -14,7 +14,7 @@
 			
 			<div class="input">
 				<select name="filters[housing_type]">
-					<option>housing type?</option>
+					<option value="">housing type?</option>
 					<% HousingPost::HOUSING_TYPES.each do |type| %>
 						<%= "<option value=\"#{type}\">#{type}</option>".html_safe %> 
 					<% end %>
@@ -23,7 +23,7 @@
 			
 			<div class="input">
 				<select name="filters[category]">
-					<option>deal?</option>
+					<option value="">deal?</option>
 					<% HousingPost::CATEGORIES.each do |type| %>
 						<%= "<option value=\"#{type}\">#{type}</option>".html_safe %> 
 					<% end %>

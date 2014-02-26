@@ -1,14 +1,14 @@
 class HousingPostsController < ApplicationController
   before_filter :require_signed_in, only: [:new, :edit, :destroy, :update]
+  layout "index_layout", only: [:index]
+  layout "map_layout", only: [:index_map]
   
   def index
     @posts = fetch_posts
-    render layout: "index_layout"
   end
   
   def index_map
     @posts = geo_jsonify(fetch_posts)
-    render layout: "map_layout"
   end
   
   def new
@@ -90,5 +90,10 @@ class HousingPostsController < ApplicationController
     @post = HousingPost.find(params[:id])
     @post.destroy
     redirect_to user_url(@post.poster)
+  end
+  
+  def welcome_search
+    @posts = HousingPost.welcome_search(params[:filters])
+    render :index, layout: "index_layout"
   end
 end
