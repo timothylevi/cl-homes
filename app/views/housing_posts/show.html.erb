@@ -48,7 +48,11 @@
 	
 		<div class="thumbnail-container">
 			<% @post.pictures.each do |pic| %>
-				<div class="thumbnail">
+				<div class="hidden-pic" id="<%= pic.id %>">
+					<%= image_tag pic.photo.url(:big) %>
+				</div>
+				
+				<div class="thumbnail" id="<%= pic.id %>">
 					<%= image_tag pic.photo.url(:thumb) %>
 				</div>
 			<% end %>
@@ -89,3 +93,12 @@
 	
 	<div class="clear-fix"></div>
 </div>
+
+<script>
+$(document).ready(function(){
+	$(".thumbnail").on("mouseover", function(event){
+		var picId = "#" + $(this).attr("id") + ".hidden-pic"
+		$(".main-photo-container").html($(picId).html());
+	});
+});
+</script>

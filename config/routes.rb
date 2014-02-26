@@ -16,5 +16,8 @@ Craigslist::Application.routes.draw do
   get "/searching/start", to: "intros#searcher_start", as: "intros_searcher_start"
   get "/posting/start", to: "intros#poster_start", as: "intros_poster_start"
 
-  get "posts/map", to: "housing_posts#index_map", as: "index_map"
+  get "/posts/map", to: "housing_posts#index_map", as: "index_map"
+  
+  get "/watchlist", to: "users#watchlist", as: "user_watchlist"
+  get "/listings", to: "users#listings", as: "user_listings"
 end

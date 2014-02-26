@@ -347,6 +347,7 @@ img {
 }
 
 .photos-show {
+	position: relative;
 	float: left;
 	width: 500px;
 	height: 480px;
@@ -360,24 +361,30 @@ img {
 }
 
 .main-photo-container {
-	position: relative;
 }
 
 .thumbnail-container {
 	position: absolute;
-	top: 550px;
-	margin: 10px auto;
+	top: 370px;
+	left: 50px;
 	width: 400px;
 }
 
 .thumbnail {
+	position: relative;
 	float: left;
-	margin: 10px;
+	margin: 15px;
 }
 
 .thumbnail:hover {
 	border: 2px solid #000;
-	top: -4px;
+	top: -2px;
+	left: -2px;
+	margin-right: 11px;
+}
+
+.hidden-pic {
+	display: none;
 }
 
 /* HOUSING POST NEW/EDIT */
@@ -829,4 +836,49 @@ img {
 
 .edit-user-form a {
 	margin-left: 15px;
+}
+
+/* USER NAV TABS */
+
+.user-nav-tabs {
+	width: 1000px;
+	margin: 0 auto;
+	border-bottom: 1px solid #000;
+}
+
+.listings-tab, .watchlist-tab {
+	display: block;
+	float: left;
+	position: relative;
+	top: 1px;
+	background: #fff;
+	margin: 0 15px 0 15px;
+	border-radius: 5px 5px 0 0;
+}
+
+.listings-tab {
+	border: 1px solid #000;
+}
+
+.watchlist-tab {
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+	border-left: 1px solid #000;
+	border-bottom: 1px solid #fff;
+}
+
+.user-nav-tabs a {
+	display: block;
+	padding: 10px;
+}
+
+.show-listings .listings-tab {
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+	border-left: 1px solid #000;
+	border-bottom: 1px solid #fff;
+}
+
+.show-listings .watchlist-tab {
+	border: 1px solid #000;
 }

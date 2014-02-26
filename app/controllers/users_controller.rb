@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  before_filter :require_signed_in, only: [:show, :edit, :destroy, :watchlist, :listings]
   def new
     render layout: "intros_layout"
   end
@@ -17,8 +17,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
-    @posts = @user.housing_posts
+    @posts = current_user.housing_posts
   end
   
   def edit
@@ -40,6 +39,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     redirect_to new_user_url
+  end
+
+  def watchlist
+    @posts = current_user.watched_posts
+    render :show
+  end
+  
+  def listings
+    @posts = current_user.housing_posts
+    render :show
   end
 
 end

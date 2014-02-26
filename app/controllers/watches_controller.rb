@@ -12,7 +12,7 @@ class WatchesController < ApplicationController
     watch = Watch.find(params[:id])
     @post = watch.housing_post
     watch.destroy
-    render "housing_posts/show"
+    redirect_to housing_post_url(@post)
   end
 
 end
