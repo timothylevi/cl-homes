@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     if params[:filters]
       HousingPost.search_by_filters(params[:filters])
     else
-      HousingPost.all
+      HousingPost.order('created_at desc').all
     end
   end
   
@@ -34,6 +34,13 @@ class ApplicationController < ActionController::Base
     unless signed_in?
       flash[:notices] = ["Sorry, you have to be logged in for that!"]
       redirect_to new_session_url 
+    end
+  end
+  
+  def require_signed_in_as_broker
+    unless signed_in? && current_user.broker
+      flash[:notices] = ["Almost there! We just need a bit more info from you before you can post listings"]
+      redirect_to new_broker_url
     end
   end
   

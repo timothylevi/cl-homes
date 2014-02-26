@@ -1,0 +1,65 @@
+<div class="form-container">
+<div class="new-broker-form">
+<h1>Creat a Broker Account!</h1>
+
+<p>With our Platnum Level Broker Account, you'll be able to post and manage your listings.</p>
+
+<% action = signed_in? ? user_url(current_user) : users_url  %>
+
+<form action="<%= action %>" method="post">
+
+		<%= form_auth_token %>
+	
+		<div class="input">
+			<label for="sign-in-email">email</label>
+			<input type="text" name="user[email]" id="sign-in-email" value="<%= @user.email %>">
+		</div>
+
+
+		<div class="input">
+			<label for="sign-in-fullname">full name</label>
+			<input type="text" name="user[fullname]" id="sign-in-fullname" value="<%= @user.fullname %>">
+		</div>
+		
+		<div class="input">
+			<label for="new_broker_select_broker">lister type</label>
+			<select name="user[broker]">
+				<option value="broker">broker</option>
+				<option value="owner">owner</option>
+			</select>
+		</div>
+		
+		
+		<div class="input">
+			<label for="sign-in-company">company (brokers only)</label>
+			<input type="text" name="user[company]" id="sign-in-company" value="<%= @user.company %>">
+		</div>
+		
+
+
+		<div class="input">
+			<label for="sign-in-password">password</label>
+			<input type="text" name="user[password]" placeholder="***********">
+		</div>
+		
+		<div class="input">
+			<label for="sign-in-phone">phone</label>
+			<input type="text" name="user[phone]" value="<%= @user.phone %>">
+		</div>
+		
+		<% if @user.persisted? %>
+			<input type="hidden" name="id" value="<%= current_user.id %>">
+			<input type="hidden" name="_method" value="put">
+		<% end %>
+		
+		
+		<div class="sign-in-buttons">
+			<ul>
+				<li><input type="submit" value="Get to Postin'!"></li>
+				<li><%= link_to "cancel", housing_posts_url %></li>
+			</ul>
+		</div>
+		
+</form>
+</div>
+</div>

@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
   before_filter :require_signed_in, only: [:show, :edit, :destroy, :watchlist, :listings]
-  layout "user_show_layout", only: [:show]
   
   def new
+    @user = User.new
+    render layout: "intros_layout"
+  end
+  
+  def new_broker
+    @user = signed_in? ? current_user : User.new
     render layout: "intros_layout"
   end
   
@@ -11,29 +16,52 @@ class UsersController < ApplicationController
     
     if @user.save
       sign_in!(@user)
-      redirect_to user_url(@user)
+      if @user.broker
+        redirect_to new_housing_post_url
+      else
+        redirect_to user_watchlist_url
+      end
     else
       flash.now[:errors] = @user.errors.full_messages
-      render :new
+      if @user.broker
+        render :new_broker, layout: "intros_layout"
+      else
+        render :new, layout: "intros_layout"
+      end
     end
   end
   
   def show
     @posts = current_user.housing_posts
+    render layout: "user_show_layout"
   end
   
   def edit
     @user = User.find(params[:id])
+ 
+    if @user.broker
+      render :edit_broker
+    else
+      render :edit
+    end
   end
   
   def update
     @user = User.find(params[:id])
     
     if @user.update_attributes(params[:user])
-      redirect_to user_url(@user)
+      if @user.broker
+        redirect_to user_listings_url(@user)
+      else
+        redirect_to user_watchlist_url(@user)
+      end
     else
       flash.now[:errors] = @user.errors.full_messages
-      render :edit
+      if @user.broker
+        render :edit_broker
+      else
+        render :edit
+      end
     end
   end
   
@@ -44,7 +72,7 @@ class UsersController < ApplicationController
   end
 
   def watchlist
-    @posts = current_user.watched_posts
+    @watches = current_user.watches.includes(:housing_post)
     render layout: "user_show_layout"
   end
   

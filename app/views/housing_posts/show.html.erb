@@ -78,7 +78,9 @@
 			</tr>
 		</table>
 	
-		<p class="fees"><strong>Fees:</strong> <%= @post.fees %></p>
+		<div class="fees">
+			<p><strong>Fees:</strong> <%= @post.fees %></p>
+		</div>
 	
 		<ul>
 			<%= "<li>Cats ok</li>".html_safe if @post.cats %>

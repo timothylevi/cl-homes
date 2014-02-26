@@ -275,6 +275,7 @@ img {
 
 .users-container {
 	width: 1000px;
+	height: 500px;
 	margin: 30px auto;
 }
 
@@ -342,6 +343,7 @@ img {
 	margin: 20px 0;
 }
 
+
 .fees strong {
 	font-weight: bold;
 }
@@ -381,6 +383,7 @@ img {
 	top: -2px;
 	left: -2px;
 	margin-right: 11px;
+	margin-bottom: 11px;
 }
 
 .hidden-pic {
@@ -581,6 +584,7 @@ img {
 
 .users-container table {
 	border-collapse: collapse;
+	margin-top: 20px;
 }
 
 .users-container h1 {
@@ -617,6 +621,20 @@ img {
 
 .non-user-password-input label {
 	padding-bottom: 5px;
+}
+
+.list-thumbnail {
+	position: relative;
+	float: left;
+	margin: 5px;
+}
+
+.list-thumbnail:hover {
+	border: 2px solid #000;
+	top: -2px;
+	left: -2px;
+	margin-right: 1px;
+	margin-bottom: 1px;
 }
 
 /* SIGN IN AND NEW USER */
@@ -881,4 +899,65 @@ img {
 
 .show-listings .watchlist-tab {
 	border: 1px solid #000;
+}
+
+.user-show-title {
+	padding-left: 10px;
+	padding-bottom: 25px;
+}
+
+.user-show-title h1 {
+	font-size: 22px;
+	font-weight: bold;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+
+.user-show-title p {
+	float: left;
+	
+}
+
+.user-show-title a {
+	display: block;
+	padding: 5px;
+	color: #999;
+	border-radius: 3px;
+}
+
+.user-show-title a:hover {
+	color: #444;
+	background: #ccc;
+}
+
+/* NEW BROKER FORM */
+
+.new-broker-form {
+	width: 500px;
+	margin: 100px auto;
+}
+
+.new-broker-form h1 {
+	display: block;
+	margin: auto;
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+	padding-bottom: 15px;
+}
+
+.new-broker-form p {
+	display: block;
+	margin: auto;
+	text-align: center;
+	font-size: 18px;
+	padding-bottom: 10px;
+}
+
+.new-broker-form label {
+	padding: 15px 0 5px 0;
+}
+
+.new-broker-form input[type="text"] {
+	width: 300px;
 }

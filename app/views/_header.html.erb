@@ -4,6 +4,11 @@
 	</div>
 	
 	<ul>
+		<li>
+			<div class="new-post-link">
+				<%= link_to "Post a Listing!", new_housing_post_url %>
+			</div>
+		</li>
 		<% if signed_in? %>
 			<li>
 				<% if current_user.broker %>
