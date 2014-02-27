@@ -70,4 +70,17 @@ class HousingPostsController < ApplicationController
     @posts = HousingPost.welcome_search(params[:filters])
     render :index, layout: "index_layout"
   end
+  
+  def toggle_watch
+    @post = HousingPost.find(params[:id])
+    watch = Watch.where(user_id: current_user.id, housing_post_id: @post.id).all
+    
+    if watch.empty?
+      watch = Watch.create(user_id: current_user.id, housing_post_id: @post.id)
+      render json: {created: true}
+    else
+      watch.first.destroy
+      render json: {destroyed: true}
+    end
+  end
 end

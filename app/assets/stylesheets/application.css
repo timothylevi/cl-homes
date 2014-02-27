@@ -258,8 +258,14 @@ img {
 	font-weight: bold;
 }
 
-.watch-button {
-	float: right;
+.unwatch-post-button,
+.show-watch .watch-post-button {
+	display: block;
+}
+
+.watch-post-button,
+.show-watch .unwatch-post-button {
+	display: none;
 }
 
 .post-alt-view-buttons {

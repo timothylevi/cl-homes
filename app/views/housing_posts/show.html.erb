@@ -8,13 +8,38 @@
 	
 	<div class="post-show-buttons">
 		<!-- make this a real button -->
-		<div class="watch-button">
-			<% if current_user.watched_post_ids.include?(@post.id) %>
-				<%= button_to "remove from watch list", watch_url(current_user.watches.where(housing_post_id: @post.id).first), method: :delete %>
-			<% else %>
-				<%= button_to "add to watch list",  watches_url(@post) %>
-			<% end %>
+	  <div <%= "class='show-watch'" unless current_user.is_watching?(@post) %>>
+			<form
+		    class="watch-button-form"
+		    action="<%= toggle_post_watch_url(@post) %>"
+		    method="post"
+		    data-remote="true">
+
+		    <%= form_auth_token %>
+
+		    <input type="hidden" name="_method" value="put">
+
+		    <button class="watch-post-button">Watch Listing</button>
+		    <button class="unwatch-post-button">Stop Watching</button>
+		  </form>
 		</div>
+		
+		<script>
+		$(document).ready(function(){
+			
+			$(".watch-button-form").on("ajax:success", function(event, data) {
+				console.log(data);
+				var $div = $(this).closest("div")
+				
+				if (data.created) {
+					$div.removeClass("show-watch")
+				} else {
+					$div.addClass("show-watch")
+				}
+			});
+		});
+		
+		</script>
 		
 		<div class="post-alt-view-buttons">
 			<%= link_to "list", housing_posts_url %> |

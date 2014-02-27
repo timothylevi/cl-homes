@@ -40,6 +40,10 @@ class User < ActiveRecord::Base
     end
   end
   
+  def is_watching?(post)
+    watched_post_ids.include?(post.id)
+  end
+  
   def ensure_session_token
     unless self.session_token
       self.session_token = self.class.generate_random_token
