@@ -117,7 +117,17 @@ class HousingPost < ActiveRecord::Base
     post_date + " at " + post_time
   end
   
+  def url
+    Rails.application.routes.url_helpers.housing_post_path(self)
+  end
   
+  def medium_pics
+    pic_urls = []
+    pictures.each do |pic|
+      pic_urls << pic.photo.url(:medium)
+    end
+    pic_urls
+  end
   
   def self.welcome_search(options)
     return HousingPost.order('created_at desc').all unless options

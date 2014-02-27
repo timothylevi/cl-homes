@@ -8,7 +8,7 @@
 	
 	<div class="post-show-buttons">
 		<!-- make this a real button -->
-	  <div <%= "class='show-watch'" unless current_user.is_watching?(@post) %>>
+	  <div <%= "class=show-watch" unless current_user.is_watching?(@post) %>>
 			<form
 		    class="watch-button-form"
 		    action="<%= toggle_post_watch_url(@post) %>"
@@ -23,23 +23,6 @@
 		    <button class="unwatch-post-button">Stop Watching</button>
 		  </form>
 		</div>
-		
-		<script>
-		$(document).ready(function(){
-			
-			$(".watch-button-form").on("ajax:success", function(event, data) {
-				console.log(data);
-				var $div = $(this).closest("div")
-				
-				if (data.created) {
-					$div.removeClass("show-watch")
-				} else {
-					$div.addClass("show-watch")
-				}
-			});
-		});
-		
-		</script>
 		
 		<div class="post-alt-view-buttons">
 			<%= link_to "list", housing_posts_url %> |

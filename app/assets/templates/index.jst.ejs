@@ -1,0 +1,13 @@
+
+<ul>
+	<% posts.each(function(post){ %>
+		<li>
+			<p>
+				<span class="rent-beds"><%= "$" + post.escape('rent') + " / " + post.escape('beds') + "BR" %></span> 
+				<span class="list-region"><%= " (" + post.escape('specific_location') + ")" %></span> 
+				<a href="<%= post.escape('url') %>"><strong><%= post.escape('title') %></strong></a>
+				- <%= post.escape('housing_type') + "s for " + post.escape('category') + " in " + post.escape('region') %> - <%= post.escape('post_date_time') %>
+			</p>
+		</li>
+	<% }); %>
+</ul>

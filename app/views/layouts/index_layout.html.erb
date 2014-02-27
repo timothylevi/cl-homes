@@ -1,22 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CL Homes</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+<meta charset=utf-8 />
+<title>Craigslist</title>
+<%= stylesheet_link_tag    "application", :media => "all" %>
+<%= javascript_include_tag "application" %>
+<%= csrf_meta_tags %>
+
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
+
+<style>
+
+#map { 
+	width: 980px;
+	height: 500px;
+	margin: 30px auto;
+}
+</style>
 </head>
 <body>
+	
+	<%= render partial: "./header" %>
 
-<%= render partial: "./header" %>
+	<%= render partial: "./search_bar" %>
 
-<%= render partial: "./search_bar" %>
+	<%= render partial: "./errors_and_notices" %>
+	
+	<div class="index-container">
+	</div>
+	
+	<%= yield %>
+	
+	<%= render partial: "./footer" %>
 
-<%= render partial: "./errors_and_notices" %>
+	<script type="application/json" id="bootstrapped-posts">
+		{ "posts": <%= @posts.to_json(methods: [:url, :post_date_time, :medium_pics]).html_safe %>}
+	</script>
 
-<%= yield %>
+	<script>
+	$(document).ready(function(){
+		var postsData = JSON.parse($("#bootstrapped-posts").html())["posts"];
 
-<%= render partial: "./footer" %>
+		CL.initialize(postsData);
+		
+		$(".search-bar").on("ajax:success", "form", function(event, data){
+			console.log(data)
+	
+			CL.posts.reset(data);
+	
+			// $(".index-container").html(data);
+	
+		});
+	});
+	</script>
 
 </body>
 </html>
+

@@ -27,12 +27,11 @@
 	<%= render partial: "./search_bar" %>
 
 	<%= render partial: "./errors_and_notices" %>
-
-	<div id='map'></div>
-
-
-	<%= yield %>
-
+	
+	<div class="index-container">
+		<%= yield %>
+	</div>
+	
 	<%= render partial: "./footer" %>
 
 </body>

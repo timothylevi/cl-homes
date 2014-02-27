@@ -1,0 +1,1 @@
+CL.Models.Post = Backbone.Model.extend({})

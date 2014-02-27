@@ -3,13 +3,22 @@ class HousingPostsController < ApplicationController
   
   def index
     @posts = fetch_posts
-    render layout: "index_layout"
+    
+    if request.xhr?
+      render template: 'housing_posts/index.json.jbuilder'
+    else
+      render layout: "index_layout"
+    end
   end
   
-  def index_map
-    @posts = geo_jsonify(fetch_posts)
-    render layout: "map_layout"
-  end
+  # def index_map
+  #   @posts = geo_jsonify(fetch_posts)
+  #   if request.xhr?
+  #     render :index_map, layout: false
+  #   else
+  #     render layout: "index_layout"
+  #   end
+  # end
   
   def new
     @post = HousingPost.new
@@ -64,11 +73,6 @@ class HousingPostsController < ApplicationController
     @post = HousingPost.find(params[:id])
     @post.destroy
     redirect_to user_url(@post.poster)
-  end
-  
-  def welcome_search
-    @posts = HousingPost.welcome_search(params[:filters])
-    render :index, layout: "index_layout"
   end
   
   def toggle_watch

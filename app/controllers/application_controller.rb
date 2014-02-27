@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
   def fetch_posts
     if params[:filters]
       HousingPost.search_by_filters(params[:filters])
+    elsif params[:welcome_filters]
+      @posts = HousingPost.welcome_search(params[:welcome_filters])
     else
       HousingPost.order('created_at desc').all
     end
