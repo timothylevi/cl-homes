@@ -11,7 +11,7 @@ Craigslist::Application.routes.draw do
   end
   
   resources :watches, only: [:destroy]
-  post "seed", to: "housing_posts#seed", as: "housing_post_seed"
+
   put "housing_posts/:id/watch", to: "housing_posts#toggle_watch", as: "toggle_post_watch"
   
   get "welcome/usertype", to: "intros#user_type", as: "intros_user_type"
