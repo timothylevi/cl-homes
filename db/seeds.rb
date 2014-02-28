@@ -8,4 +8,4 @@ User.create(email: "nacho@email.com", password: "password", region: "westchester
 User.create(email: "scissorsgalore@email.com", password: "password", region: "new jersey")
 User.create(email: "spacemaster@email.com", password: "password", region: "fairfield co, CT")
 
-HousingPostMaker.make_posts
+# HousingPostMaker.make_posts
