@@ -67,9 +67,15 @@ CL.Views.PostMapView = Backbone.View.extend({
 	},
 	
 	loadMap: function (jsonPosts) {
-		var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
+		var map = L.mapbox.map('map', 'examples.map-9ijuk24y').setView([40.7056308, -73.9780035], 14)
+		
+		// new stuff. also i moved setView to up here
+		var featureLayer = L.mapbox.featureLayer();
+		
+		
 		console.log(map);
-		map.featureLayer.on('layeradd', function(e) {
+		// this used to be map.featureLayer.on
+		featureLayer.on('layeradd', function(e) {
 			if (e.layer.feature.properties.images) {
 					var marker = e.layer;
 			    var feature = marker.feature;
@@ -102,10 +108,14 @@ CL.Views.PostMapView = Backbone.View.extend({
 			    });
 				}
 		});
-		console.log("these are the posts");
-		console.log(jsonPosts);
 
-		map.featureLayer.setGeoJSON(jsonPosts);
+		// this also used to be map.featureLayer
+		featureLayer.setGeoJSON(jsonPosts);
+
+		// also new
+		map.fitBounds(featureLayer.getBounds());
+		
+		featureLayer.addTo(map);
 
 		$('#map').on('click', '.popup .cycle a', function() {
 		    var $slideshow = $('.slideshow'),
@@ -128,6 +138,6 @@ CL.Views.PostMapView = Backbone.View.extend({
 		    return false;
 		});
 
-		map.setView([40.7056308, -73.9780035], 14)	
+		// map.setView([40.7056308, -73.9780035], 14)	
 	}
 });

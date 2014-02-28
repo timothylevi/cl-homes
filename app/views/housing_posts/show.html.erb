@@ -8,7 +8,7 @@
 	
 	<div class="post-show-buttons">
 		<!-- make this a real button -->
-	  <div <%= "class=show-watch" unless current_user.is_watching?(@post) %>>
+	  <div <%= "class=show-watch" unless signed_in? && current_user.is_watching?(@post) %>>
 			<form
 		    class="watch-button-form"
 		    action="<%= toggle_post_watch_url(@post) %>"
@@ -26,7 +26,7 @@
 		
 		<div class="post-alt-view-buttons">
 			<%= link_to "list", housing_posts_url %> |
-			<%= link_to "map", index_map_url %>
+			<%= link_to "map" %>
 		</div>
 
 	</div>
