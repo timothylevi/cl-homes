@@ -15,7 +15,7 @@
 
 		<div class="input">
 			<label for="sign-in-password">password</label>
-			<input type="text" name="user[password]">
+			<input type="text" name="user[password]" id="sign-in-password">
 		</div>
 		
 		<div class="sign-in-buttons">
@@ -25,6 +25,21 @@
 				<li><%= link_to "cancel", housing_posts_url %></li>
 			</ul>
 		</div>
-		
+		<button>
+			DEMO USER
+		</button>
 </form>
 </div>
+
+
+
+
+<script>
+	$(function(){
+		$("button").on('click', function(event){
+			event.preventDefault();
+			$("#sign-in-email").val("paris@email.com");
+			$("#sign-in-password").val("password");
+		});
+	});
+</script>

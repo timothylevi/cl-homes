@@ -54,9 +54,7 @@ CL.Views.PostMapView = Backbone.View.extend({
 				if (post.escape('watched?') === 'true') {
 					jsonPost.properties["marker-symbol"] = "star"
 				}
-				
-				console.log(post);
-				
+
 				jsonData.push(jsonPost)
 
       }
@@ -100,9 +98,13 @@ CL.Views.PostMapView = Backbone.View.extend({
 
 			    marker.bindPopup(popupContent,{
 			        closeButton: false,
-			        minWidth: 300
+			        minWidth: 250
 			    });
 				}
+		});
+
+		featureLayer.on('click', function(e) {
+		   map.panTo(e.layer.getLatLng());
 		});
 
 		featureLayer.setGeoJSON(jsonPosts);

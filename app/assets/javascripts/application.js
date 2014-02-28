@@ -21,22 +21,3 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
-
-
-$(document).ready(function(){
-	
-	//toggel watch button on post show page
-	$(".watch-button-form").on("ajax:success", function(event, data) {
-		console.log(data);
-		var $div = $(this).closest("div")
-		
-		if (data.created) {
-			$div.removeClass("show-watch")
-		} else {
-			$div.addClass("show-watch")
-		}
-	});
-	
-	
-	//send search ujs style from index page
-});

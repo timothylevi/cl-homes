@@ -38,7 +38,8 @@ class HousingPost < ActiveRecord::Base
   validates :laundry, inclusion: {in: LAUNDRY}
   validates :parking, inclusion: {in: PARKING}
   validates :lister_type, inclusion: {in: LISTER_TYPES}
-  validates :rent, :sq_feet, numericality: true
+  validates :rent, numericality: true
+  validates :sq_feet, numericality: {allow_nil: true}
   validates :category, inclusion: {in: CATEGORIES}
   # before_save :set_geo_coords
   

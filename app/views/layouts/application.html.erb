@@ -7,12 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= render partial: "./modal" %>
 
-<%= render partial: "./header" %>
+<div class="header-container">
+	<%= render partial: "./header" %>	
+</div>
 
 <%= render partial: "./errors_and_notices" %>
 
 <%= yield %>
+
+
 
 <%= render partial: "./footer" %>
 

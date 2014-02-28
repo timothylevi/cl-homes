@@ -8,5 +8,7 @@ json.array! @posts do |post|
   json.medium_pics post.medium_pics
   json.latitude post.latitude
   json.longitude post.longitude
-  json.watched? post.watched?(current_user)
+  if signed_in?
+    json.watched? post.watched?(current_user)
+  end
 end

@@ -1,5 +1,6 @@
 class HousingPostsController < ApplicationController
   before_filter :require_signed_in_as_broker, only: [:new, :create, :edit, :destroy, :update]
+  before_filter :require_signed_in, only: [:toggle_watch]
   
   def index
     @posts = fetch_posts

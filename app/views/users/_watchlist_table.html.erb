@@ -33,9 +33,29 @@
 			<td>STATUS</td>
 			<td>
 				<div class="remove-button">
-					<%= button_to "Remove", toggle_post_watch_url(watch.housing_post) %></li>
+					<form
+				    class="remove-watch-form"
+				    action="<%= toggle_post_watch_url(post) %>"
+				    method="post"
+				    data-remote="true">
+
+				    <%= form_auth_token %>
+
+				    <input type="hidden" name="_method" value="put">
+				    <button class="unwatch-post-button">Stop Watching</button>
+				  </form>
 				</div>
 			</td>
 		</tr>
 	<% end %>
 </table>
+
+<script>
+$(function(){
+	$(".remove-button").on("ajax:success", "form", function(event, data){
+		console.log(data);
+		var $tr = $(this).closest("tr");
+		$tr.remove();
+	});
+})
+</script>

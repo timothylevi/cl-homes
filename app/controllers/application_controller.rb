@@ -34,8 +34,12 @@ class ApplicationController < ActionController::Base
   
   def require_signed_in
     unless signed_in?
-      flash[:notices] = ["Sorry, you have to be logged in for that!"]
-      redirect_to new_session_url 
+      if request.xhr?
+        render json: {not_signed_in: true}
+      else
+        flash[:notices] = ["Sorry, you have to be logged in for that!"]
+        redirect_to new_session_url
+      end
     end
   end
   
@@ -52,44 +56,5 @@ class ApplicationController < ActionController::Base
     else
       redirect_to user_watchlist_url
     end
-  end
-  
-  def geo_jsonify(posts)
-    json_objs = []
-    
-    posts.each do |post|
-      description = "$#{post.rent} / #{post.beds} BR - #{post.specific_location}"
-      
-      if post.pictures.count > 0
-        images = []
-        
-        post.pictures.each { |pic| images << pic.photo.url(:medium) }
-        
-        json_objs << {
-          type: "Feature",
-          geometry: { type: "Point", coordinates: [post.longitude.to_f, post.latitude.to_f] },
-          properties: {
-            title: "<a href=\"#{Rails.application.routes.url_helpers.housing_post_path(post)}\">#{post.title}</a>".html_safe,
-            description: description,
-            "marker-color" => "#fc4353",
-            "marker-size" => "medium",
-            images: images
-          }
-        }
-      else
-        json_objs << {
-          type: "Feature",
-          geometry: { type: "Point", coordinates: [post.longitude.to_f, post.latitude.to_f] },
-          properties: {
-            title: "<a href=\"#{Rails.application.routes.url_helpers.housing_post_path(post)}\">#{post.title}</a>".html_safe,
-            description: description,
-            "marker-color" => "#fc4353",
-            "marker-size" => "medium"
-          }
-        }
-      end
-    end
-    
-    json_objs
   end
 end

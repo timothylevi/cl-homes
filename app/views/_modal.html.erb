@@ -1,0 +1,33 @@
+<div class="modal">
+	<div class="modal-sign-in-form">
+		<div class="modal-errors"></div>
+	<h1>Sign In</h1>
+
+	<form action="<%= session_url %>" method="post" data-remote="true">
+
+			<%= form_auth_token %>
+	
+			<div class="input">
+				<label for="sign-in-email">email</label>
+				<input type="text" name="user[email]" id="sign-in-email">
+			</div>
+
+
+			<div class="input">
+				<label for="sign-in-password">password</label>
+				<input type="text" name="user[password]" id="sign-in-password">
+			</div>
+		
+			<div class="sign-in-buttons">
+				<ul>
+					<li><input type="submit" value="Sign In"></li>
+					<li><%= link_to "Create account", new_user_url %></li>
+					<li><%= link_to "cancel", housing_posts_url %></li>
+				</ul>
+			</div>
+			<button>
+				DEMO USER
+			</button>
+	</form>
+	</div>
+</div>

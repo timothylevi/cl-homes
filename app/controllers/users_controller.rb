@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     
     if @user.update_attributes(params[:user])
-      got_to_user_page(@user)
+      go_to_user_page(@user)
     else
       flash.now[:errors] = @user.errors.full_messages
       if @user.broker
