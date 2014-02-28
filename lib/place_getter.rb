@@ -10,10 +10,10 @@ class PlaceGetter
         path: "maps/api/place/nearbysearch/json",
         query_values: {
           location: "40.7320767,-73.9865952",
-          radius: "50000",
+          radius: "10000",
           key: ENV["GEOCODE_KEY"],
           sensor: "false",
-          keyword: "ice cream"
+          keyword: "gymnastics"
         }
       ).to_s
 
