@@ -8,4 +8,4 @@ User.create(email: "nacho@email.com", password: "password")
 User.create(email: "scissorsgalore@email.com", password: "password")
 User.create(email: "spacemaster@email.com", password: "password")
 
-# HousingPostMaker.make_posts
+HousingPostMaker.make_posts
