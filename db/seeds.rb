@@ -1,11 +1,5 @@
-User.create(email: "bubblegumlvr@email.com", password: "password")
-User.create(email: "misterchipz@email.com", password: "password")
-User.create(email: "coolguy@email.com", password: "password")
-User.create(email: "sportzfreak@email.com", password: "password")
-User.create(email: "china3@email.com", password: "password")
-User.create(email: "pineappleupsidedown@email.com", password: "password")
-User.create(email: "nacho@email.com", password: "password")
-User.create(email: "scissorsgalore@email.com", password: "password")
-User.create(email: "spacemaster@email.com", password: "password")
+User.create(email: "bubblegumlovr@email.com", password: "password", fullname: "Rachel Hubert", broker: "broker",
+company: 'The Rachel Broker Company', phone: "555 677 8888" )
 
-HousingPostMaker.make_posts
+
+# HousingPostMaker.make_posts

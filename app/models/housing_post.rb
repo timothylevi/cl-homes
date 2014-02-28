@@ -40,7 +40,7 @@ class HousingPost < ActiveRecord::Base
   validates :rent, numericality: true
   validates :sq_feet, numericality: {allow_nil: true}
   validates :category, inclusion: {in: CATEGORIES}
-  before_save :set_geo_coords
+  # after_save :set_geo_coords
   
   include PgSearch
   pg_search_scope :search_by_search_string, against: [:title, :body, :specific_location]
