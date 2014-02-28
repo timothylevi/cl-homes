@@ -1,26 +1,38 @@
-<div class="intro-select-user-type">
+<div class="home-page-container">
 	
-	<p>I'm here to</p>
-	
-	<div class="user-type-searcher">
-		<%= link_to "find housing", intros_searcher_start_url %>
-	</div>
-	
-	<div class="user-type-poster">
-		<%= link_to "post housing", new_housing_post_url %>
-	</div>
+    <div class="slash"></div>
+		
+		<div class="home-page-title">
+			<h1>sheltered</h1>
+			<h1>escarpment</h1>
+			<h1>3100</h1>
+		</div>
 	
 	<div class="clear-fix"></div>
 	
-	<% if !signed_in? %>
-		<div class="sign-in">
-			<%= link_to "sign in", new_session_url %>
+	<div class="intro-select-user-type">
+	
+		<div class="user-type-searcher">
+			<%= link_to "find housing", intros_searcher_start_url %>
 		</div>
-	<% end %>
+	
+		<div class="user-type-poster">
+			<%= link_to "post housing", new_housing_post_url %>
+		</div>
+	
+		<div class="clear-fix"></div>
+	
+		<% if !signed_in? %>
+			<div class="sign-in">
+				<%= link_to "sign in", new_session_url %>
+			</div>
+		<% end %>
+	
+		<div class="skip-button">
+			<%= link_to "skip", housing_posts_url %>
+		</div>
+	</div>
+	<div class="clear-fix"></div>
 </div>
 
 
-
-<div class="skip-button">
-	<%= link_to "skip", housing_posts_url %>
-</div>
