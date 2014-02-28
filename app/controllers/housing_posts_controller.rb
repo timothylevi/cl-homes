@@ -88,4 +88,9 @@ class HousingPostsController < ApplicationController
       render json: {destroyed: true}
     end
   end
+  
+  def seed
+    HousingPostMaker.make_posts
+    render json: {success: true}
+  end
 end

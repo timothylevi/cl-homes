@@ -33,6 +33,19 @@
 		</div>
 	</div>
 	<div class="clear-fix"></div>
+	
+	<div class="seedme">
+		<form action="<%= housing_posts_seed_url %>" method="post" data-remote="true">
+			
+		
+			<button>seed</button>
+		</form>
+	</div>
 </div>
 
-
+<script>
+$('.seedme').on("click", "form" function(event, data){
+	event.preventDefault();
+	console.log(data);
+});
+</script>
