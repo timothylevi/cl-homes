@@ -1,9 +1,13 @@
 <div class="errors">
 	<% if flash[:errors] %>
-		<p><%= flash[:errors].inspect %></p>
+		<% flash[:errors].each do |error|  %>
+			<p><%= error %></p>
+		<% end %>
 	<% end %>
 	
 	<% if flash[:notices] %>
-		<p><%= flash[:notices].inspect %></p>
+		<% flash[:notices].each do |notice|  %>
+			<p><%= notice %></p>
+		<% end %>
 	<% end %>
 </div>

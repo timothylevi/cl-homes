@@ -22,8 +22,11 @@
 			<ul>
 				<li><input type="submit" value="Sign In"></li>
 				<li><%= link_to "Create account", new_user_url %></li>
-				<li><%= link_to "cancel", housing_posts_url %></li>
+				<div class="clear-fix"></div>
 			</ul>
+			<div class="cancel-button">
+				<%= link_to "cancel", housing_posts_url %>
+			</div>
 		</div>
 		<button>
 			DEMO USER

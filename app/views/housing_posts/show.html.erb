@@ -24,9 +24,8 @@
 		  </form>
 		</div>
 		
-		<div class="post-alt-view-buttons">
-			<%= link_to "list", housing_posts_url %> |
-			<%= link_to "map" %>
+		<div class="post-alt-view-buttons clear-fix">
+			<%= link_to "list", housing_posts_url %>
 		</div>
 
 	</div>
@@ -116,11 +115,11 @@ $(document).ready(function(){
 	
 	
 	var showModal = function(){
-		$(".modal").addClass("show-modal");
+		$(".modal-partial-container").addClass("has-active-modal");
 	}
 	
 	var hideModal = function(){
-		$(".modal").removeClass("show-modal");
+		$(".modal-partial-container").removeClass("has-active-modal");
 	}
 	
 	$(".modal").on("ajax:success", "form", function(event, data){
@@ -147,6 +146,16 @@ $(document).ready(function(){
 			showModal();
 		}
 	});
+	
+  $(".modal").on("click", function(event){
+
+    $target = $(event.target);
+
+    if($target.is(".modal-close-button")){
+      event.preventDefault();
+      hideModal();
+    }
+  });
 	
 });
 </script>

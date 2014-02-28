@@ -590,6 +590,10 @@ img {
 	display: block;
 }
 
+.post-show-buttons button {
+	float: right;
+}
+
 
 /* USER LISTINGS TABLE */
 
@@ -678,7 +682,7 @@ img {
 /* SIGN IN AND NEW USER */
 
 .sign-in-form {
-	width: 210px;
+	width: 250px;
 	height: 300px;
 	margin: 200px auto;
 }
@@ -707,6 +711,7 @@ img {
 }
 .sign-in-buttons >ul > li {
 	float: left;
+	margin-right: 10px;
 }
 
 .sign-in-buttons input[type="submit"] {
@@ -718,7 +723,30 @@ img {
 
 .sign-in-buttons a {
 	display: block;
-	padding: 15px 0 0 10px;
+	padding: 10px;
+}
+
+.sign-in-buttons a:hover {
+	color: #08f;
+	background: #ccc;
+	border-radius: 3px;
+}
+
+.cancel-button {
+	text-align: center;
+	margin-top: 20px auto;
+}
+
+.cancel-button a {
+	margin-top: 10px;
+	display: inline-block;
+	padding: 10px 15px;
+}
+
+.cancel-button a:hover {
+	color: #f00;
+	background: #ccc;
+	border-radius: 3px;
 }
 
 /* POST INDEX LIST */
@@ -1000,14 +1028,62 @@ img {
 	width: 300px;
 }
 
-.modal {
-	display: none;
+/* Modal Sign In */
+.has-active-modal .modal {
+  display: block;
 }
 
-.show-modal {
-	display: block;
-	position:absolute;
-	width: 100%;
-	height: 100%;
-	background: rgba(0,0,0,0.5);
+.modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modal:before {
+  content: "";
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.modal-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 400px;
+  min-height: 200px;
+
+  padding: 30px;
+
+  margin-top: -200px;
+  margin-left: -230px;
+
+  background: #fff;
+}
+
+.modal-close-button {
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 10px;
+  font-size: 40px;
+  line-height: 1.0;
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+}
+
+.modal-close-button:hover {
+  color: #000;
+}
+
+.errors {
+	text-align: center;
+	margin-top: 50px;
 }

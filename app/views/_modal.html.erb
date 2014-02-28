@@ -1,33 +1,50 @@
-<div class="modal">
-	<div class="modal-sign-in-form">
-		<div class="modal-errors"></div>
-	<h1>Sign In</h1>
+<section class="modal">
+  <article class="modal-box">
+    <span class="modal-close-button">&times;</span>
 
-	<form action="<%= session_url %>" method="post" data-remote="true">
+    <!-- This is where you should insert your modal content -->
+    <div id="modal-container">
+			<div class="modal-errors"></div>
+		<h1>Sign In</h1>
 
-			<%= form_auth_token %>
+		<form action="<%= session_url %>" method="post" data-remote="true">
+
+				<%= form_auth_token %>
 	
-			<div class="input">
-				<label for="sign-in-email">email</label>
-				<input type="text" name="user[email]" id="sign-in-email">
-			</div>
+				<div class="input">
+					<label for="modal-email">email</label>
+					<input type="text" name="user[email]" id="modal-email">
+				</div>
 
 
-			<div class="input">
-				<label for="sign-in-password">password</label>
-				<input type="text" name="user[password]" id="sign-in-password">
-			</div>
+				<div class="input">
+					<label for="modal-password">password</label>
+					<input type="text" name="user[password]" id="modal-password">
+				</div>
 		
-			<div class="sign-in-buttons">
-				<ul>
-					<li><input type="submit" value="Sign In"></li>
-					<li><%= link_to "Create account", new_user_url %></li>
-					<li><%= link_to "cancel", housing_posts_url %></li>
-				</ul>
-			</div>
-			<button>
-				DEMO USER
-			</button>
-	</form>
-	</div>
-</div>
+				<div class="modal-sign-in-buttons">
+					<ul>
+						<li><input type="submit" value="Sign In"></li>
+						<li><%= link_to "Create account", new_user_url %></li>
+						<div class="clear-fix"></div>
+					</ul>
+				</div>
+				<button class="demo">
+					DEMO USER
+				</button>
+		</form>
+
+
+    </div>
+  </article>
+</section>
+
+<script>
+	$(function(){
+		$(".demo").on('click', function(event){
+			event.preventDefault();
+			$("#modal-email").val("paris@email.com");
+			$("#modal-password").val("password");
+		});
+	});
+</script>
