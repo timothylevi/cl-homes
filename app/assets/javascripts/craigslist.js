@@ -4,9 +4,15 @@ window.CL = {
   Views: {},
   Routers: {},
   initialize: function(posts) {
-		new CL.Routers.PostsRouter(posts, $(".index-container"));
-		Backbone.history.start();
-		Backbone.history.navigate("", { trigger: true })
+		CL.posts = new CL.Collections.Posts();
+		CL.posts.fetch({
+			success: function(collection) {
+				new CL.Routers.PostsRouter(collection, $(".index-container"));
+				Backbone.history.start();
+				Backbone.history.navigate("", { trigger: true })
+			}
+		});
+		
   }
 };
 

@@ -1,10 +1,8 @@
 CL.Routers.PostsRouter = Backbone.Router.extend({
-  initialize: function (postsData, $rootEl) {
+  initialize: function (posts, $rootEl) {
     this.$rootEl = $rootEl;
-		var posts = new CL.Collections.Posts(postsData);
-		CL.posts = posts;
-		this.collection = posts;
-		this.$rootEl.html(new CL.Views.PostIndexView({posts: this.collection}).render().$el);
+		this.collection = CL.posts;
+		this.$rootEl.html(new CL.Views.PostIndexView({posts: CL.posts}).render().$el);
   },
 
   routes: {

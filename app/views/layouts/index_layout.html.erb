@@ -36,14 +36,14 @@
 	<%= render partial: "./footer" %>
 
 	<script type="application/json" id="bootstrapped-posts">
-		{ "posts": <%= @posts.to_json(methods: [:url, :post_date_time, :medium_pics]).html_safe %>}
+		{ "posts": <%= @posts.to_json(methods: [:url, :post_date_time, :medium_pics, :watched]).html_safe %>}
 	</script>
 
 	<script>
 	$(document).ready(function(){
 		var postsData = JSON.parse($("#bootstrapped-posts").html())["posts"];
 
-		CL.initialize(postsData);
+		CL.initialize();
 		
 		$(".search-bar").on("ajax:success", "form", function(event, data){
 			console.log(data)

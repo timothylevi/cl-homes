@@ -129,6 +129,10 @@ class HousingPost < ActiveRecord::Base
     pic_urls
   end
   
+  def watched?(user)
+    User.find(user.id).is_watching?(self) ? 'true' : 'false'
+  end
+  
   def self.welcome_search(options)
     return HousingPost.order('created_at desc').all unless options
     

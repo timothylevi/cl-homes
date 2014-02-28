@@ -33,7 +33,7 @@
 			<td>STATUS</td>
 			<td>
 				<div class="remove-button">
-					<%= button_to "Remove", watches_url(watch), method: :delete %></li>
+					<%= button_to "Remove", toggle_post_watch_url(watch.housing_post) %></li>
 				</div>
 			</td>
 		</tr>

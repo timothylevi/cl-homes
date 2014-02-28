@@ -35,21 +35,8 @@ CL.Views.PostMapView = Backbone.View.extend({
       var description = "$" + post.escape('rent') + " / " + post.escape('beds') + " BR - " + post.escape('specific_location');
 
 			if(post.escape('latitude') && post.escape('longitude')) {
-				if (post.escape('medium_pics')) {
-
-	        jsonData.push({
-	          type: "Feature",
-	          geometry: { type: "Point", coordinates: [parseFloat(post.escape('longitude')), parseFloat(post.escape('latitude'))] },
-	          properties: {
-	            title: "<a href=" + post.escape('url') + ">" + post.escape('title') + "</a>",
-	            description: description,
-	            "marker-color": "#fc4353",
-	            "marker-size": "medium",
-	            images: post.escape('medium_pics')
-	          }
-	        })
-	      } else {
-	        jsonData.push({
+				
+				jsonPost = {
 	          type: "Feature",
 	          geometry: { type: "Point", coordinates: [parseFloat(post.escape('longitude')), parseFloat(post.escape('latitude'))] },
 	          properties: {
@@ -58,8 +45,20 @@ CL.Views.PostMapView = Backbone.View.extend({
 	            "marker-color": "#fc4353",
 	            "marker-size" : "medium"
 	          }
-	        })
+	        }
+					
+				if (post.escape('medium_pics')) {
+					jsonPost.properties.images = post.escape('medium_pics').split(",")
 				}
+				
+				if (post.escape('watched?') === 'true') {
+					jsonPost.properties["marker-symbol"] = "star"
+				}
+				
+				console.log(post);
+				
+				jsonData.push(jsonPost)
+
       }
 		});
 		
@@ -69,12 +68,8 @@ CL.Views.PostMapView = Backbone.View.extend({
 	loadMap: function (jsonPosts) {
 		var map = L.mapbox.map('map', 'examples.map-9ijuk24y').setView([40.7056308, -73.9780035], 14)
 		
-		// new stuff. also i moved setView to up here
 		var featureLayer = L.mapbox.featureLayer();
 		
-		
-		console.log(map);
-		// this used to be map.featureLayer.on
 		featureLayer.on('layeradd', function(e) {
 			if (e.layer.feature.properties.images) {
 					var marker = e.layer;
@@ -95,6 +90,7 @@ CL.Views.PostMapView = Backbone.View.extend({
 			                            '<div class="slideshow">' +
 			                                slideshowContent +
 			                            '</div>' +
+																	'<div class="caption">' + feature.properties.description + '</div>' +
 			                            '<div class="cycle">' +
 			                                '<a href="#" class="prev">&laquo; Previous</a>' +
 			                                '<a href="#" class="next">Next &raquo;</a>' +
@@ -109,10 +105,8 @@ CL.Views.PostMapView = Backbone.View.extend({
 				}
 		});
 
-		// this also used to be map.featureLayer
 		featureLayer.setGeoJSON(jsonPosts);
 
-		// also new
 		map.fitBounds(featureLayer.getBounds());
 		
 		featureLayer.addTo(map);
@@ -137,7 +131,5 @@ CL.Views.PostMapView = Backbone.View.extend({
 		    $newSlide.addClass('active').show();
 		    return false;
 		});
-
-		// map.setView([40.7056308, -73.9780035], 14)	
 	}
 });
