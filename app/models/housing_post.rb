@@ -2,8 +2,7 @@ class HousingPost < ActiveRecord::Base
   attr_accessible :title, :body, :specific_location, :zip_code, :region, :contact_email, :lister_type,
                   :contact_name, :contact_phone, :bathrooms, :beds, :sq_feet, :smoking, :category,
                   :housing_type, :laundry, :parking, :furnished, :lister_type, :cats, :dogs,
-                  :fees, :rent, :wheelchair, :street, :city, :state, :ad_poster_name, :user_id,
-                  :latitude, :longitude
+                  :fees, :rent, :wheelchair, :street, :city, :state, :ad_poster_name, :user_id
                   
   belongs_to(
     :poster,
@@ -29,7 +28,7 @@ class HousingPost < ActiveRecord::Base
   # removed validations for address parameters to seed db. make sure to put back
   # also, take lat and lng out of attr accessable
                   
-  validates :title, :body, :poster, :region, :specific_location,
+  validates :title, :body, :poster, :region, :specific_location, :street, :city, :state,
             :housing_type, :contact_phone, :contact_email, :contact_name, :beds, :fees,
             :rent, :ad_poster_name, :lister_type, presence: true
             
@@ -41,7 +40,7 @@ class HousingPost < ActiveRecord::Base
   validates :rent, numericality: true
   validates :sq_feet, numericality: {allow_nil: true}
   validates :category, inclusion: {in: CATEGORIES}
-  # before_save :set_geo_coords
+  before_save :set_geo_coords
   
   include PgSearch
   pg_search_scope :search_by_search_string, against: [:title, :body, :specific_location]

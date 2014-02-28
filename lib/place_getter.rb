@@ -13,20 +13,20 @@ class PlaceGetter
           radius: "5",
           key: ENV["GEOCODE_KEY"],
           sensor: "false",
-          keyword: "school"
+          keyword: "ice cream"
         }
       ).to_s
 
      results = JSON.parse(RestClient.get(query_string))["results"]
      
-     locations = {coords: []}
-     
-     results.each do |result|
-       coord = {latitude: nil, longitude: nil}
-       coord[:latitude] = result["geometry"]["location"]["lat"]
-       coord[:longitude] = result["geometry"]["location"]["lng"]
-       locations[:coords] << coord
-     end
+     # locations = {coords: []}
+     # 
+     # results.each do |result|
+     #   coord = {latitude: nil, longitude: nil}
+     #   coord[:latitude] = result["geometry"]["location"]["lat"]
+     #   coord[:longitude] = result["geometry"]["location"]["lng"]
+     #   locations[:coords] << coord
+     # end
      
      locations
   end
