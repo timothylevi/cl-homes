@@ -128,6 +128,26 @@ input[type="submit"] {
 	background-size: 500px 500px;
 }
 
+.github-link {
+	position: absolute;
+	text-align: center;
+	margin: 70px;
+}
+
+.github-link a {
+	display: block;
+	width: 120px;
+	padding: 15px;
+	font-weight: bold;
+	background: #999;
+	color: #fff;
+	border-radius: 4px;
+}
+
+.github-link a:hover {
+	color: #eee;
+	background: #000;
+}
 
 .home-page-title {
 	position: fixed;
