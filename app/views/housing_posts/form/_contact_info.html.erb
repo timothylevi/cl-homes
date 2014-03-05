@@ -1,0 +1,22 @@
+<div class="post-form-section contact-info-form">
+
+	<div class="input input-email">
+		<label for="email">email</label>
+		<input type="text" name="post[contact_email]" 
+					 value="<%= @post.contact_email || current_user.email %>" id="email">
+	</div>
+
+	<div class="input input-phone">
+		<label for="phone">phone number</label>
+		<input type="text" name="post[contact_phone]" 
+					 value="<%= @post.contact_phone || current_user.phone %>" id="phone">
+	</div>
+
+	<div class="input input-contact-name">
+		<label for="contact-name">contact name</label>
+		<input type="text" name="post[contact_name]" 
+					 value="<%= @post.contact_name || current_user.fullname %>" id="cantact-name">
+	</div>
+	
+	<div class="clear-fix"></div>
+</div>

@@ -12,15 +12,6 @@ class HousingPostsController < ApplicationController
     end
   end
   
-  # def index_map
-  #   @posts = geo_jsonify(fetch_posts)
-  #   if request.xhr?
-  #     render :index_map, layout: false
-  #   else
-  #     render layout: "index_layout"
-  #   end
-  # end
-  
   def new
     @post = HousingPost.new
     @post.poster = current_user
@@ -29,12 +20,7 @@ class HousingPostsController < ApplicationController
   def create
     @post = current_user.housing_posts.build(params[:post])
     @post.apply_options(params[:other_options]) if params[:other_options]
-    
-    if params[:pictures]
-      params[:pictures].each do |pic_data|
-        @post.pictures.build(photo: pic_data)
-      end
-    end
+    @post.apply_pictures(params[:pictures]) if params[:pictures]
 
     if @post.save
       redirect_to housing_post_url(@post)
@@ -55,12 +41,8 @@ class HousingPostsController < ApplicationController
   def update
     @post = HousingPost.find(params[:id])
     @post.apply_options(params[:other_options]) if params[:other_options]
-    
-    if params[:pictures]
-      params[:pictures].each do |pic_data|
-        @post.pictures.build(photo: pic_data)
-      end
-    end
+    @post.apply_pictures(params[:pictures]) if params[:pictures]
+
     
     if @post.update_attributes(params[:post])
       redirect_to housing_post_url(@post)
@@ -87,10 +69,5 @@ class HousingPostsController < ApplicationController
       watch.first.destroy
       render json: {destroyed: true}
     end
-  end
-  
-  def seed
-    HousingPostMaker.make_posts
-    render json: {success: true}
   end
 end

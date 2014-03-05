@@ -1,0 +1,96 @@
+<div class="form-body">
+	<label for="post_body">description</label>
+	<textarea name="post[body]" id="post_body"><%= @post.body %></textarea>
+	<div class="clear-fix"></div>
+</div>
+
+<div class="space-details">
+	
+	<div class="input">
+		<label for="sqft-input">sqft</label>
+		<input type="text" name="post[sq_feet]" value="<%= @post.sq_feet unless @post.sq_feet == 0 %>" id="sqft-input">
+	</div>
+
+	<div class="input">
+		<label for="rent-input">rent</label>
+		<input type="text" name="post[rent]" value="<%= @post.rent %>" id="rent-input">
+	</div>
+	
+	<div class="input">
+		<label for="select-bedrooms">bedrooms</label>
+		<select name="post[beds]" id="select-bedroomms">
+			<% 9.times do |i| %>
+				<% if @post.beds == i %>
+					<%= ("<option value=\"#{i.to_s}\" selected>" + i.to_s + "</option>").html_safe %>
+				<% else %>
+					<%= ("<option value=\"#{i.to_s}\">" + i.to_s + "</option>").html_safe %>
+				<% end %>
+			<% end %>
+		</select>
+	</div>
+	
+	<div class="input">
+		<label for="select-bathrooms">bathrooms</label>
+		<select name="post[bathrooms]" id="select-bathrooms">
+			<option value="shared">shared</option>
+			<option value="split">split</option>
+			
+			<% (1..8).each do |i| %>
+			
+				<% if @post.bathrooms == i.to_s  %>
+					<%= ("<option value=\"#{i.to_s}\" selected>" + i.to_s + "</option>").html_safe %>
+					<%= ("<option value=\"#{i.to_s}.5\">" + "#{i.to_s}.5" + "</option>").html_safe %>
+				<% elsif @post.bathrooms == i.to_s + ".5" %>
+					<%= ("<option value=\"#{i.to_s}\">" + i.to_s + "</option>").html_safe %>
+					<%= ("<option value=\"#{i.to_s}.5\" selected>" + "#{i.to_s}.5" + "</option>").html_safe %>
+				<% else %>
+					<%= ("<option value=\"#{i.to_s}\">" + i.to_s + "</option>").html_safe %>
+					<%= ("<option value=\"#{i.to_s}.5\">" + "#{i.to_s}.5" + "</option>").html_safe %>
+				<% end %>
+			<% end %>
+			<option value="9+">9&#43;</option>
+		</select>
+	</div>
+	
+	
+	<div class="input">
+		<label for="select-housing-type">housing type</label>
+		<select name="post[housing_type]" id="select-housing-type">
+			<% HousingPost::HOUSING_TYPES.each do |type| %>
+				<% if @post.housing_type == type %>
+					<%= ("<option value=\"#{type}\" selected>" + type + "</option>").html_safe %>
+				<% else %>
+					<%= ("<option value=\"#{type}\">" + type + "</option>").html_safe %>
+				<% end %>
+			<% end %>
+		</select>
+	</div>
+
+	<div class="input">
+		<label for="select-laundry">laundry</label>
+		<select name="post[laundry]" id="select-laundry">
+			<% HousingPost::LAUNDRY.each do |type| %>
+				<% if @post.laundry == type %>
+					<%= ("<option value=\"#{type}\" selected>" + type + "</option>").html_safe %>
+				<% else %>
+					<%= ("<option value=\"#{type}\">" + type + "</option>").html_safe %>
+				<% end %>
+			<% end %>
+		</select>
+	</div>
+
+	<div class="input">
+		<label for="select-parking">parking</label>
+			<select name="post[parking]" id="select-parking">
+				<% HousingPost::PARKING.each do |type| %>
+					<% if @post.parking == type %>
+						<%= ("<option value=\"#{type}\" selected>" + type + "</option>").html_safe %>
+					<% else %>
+						<%= ("<option value=\"#{type}\">" + type + "</option>").html_safe %>
+					<% end %>
+				<% end %>
+			</select>
+		</div>
+</div>
+
+<div class="clear-fix"></div>

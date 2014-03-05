@@ -84,6 +84,13 @@ class HousingPost < ActiveRecord::Base
   
   def set_geo_coords
     Geocoder.set_coords(self)
+    self.latitude && self.longitude ? true : false
+  end
+  
+  def apply_pictures(pictures)
+    pictures.each do |pic_data|
+      self.pictures.build(photo: pic_data)
+    end
   end
   
   

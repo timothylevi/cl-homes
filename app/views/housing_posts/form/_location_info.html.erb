@@ -1,0 +1,31 @@
+<div class="location">
+	<div class="input">
+			<label for="specific-location-input">specific location</label>
+			<input type="text" name="post[specific_location]" value="<%= @post.specific_location %>" id="specific-location-input">
+		</div>
+
+		<div class="input">
+			<label for="zip-code-input">zip code</label>
+			<input type="text" name="post[zip_code]" value="<%= @post.zip_code %>" id="zip-code-input">
+		</div>
+	
+	
+	
+	<div class="select-region">
+		<label for="select-region">region</label>
+		<select name="post[region]" id="select-region">
+			<% HousingPost::REGIONS.each do |region|  %>
+				<% if @post.region == region %>
+					<%= ("<option value=\"#{region}\" selected>" + region +  "</option>").html_safe %>
+				<% else %>
+					<%= ("<option value=\"#{region}\">" + region +  "</option>").html_safe %>
+				<% end %>
+		
+			<% end %>
+	
+		</select>
+
+	</div>
+	
+	<div class="clear-fix"></div>
+</div>

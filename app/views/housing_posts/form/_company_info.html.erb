@@ -1,0 +1,32 @@
+<div class="post-form-section housing-poster-info">	<label>
+	<div class="input">
+		<label for="fees-input">
+				Please disclose type and amount of ANY and ALL fees (credit check, registration, application, broker):
+		</label>
+		<input type="text" name="post[fees]" value="<%= @post.fees %>" id="fees-input">
+	</div>
+
+	<div class="input">
+		<label for="ad-poster-input">
+			Full name of the person and/or company posting this ad (min 15 chars): 
+		</label>
+		<input type="text" name="post[ad_poster_name]" 
+					 value="<%= @post.ad_poster_name || (current_user.fullname + (current_user.company ? " - " + current_user.company : ""))%>" 
+					 id="ad-poster-input">
+	</div>
+	
+	<br>
+	
+	<div class="select-lister-type">
+		<label for="lister-type">lister type</label>
+			<select name="post[lister_type]" id="lister-type">
+				<% HousingPost::LISTER_TYPES.each do |type| %>
+				
+				<%= ("<option value=\"#{type}\">" + type + "</option>").html_safe %>
+				
+				<% end %>
+			</select>
+	</div>
+	
+	<div class="clear-fix"></div>
+</div>

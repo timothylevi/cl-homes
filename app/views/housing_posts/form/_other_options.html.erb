@@ -1,0 +1,35 @@
+<div class="other-options">
+	<div class="input">
+		<label for="cats-input">cats ok</label>
+		<input type="checkbox" id="cats-input" name="other_options[]" value="cats" <%= "checked" if @post.cats %>>
+	</div>
+
+	<div class="input">
+		<label for="dogs-input">dogs ok</label>
+		<input type="checkbox" id="dogs-input" name="other_options[]" value="dogs" <%= "checked" if @post.dogs %>>
+	</div>
+  
+	<div class="input">
+		<label for="wheelchair-input">wheelchair accessable</label>
+		<input type="checkbox" id="wheelchair-input" name="other_options[]" value="wheelchair" <%= "checked" if @post.wheelchair %>>
+	</div>
+	
+	<div class="input">
+		<label for="furnished-input">furnished</label>
+		<input type="checkbox" id="furished-input" name="other_options[]" value="furnished" <%= "checked" if @post.furnished %>>
+	</div>
+	
+	<div class="input">
+		<label for="smoking-input">smoking</label>
+		<input type="checkbox" id="smoking-input" name="other_options[]" value="smoking" <%= "checked" if @post.smoking %>>
+	</div>
+	
+	<div class="clear-fix"></div>
+</div>
+			
+<div class="clear-fix"></div>
+	
+<div class="image-upload-section">
+	<label for="image-input">images (limit 5)</label>
+	<input type="file" id="image-input" name="pictures[]" multiple>
+</div>		

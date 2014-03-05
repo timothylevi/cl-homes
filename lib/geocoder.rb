@@ -17,11 +17,8 @@ class Geocoder
     # make this better for responses that return multiple results
     if response["results"].length > 0 
       coords_hash = response["results"].first["geometry"]["location"]
-      obj.latitude = coords_hash["lat"] 
-      obj.longitude = coords_hash["lng"]
-      obj.save!
-    else
-      return "Post was saved but we could not find map data for the provided address. Consider editing post address to reflect a more specific address."
+      obj.latitude = coords_hash["lat"].to_s
+      obj.longitude = coords_hash["lng"].to_s
     end
   end
   
