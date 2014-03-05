@@ -1,0 +1,81 @@
+.users-container table {
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+.users-container h1 {
+	padding-bottom: 20px	;
+}
+
+.users-container th {
+	font-weight: bold;
+	text-align: left;
+	padding: 10px;
+	margin-left: 10px;
+	border-bottom: 1px solid #ccc;
+}
+
+.users-container td {
+	text-align: left;
+	padding: 10px 15px 0 10px;
+	border-bottom: 1px solid #ccc;
+}
+
+.manage-buttons > ul > li {
+	float: left;
+	padding-right: 10px;
+}
+
+.non-user-password-input {
+	float: left;
+}
+
+.non-user-password-input p {
+	font-weight: bold;
+	padding: 10px 0 20px 0;
+}
+
+.non-user-password-input label {
+	padding-bottom: 5px;
+}
+
+.list-thumbnail {
+	position: relative;
+	float: left;
+	margin: 5px;
+}
+
+.list-thumbnail:hover {
+	border: 2px solid #000;
+	top: -2px;
+	left: -2px;
+	margin-right: 1px;
+	margin-bottom: 1px;
+}
+
+.user-table-empty {
+	width: 300px;
+	margin: 80px auto;
+}
+
+.user-table-empty h1 {
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;
+}
+
+.find-link {
+	width: 150px;
+	position: relative;
+	margin: auto;
+}
+
+.find-link a {
+	display: inline-block;
+	margin: auto;
+	text-align: center;
+	padding: 10px;
+	background: rgba(29, 205, 250, 0.8);
+	border-radius: 3px;
+	
+}

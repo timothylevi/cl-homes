@@ -2,37 +2,38 @@
   <article class="modal-box">
     <span class="modal-close-button">&times;</span>
 
-    <!-- This is where you should insert your modal content -->
-    <div id="modal-container">
+    <div id="modal-container" class="modal-form">
 			<div class="modal-errors"></div>
-		<h1>Sign In</h1>
+			
+			<h1>Sign In</h1>
 
-		<form action="<%= session_url %>" method="post" data-remote="true">
+			<form action="<%= session_url %>" method="post" data-remote="true">
 
-				<%= form_auth_token %>
+					<%= form_auth_token %>
 	
-				<div class="input">
-					<label for="modal-email">email</label>
-					<input type="text" name="user[email]" id="modal-email">
-				</div>
+					<div class="input">
+						<label for="modal-email">email</label>
+						<input type="text" name="user[email]" id="modal-email">
+					</div>
 
-
-				<div class="input">
-					<label for="modal-password">password</label>
-					<input type="text" name="user[password]" id="modal-password">
-				</div>
+					<div class="input">
+						<label for="modal-password">password</label>
+						<input type="text" name="user[password]" id="modal-password">
+					</div>
 		
-				<div class="modal-sign-in-buttons">
-					<ul>
-						<li><input type="submit" value="Sign In"></li>
-						<li><%= link_to "Create account", new_user_url %></li>
-						<div class="clear-fix"></div>
-					</ul>
-				</div>
-				<button class="demo">
-					DEMO USER
-				</button>
-		</form>
+					<div class="modal-sign-in-buttons">
+						<ul>
+							<li><input type="submit" value="Sign In"></li>
+							<li><%= link_to "Create account", new_user_url %></li>
+							<div class="clear-fix"></div>
+						</ul>
+					</div>
+					
+					<button class="demo">
+						DEMO USER
+					</button>
+					
+			</form>
 
 
     </div>

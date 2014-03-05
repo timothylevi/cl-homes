@@ -1,0 +1,71 @@
+.user-nav-tabs {
+	width: 1000px;
+	margin: 0 auto;
+	border-bottom: 1px solid #000;
+}
+
+.listings-tab, .watchlist-tab {
+	display: block;
+	float: left;
+	position: relative;
+	top: 1px;
+	background: #fff;
+	margin: 0 15px 0 15px;
+	border-radius: 5px 5px 0 0;
+}
+
+.listings-tab {
+	border: 1px solid #000;
+}
+
+.watchlist-tab {
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+	border-left: 1px solid #000;
+	border-bottom: 1px solid #fff;
+}
+
+.user-nav-tabs a {
+	display: block;
+	padding: 10px;
+}
+
+.show-listings .listings-tab {
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+	border-left: 1px solid #000;
+	border-bottom: 1px solid #fff;
+}
+
+.show-listings .watchlist-tab {
+	border: 1px solid #000;
+}
+
+.user-show-title {
+	padding-left: 10px;
+	padding-bottom: 25px;
+}
+
+.user-show-title h1 {
+	font-size: 22px;
+	font-weight: bold;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+
+.user-show-title p {
+	float: left;
+	
+}
+
+.user-show-title a {
+	display: block;
+	padding: 5px;
+	color: #999;
+	border-radius: 3px;
+}
+
+.user-show-title a:hover {
+	color: #444;
+	background: #ccc;
+}

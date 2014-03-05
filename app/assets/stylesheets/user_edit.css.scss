@@ -1,0 +1,28 @@
+.edit-user-form {
+	width: 200px;
+	padding: 100px 0;
+	margin: 0 auto;
+}
+
+.edit-user-form label {
+	padding: 15px 0 5px 0;
+}
+
+.edit-user-form h1 {
+	display: block;
+	margin: auto;
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.edit-user-form input[type="text"] {
+	width: 200px;
+	border: 1px solid #000;
+	border-radius: 2px;
+	padding: 5px 10px;
+}
+
+.edit-user-form a {
+	margin-left: 15px;
+}

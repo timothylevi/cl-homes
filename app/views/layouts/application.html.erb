@@ -7,9 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="modal-partial-container">
-	<%= render partial: "./modal" %>
-</div>
 
 <div class="header-container">
 	<%= render partial: "./header" %>	
@@ -19,7 +16,9 @@
 
 <%= yield %>
 
-
+<div class="modal-partial-container">
+	<%= render partial: "./modal" %>
+</div>
 
 <%= render partial: "./footer" %>
 

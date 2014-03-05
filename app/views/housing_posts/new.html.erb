@@ -1,16 +1,22 @@
 <!-- housing_posts/new -->
-<div class="form-container">
-<h1 class="form-header">New Housing Post</h1>
 
-<form action="<%= housing_posts_url %>" method="post" enctype="multipart/form-data">
-	<%= render partial: "form" %>
+<div class="form-container">
+	<h1 class="form-header">New Housing Post</h1>
+
+	<form 
+		action="<%= housing_posts_url %>" 
+		method="post" 
+		enctype="multipart/form-data">
 	
-	<div class="form-buttons">
-		<ul>
-			<li><input type="submit" value="publish"></li>
-			<li><%= link_to "cancel", root_url %></li>
-		</ul>
-	</div>
-	<div class="clear-fix"></div>
-</form>
+		<%= render partial: "form" %>
+	
+		<div class="form-buttons">
+			<ul>
+				<li><input type="submit" value="publish"></li>
+				<li><%= link_to "cancel", housing_posts_url %></li>
+			</ul>
+		</div>
+	
+		<div class="clear-fix"></div>
+	</form>
 </div>

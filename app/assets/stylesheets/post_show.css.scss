@@ -1,0 +1,162 @@
+img {
+	display: block;
+	margin: auto;
+}
+
+.current-path {
+	width: 1000px;
+	margin: 20px auto 0 auto;
+}
+
+.category-details {
+	float: left;
+}
+
+.post-show-buttons {
+	width: 120px;
+	float: right;
+	font-weight: bold;
+}
+
+.unwatch-post-button,
+.show-watch .watch-post-button {
+	display: block;
+}
+
+.watch-post-button,
+.show-watch .unwatch-post-button {
+	display: none;
+}
+
+.post-alt-view-buttons {
+	float: right;
+}
+
+
+.container {
+	width: 1000px;
+	height: 480px;
+	margin: 30px auto;
+}
+
+.users-container {
+	width: 1000px;
+	height: 500px;
+	margin: 30px auto;
+}
+
+.form-container {
+	width: 1000px;
+	margin: 30px auto;
+}
+
+.form-container label {
+	display: block;
+}
+
+.form-container input[type="text"] {
+	display: block;
+	border: 1px solid #000;
+	border-radius: 2px;
+	padding: 5px 10px;
+}
+
+.contact-info-show {
+	float: left;
+	width: 220px;
+	padding-right: 29px;
+	height: 480px;
+	border-right: 1px solid #000;
+}
+
+.contact-info-show h1 {
+	font-size: 14px;
+	font-weight: bold;
+	margin: 10px 0 5px 0; 
+}
+
+.post-show-body {
+	height: 360px;
+	overflow: scroll;
+}
+
+.details-show {
+	height: 480px;
+	float: left;
+	width: 220px;
+	padding-left: 29px;
+	border-left: 1px solid #000;
+}
+
+.details-show h1 {
+	font-weight: bold;
+	font-size: 14px;
+	margin: 10px 0 5px 0; 
+}
+
+.details-show table {
+	border-collapse: collapse;
+	margin: 10px 0 15px 0;
+}
+
+.details-show th {
+	font-weight: 500;
+	padding: 0 20px 10px 0;
+	text-align: left;
+	display: table-cell;
+}
+
+.details-show td {
+	padding-right: 15px;
+}
+
+.fees {
+	margin: 20px 0;
+}
+
+
+.fees strong {
+	font-weight: bold;
+}
+
+.photos-show {
+	position: relative;
+	float: left;
+	width: 500px;
+	height: 480px;
+}
+
+.post-title {
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	margin: 0 auto 5px auto;
+}
+
+.main-photo-container {
+}
+
+.thumbnail-container {
+	position: absolute;
+	top: 370px;
+	left: 50px;
+	width: 400px;
+}
+
+.thumbnail {
+	position: relative;
+	float: left;
+	margin: 15px;
+}
+
+.thumbnail:hover {
+	border: 2px solid #000;
+	top: -2px;
+	left: -2px;
+	margin-right: 11px;
+	margin-bottom: 11px;
+}
+
+.hidden-pic {
+	display: none;
+}

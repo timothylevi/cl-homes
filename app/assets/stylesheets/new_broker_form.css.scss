@@ -1,0 +1,29 @@
+.new-broker-form {
+	width: 500px;
+	margin: 100px auto;
+}
+
+.new-broker-form h1 {
+	display: block;
+	margin: auto;
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+	padding-bottom: 15px;
+}
+
+.new-broker-form p {
+	display: block;
+	margin: auto;
+	text-align: center;
+	font-size: 18px;
+	padding-bottom: 10px;
+}
+
+.new-broker-form label {
+	padding: 15px 0 5px 0;
+}
+
+.new-broker-form input[type="text"] {
+	width: 300px;
+}

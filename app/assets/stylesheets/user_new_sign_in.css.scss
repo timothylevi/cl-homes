@@ -1,0 +1,67 @@
+.sign-in-form {
+	width: 250px;
+	height: 300px;
+	margin: 200px auto;
+}
+
+.sign-in-form label {
+	padding: 10px 0 5px 0;
+	display: block;
+}
+
+.sign-in-form input[type="text"] {
+	width: 200px;
+	border: 1px solid #000;
+	border-radius: 2px;
+	padding: 5px 10px;
+}
+
+.sign-in-form h1 {
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+
+.sign-in-buttons {
+	padding-top: 15px;
+}
+.sign-in-buttons >ul > li {
+	float: left;
+	margin-right: 10px;
+}
+
+.sign-in-buttons input[type="submit"] {
+	display: block;
+	padding: 10px 15px;
+	border-radius: 5px;
+	background: #99FFB4;
+}
+
+.sign-in-buttons a {
+	display: block;
+	padding: 10px;
+}
+
+.sign-in-buttons a:hover {
+	color: #08f;
+	background: #ccc;
+	border-radius: 3px;
+}
+
+.cancel-button {
+	text-align: center;
+	margin-top: 20px auto;
+}
+
+.cancel-button a {
+	margin-top: 10px;
+	display: inline-block;
+	padding: 10px 15px;
+}
+
+.cancel-button a:hover {
+	color: #f00;
+	background: #ccc;
+	border-radius: 3px;
+}

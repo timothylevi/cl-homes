@@ -1,0 +1,28 @@
+.intros-search-form {
+	width: 700px;
+	margin: 100px auto;
+	text-align: center;
+}
+
+.intros-search-form p {
+	font-size: 20px;
+	margin: 20px;
+}
+
+.intros-search-form label {
+	font-weight: 600;
+}
+
+.go-button {
+	width: 75px;
+	font-size: 25px;
+	margin: 30px auto;
+}
+
+.go-button input[type="submit"] {
+	padding: 5px 20px;
+}
+
+.go-button input[type="submit"]:hover {
+	background: #99FFB4;
+}

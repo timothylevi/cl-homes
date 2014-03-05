@@ -2,17 +2,23 @@
 
 <div class="form-container">
 	<h1 class="form-header">Edit Housing Post</h1>
-	<form action="<%= housing_post_url(@post) %>" method="post" enctype="multipart/form-data">
+	
+	<form 
+		action="<%= housing_post_url(@post) %>" 
+		method="post" 
+		enctype="multipart/form-data">
 	
 		<%= render partial: "form" %>
 	
 		<input type="hidden" name="_method" value="put">
+		
 		<div class="form-buttons">
 			<ul>
 				<li><input type="submit" value="save changes"></li>
 				<li><%= link_to "cancel", user_url(current_user) %></li>
 			</ul>
 		</div>
+		
 		<div class="clear-fix"></div>
 	</form>
 </div>
