@@ -54,11 +54,13 @@ class HousingPost < ActiveRecord::Base
     sql_conditions = []
     sql_args = {}
 
-    filter_options = ["min_price", "max_price"]
+    filter_options = {
+      "min_price" => ">=",
+      "max_price" => "<="}
 
-    filter_options.each do |option|
+    filter_options.each do |option, comparator|
       unless options[option].empty?
-        sql_conditions << "rent >= #{option.to_sym}"
+        sql_conditions << "rent #{comparator} #{option.to_sym}"
         sql_args[option.to_sym] = options[option]
         options.delete(option)
       end
